@@ -1,0 +1,590 @@
+Base de pruebas usada: eventosnova_regresion_test | aceptada como desechable: True
+<RAIZ_DEL_PROYECTO>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+.............................INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+.............WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+...........WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+..............................................WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+..<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\acciones.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\api.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\negocio.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\registro.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\sesion.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\texto.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\cuentas.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\evento.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\eventos.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\otras.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\panel.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:60: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\proveedores.js' mode='r' encoding='utf-8'>
+  for destino in re.findall(r"from '(\.[^']+)'", open(f, encoding='utf-8').read()):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\index.html' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\acciones.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\api.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\negocio.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\registro.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\sesion.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\texto.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\cuentas.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\evento.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\eventos.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\otras.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\panel.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\proveedores.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(f, encoding='utf-8').read(), r'^\s*import .* from [\'"](?![./])', f'{f} usa una biblioteca externa')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:81: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\docs\\api\\openapi.json' mode='r' encoding='utf-8'>
+  doc = json.load(open(os.path.join(RAIZ, 'docs', 'api', 'openapi.json'), encoding='utf-8'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\acciones.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\api.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\negocio.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\registro.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\sesion.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\texto.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\cuentas.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\evento.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\eventos.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\otras.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\panel.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\proveedores.js' mode='r' encoding='utf-8'>
+  codigo = ''.join(open(f, encoding='utf-8').read() for f in _archivos('.js'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:67: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\docs\\api\\openapi.json' mode='r' encoding='utf-8'>
+  doc = json.load(open(os.path.join(RAIZ, 'docs', 'api', 'openapi.json'), encoding='utf-8'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\acciones.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\api.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\negocio.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\registro.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\sesion.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\texto.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\cuentas.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\evento.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\eventos.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\otras.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\panel.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:71: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\proveedores.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.<RAIZ_DEL_PROYECTO>\tests\test_interfaz_web.py:98: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\docs\\INTERFAZ_WEB_COBERTURA.md' mode='r' encoding='utf-8'>
+  actual = open(os.path.join(RAIZ, 'docs', 'INTERFAZ_WEB_COBERTURA.md'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+........................................................................<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\dependencias.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\errores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\esquemas.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\esquemas_operaciones.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\limites.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\main.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_comunes.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_consultas.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_contratacion.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_eventos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_pagos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_propuestas.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_proveedores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_seguridad.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_solicitudes.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\seguridad.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\cqrs.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\puertos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\reacciones.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\reloj.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\resultados.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\seguridad.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\servicios.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\base.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\contrato.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\especificacion.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\especificaciones.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\estado_cuenta.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\evento.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\eventos_dominio.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\maquina_estados.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\propuesta.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\proveedor.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\servicios_dominio.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\solicitudes.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\valores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\casos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\evidencias.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\mapeo.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\oraculo.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\reglas_paquete.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\totales.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\transiciones.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\ejecucion_paquete\\__main__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\adaptadores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\composicion.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\esquema_postgresql.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\repositorios_memoria.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\seguridad_memoria.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\unidad_trabajo.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\codec_eventos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\composicion_persistente.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\conexion.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\configuracion.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\errores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\mapeadores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\outbox_sql.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\preparacion.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\repositorios_sql.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\trabajador_outbox.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\unidad_trabajo_sql.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\infrastructure\\persistencia\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\dto.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\errores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\esquema.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\formatos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\lector.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\manifiesto.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\__init__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\paquete_pia\\__main__.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\index.html' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\acciones.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\api.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\negocio.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\registro.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\sesion.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\texto.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\cuentas.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\evento.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\eventos.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\otras.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\panel.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\proveedores.js' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\env.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0001_esquema_inicial.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0002_proveedor_original_opcional.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0003_devolucion_anticipo_contratacion_cerrada.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0004_version_de_agregado.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0005_catalogo_de_proveedores.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0006_seguridad_cuentas_y_sesiones.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0007_proveedor_activo.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0008_solicitud_cambio_condiciones_proveedor.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\migraciones\\versions\\0009_respuesta_proveedor_procedencia.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\auditar_plazos_dias_habiles.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\comparar_oraculo_decisiones_e1_e4.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\convertir_brd_a_markdown.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\crear_administrador.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\exportar_openapi.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\generar_auditoria_requisitos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\generar_cobertura_interfaz.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\generar_entrega_pia.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\generar_matriz_permisos.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\generar_trazabilidad_api.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\lib_sesion_e2e.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\limpiar_datos_manuales.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\preparar_base_de_pruebas.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\preparar_datos_pruebas_manuales.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\preparar_pruebas_manuales.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_catalogo_proveedores_playwright.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_cierre_integral_playwright.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_costos_condiciones_playwright.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_interfaz_navegador.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_proveedores_navegador.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_responsivo_diez_anchos_navegador.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_responsivo_navegador.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_roles_completo_navegador.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\probar_seguridad_navegador.mjs' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_seguridad_documentacion.py:24: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\scripts\\verificar_cobertura.py' mode='r' encoding='utf-8'>
+  texto = open(os.path.join(d, f), encoding='utf-8', errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 180 tests in 107.291s
+
+OK

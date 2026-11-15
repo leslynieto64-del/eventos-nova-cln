@@ -1,0 +1,148 @@
+Base de pruebas usada: eventosnova_regresion_test | aceptada como desechable: True
+<RAIZ_DEL_PROYECTO>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+...INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+WARNI [eventosnova.api] Conflicto de concurrencia: El agregado evento EV-1 cambió desde que se leyó
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+WARNI [eventosnova.api] Conflicto de concurrencia: El agregado estado_cuenta EC-4c665fe7-18b7-47b2-88f0-d830dd3080e5 cambió desde que se leyó (versión 0) o ya no existe.
+.............WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-812088de-bf89-4ee1-95d7-324c91be6457 (coordinador) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-812088de-bf89-4ee1-95d7-324c91be6457 (coordinador) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-812088de-bf89-4ee1-95d7-324c91be6457 (coordinador) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-812088de-bf89-4ee1-95d7-324c91be6457 (coordinador) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b0121b26-ad89-431b-8d40-8c4bcc0a5dc3 (proveedor) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b0121b26-ad89-431b-8d40-8c4bcc0a5dc3 (proveedor) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b0121b26-ad89-431b-8d40-8c4bcc0a5dc3 (proveedor) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b0121b26-ad89-431b-8d40-8c4bcc0a5dc3 (proveedor) en POST /usuarios/{usuario_id}/contrasena
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fa240ac0-39bb-4949-910d-60d6e6e0bc50 (coordinador) en POST /usuarios
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-16c6887f-9d4a-4ff9-a643-3dc4524745f2 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-16c6887f-9d4a-4ff9-a643-3dc4524745f2 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5417463d-07ef-4b16-b451-edf23cdca525 (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a5a61a5d-0841-41d2-9c23-d01e75bcf52f (proveedor) en POST /eventos/{evento_id}/revision-administrativa
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d218046d-60db-42d6-803a-579f003d0952 (administrador) en POST /eventos/{evento_id}/cancelacion-por-falta-de-regularizacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c0ce4320-9a88-4465-a574-17dba392f3fb (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-aae15af2-0828-4b58-9257-0075b943b510 (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8a9b3fe7-ab14-402b-8cf9-4ac65efe9797 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8a9b3fe7-ab14-402b-8cf9-4ac65efe9797 (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-40ee8b91-495d-4425-a4c3-e0fee8d33e85 (proveedor) en GET /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-40ee8b91-495d-4425-a4c3-e0fee8d33e85 (proveedor) en GET /eventos/{evento_id}/pagos
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /propuestas/{propuesta_id}/aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /propuestas/{propuesta_id}/versiones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /propuestas/{propuesta_id}/contrato
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /contratos/{contrato_id}/firma
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /contratos/{contrato_id}/comunicacion-politica-no-reembolso
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /solicitudes-cambio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /solicitudes-servicio-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /sustituciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /eventos/{evento_id}/cancelacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c122d8a7-f771-40c1-861c-30fd7a171265 (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-70dc909d-873f-417b-8ce2-f8edd2bb416a (coordinador) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-70dc909d-873f-417b-8ce2-f8edd2bb416a (coordinador) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-70dc909d-873f-417b-8ce2-f8edd2bb416a (coordinador) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-70dc909d-873f-417b-8ce2-f8edd2bb416a (coordinador) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8c3fdb58-e1f5-4f42-a475-323bcc95fc0f (proveedor) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8c3fdb58-e1f5-4f42-a475-323bcc95fc0f (proveedor) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8c3fdb58-e1f5-4f42-a475-323bcc95fc0f (proveedor) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8c3fdb58-e1f5-4f42-a475-323bcc95fc0f (proveedor) en POST /usuarios/{usuario_id}/contrasena
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-42ff419c-4aff-46a0-83e4-e7a851831a76 (coordinador) en POST /usuarios
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e2d99a42-b42a-45cf-8e4b-9f6b61527330 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e2d99a42-b42a-45cf-8e4b-9f6b61527330 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d6fba620-9660-4475-ae0c-8ef6494c9bd4 (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9fbaf8c2-5e13-45ad-8155-2fbac33b5caa (proveedor) en POST /eventos/{evento_id}/revision-administrativa
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-62085c78-aa1a-4ff7-83f6-7fbbb98b35e9 (administrador) en POST /eventos/{evento_id}/cancelacion-por-falta-de-regularizacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e937960d-feae-48c2-bc9e-55e09f7d49a4 (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+......WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ab65f864-3478-4018-8bfc-aca3a3a2af18 (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-6f9d1834-3e58-4962-a993-922f60365074 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-6f9d1834-3e58-4962-a993-922f60365074 (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-1298825a-6ea8-4914-8fa6-12339fa585a1 (proveedor) en GET /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-1298825a-6ea8-4914-8fa6-12339fa585a1 (proveedor) en GET /eventos/{evento_id}/pagos
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /propuestas/{propuesta_id}/aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /propuestas/{propuesta_id}/versiones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /propuestas/{propuesta_id}/contrato
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /contratos/{contrato_id}/firma
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /contratos/{contrato_id}/comunicacion-politica-no-reembolso
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /solicitudes-cambio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /solicitudes-servicio-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /sustituciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /eventos/{evento_id}/cancelacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-f87c0381-a026-43a1-9ae1-7cd810b8087d (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor
+.............................................................................................................................
+----------------------------------------------------------------------
+Ran 179 tests in 225.591s
+
+OK

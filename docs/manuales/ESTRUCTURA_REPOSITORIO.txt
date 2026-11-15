@@ -9,12 +9,12 @@ eventos-nova/
 │   └── ejecucion_paquete/ ejecución del paquete oficial (F2)
 ├── migraciones/           Alembic: env.py y versions/0001 ... 0009
 ├── scripts/               OpenAPI, bases de prueba, administrador, Playwright
-├── tests/                 82 módulos de prueba (unittest) y evidencias
+├── tests/                 88 módulos de prueba (unittest) y evidencias
 ├── docs/                  BRD.md, architecture/, api/openapi.json, ADR/
 ├── .github/workflows/     ci.yml y publicar-imagen.yml
 ├── Dockerfile             targets app y tests
 ├── docker-compose.yml     db, migrate, api, worker y tests
 ├── .env.example           variables sin secretos
-├── render.yaml            blueprint de despliegue (borrador)
+├── render.yaml            Blueprint de Render (aplicado: API y worker)
 ├── alembic.ini, requirements*.txt, .coveragerc
 └── README.md

@@ -74,13 +74,14 @@ El PIA pide un despliegue con Swagger/OpenAPI accesible. La aplicación está li
 
 `docker compose up -d` levanta `db`, `migrate`, `api` y `worker`; la API quedó sana (`/ready` → `{"estado":"ok","persistencia":"postgresql","base_de_datos":"ok"}`), `/docs` responde 200, `/openapi.json` listó entonces 60 operaciones (la OpenAPI vigente tiene 77; esta verificación no se repitió), un evento creado por HTTP sobrevive al reinicio del contenedor `api`, la imagen respeta `PORT` (probado con `PORT=9123`) y la migración funciona con una URL `postgres://`. Falta lo que requiere recursos externos: ejecución en GitHub, plataforma, credenciales y URL pública.
 
-## Estado al 05/11/2026 (actualización documental)
+## Estado al 06/11/2026
 
 | Elemento | Situación |
 |---|---|
-| Repositorio | <https://github.com/leslynieto64-del/eventos-nova-cln>: 37 commits en `main`; PR #1 (`fix/auditoria-integral` → `main`) fusionada el 04/11/2026 (`4be166b`) y PR #2 (`fix/cierre-bloque-a` → `main`) fusionada el 05/11/2026 (`0b16cf3`) |
-| CI | Ejecutado en verde sobre `main` (`4be166b`, antes del Bloque A: 1,654 pruebas; 0 omitidas en «pruebas» y 3 en «docker»), sobre el commit `9c72bc7` de la PR #2 y sobre `main` tras la fusión (`0b16cf3`): 1,677 pruebas aprobadas, cobertura de sentencias 98.21 % (6,573 de 6,693), 1 omitida en «pruebas» y 8 en «docker» (sin Node.js ni Chrome) |
-| Bloque A | 11 commits (hasta `9c72bc7`) fusionados en `main` mediante la PR #2 el 05/11/2026; el CI los evaluó en verde |
+| Repositorio | <https://github.com/leslynieto64-del/eventos-nova-cln>: 60 commits en `main`; PR #1 a #8 fusionadas; cabeza `1dfcfdd` (fusión de la PR #8, 06/11/2026) |
+| CI | Ejecución 42268272652 sobre `main` (`1dfcfdd`): los dos trabajos aprobados; 1,787 pruebas (omitidas: 1 en «pruebas» y 9 en «docker»); sentencias 98.12 % (6,751 de 6,880), ramas 93.36 %, combinada 97.3 %. Ejecuciones anteriores: `4be166b` (1,654), `9c72bc7` y `0b16cf3` (1,677; 98.21 %) |
 | Imagen | El `Dockerfile` termina en la etapa `runtime` (predeterminada, commit `7aee2cb`); el CI verifica que ejecute uvicorn, use el usuario `eventosnova` y no contenga `/app/tests` |
-| Render | `render.yaml` está preparado (región `ohio`, planes vigentes) pero sin aplicar (`postgresMajorVersion: "18"`, `autoDeployTrigger: checksPass`, `preDeployCommand: python -m alembic upgrade head`). **No hay despliegue ni URL pública** |
-| Pendiente | Aprobación de costos, despliegue, `EVENTOSNOVA_DOCS=1`, primer administrador y evidencias (el CI sobre el código actualizado y la corrección LF/CRLF ya están hechos) |
+| Render | Blueprint aplicado en la región `ohio`: `eventosnova-api` y `eventosnova-worker` Live con `1dfcfdd` (GitHub registra ambos despliegues con estado `success`); `autoDeployTrigger: checksPass`; `preDeployCommand: python -m alembic upgrade head`; `EVENTOSNOVA_DOCS=1` definida a mano en el servicio web |
+| URL pública | <https://eventosnova-api.onrender.com> — `/app`, `/docs`, `/redoc`, `/openapi.json`, `/health` y `/ready` responden 200 (06/11/2026) |
+| Evidencias | `docs/calidad/evidencias/05_CI_CD_FINAL/`, `06_DESPLIEGUE_RENDER/`, `08_BASE_DE_DATOS_POSTGRESQL/` y `04_PRUEBAS_MANUALES_SWAGGER/` |
+| `publicar-imagen.yml` | Workflow opcional (etiqueta `v*` o ejecución manual) que publica una imagen en GHCR; Render no la consume y no se ha ejecutado |

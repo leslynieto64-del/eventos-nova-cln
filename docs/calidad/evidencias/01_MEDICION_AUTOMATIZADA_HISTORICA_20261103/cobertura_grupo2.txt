@@ -1,0 +1,484 @@
+Base de pruebas usada: eventosnova_regresion_test | aceptada como desechable: True
+<RAIZ_DEL_PROYECTO>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+...........................AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+......INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+.....WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+...................................................................<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:119: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  ui = open(os.path.join(WEB, 'js', 'ui.js'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\base.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\contrato.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\especificacion.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\especificaciones.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\estado_cuenta.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\evento.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\eventos_dominio.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\maquina_estados.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\propuesta.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\proveedor.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\servicios_dominio.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\solicitudes.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\valores.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\domain\\__init__.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\cqrs.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\puertos.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\reacciones.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\reloj.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\resultados.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\seguridad.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\servicios.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\application\\__init__.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\dependencias.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\errores.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\esquemas.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\esquemas_operaciones.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\limites.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\main.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_comunes.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_consultas.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_contratacion.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_eventos.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_pagos.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_propuestas.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_proveedores.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_seguridad.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\rutas_solicitudes.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\seguridad.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:87: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\api\\__init__.py' mode='r' encoding='utf-8'>
+  arbol = ast.parse(open(os.path.join(d, f), encoding='utf-8').read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\acciones.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\api.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\negocio.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\registro.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\sesion.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\texto.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\ui.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\cuentas.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\evento.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\eventos.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\otras.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\panel.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\proveedores.js' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_textos.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\index.html' mode='r' encoding='utf-8'>
+  texto = open(f, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................................WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5b45552d-be8f-4fb4-9b06-9f479e4a7fd6 (coordinador) en POST /usuarios/{usuario_id}/actualizacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en GET /eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en GET /mis-asignaciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /contratos/{contrato_id}/comunicacion-politica-no-reembolso
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /contratos/{contrato_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /contratos/{contrato_id}/firma
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /contratos/{contrato_id}/seguimiento-anticipo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/cancelacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/cancelacion-por-falta-de-regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /propuestas/{propuesta_id}/aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /propuestas/{propuesta_id}/cierre-por-no-aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /propuestas/{propuesta_id}/contrato
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /propuestas/{propuesta_id}/versiones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio/{solicitud_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/aprobacion-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/decision-espera
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /sustituciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /sustituciones/{sustitucion_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /sustituciones/{sustitucion_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d87f81-6266-4446-bdae-8a853b927e8d (administrador) en POST /sustituciones/{sustitucion_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en GET /mis-asignaciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /proveedores/{proveedor_id}/activacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-9b90263d-9eb8-48ab-8858-330b18e4ab90 (coordinador) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /devoluciones-pendientes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /eventos/{evento_id}/administracion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /eventos/{evento_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /eventos/{evento_id}/solicitudes-pendientes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /pagos-pendientes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /servicios-pendientes-confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /solicitudes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /contratos/{contrato_id}/comunicacion-politica-no-reembolso
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /contratos/{contrato_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /contratos/{contrato_id}/firma
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /contratos/{contrato_id}/seguimiento-anticipo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/cancelacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/cancelacion-por-falta-de-regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/revision-administrativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /propuestas/{propuesta_id}/aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /propuestas/{propuesta_id}/cierre-por-no-aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /propuestas/{propuesta_id}/contrato
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /propuestas/{propuesta_id}/versiones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /proveedores/{proveedor_id}/activacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/aprobacion-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/decision-espera
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones/{sustitucion_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones/{sustitucion_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones/{sustitucion_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ac937f06-3d9d-4cf3-a7db-769e04d277ac (proveedor) en POST /usuarios/{usuario_id}/estado
+...WARNI [eventosnova.seguridad] CSRF inválido de la cuenta US-37898c2b-6528-447c-8e18-a0962366eba2 en POST /eventos
+WARNI [eventosnova.seguridad] CSRF inválido de la cuenta US-37898c2b-6528-447c-8e18-a0962366eba2 en POST /eventos
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3a4d7bcb-179d-4cca-a914-4517379f3144 (administrador) en POST /eventos
+...WARNI [eventosnova.seguridad] CSRF inválido de la cuenta US-3a13ea60-ecc7-4471-8bd1-29b6878b06cc en POST /eventos
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-2dbca1dd-0e63-4e6e-becf-c96e8218d4cb (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-2dbca1dd-0e63-4e6e-becf-c96e8218d4cb (coordinador) en GET /mis-asignaciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-582f056e-76ec-49fd-8ea1-e370298cb72f (administrador) en GET /mis-asignaciones
+...........WARNI [eventosnova.seguridad] Origen rechazado https://sitio-malicioso.example en POST /eventos
+WARNI [eventosnova.seguridad] Origen rechazado https://sitio-malicioso.example en POST /auth/inicio-sesion
+.....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-fe103da3-4dba-4d41-a44c-e0de18462c16 (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+..WARNI [eventosnova.seguridad] Proveedor US-44419c0d-51e6-4148-b006-dc6c86f588bc intentó acceder a otro proveedor en GET /proveedores/{proveedor_id}
+WARNI [eventosnova.seguridad] Proveedor US-44419c0d-51e6-4148-b006-dc6c86f588bc intentó acceder a otro proveedor en GET /proveedores/{proveedor_id}/eventos/{evento_id}
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-44419c0d-51e6-4148-b006-dc6c86f588bc (proveedor) en GET /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-44419c0d-51e6-4148-b006-dc6c86f588bc (proveedor) en GET /eventos
+.....ERROR [eventosnova.seguridad] Ruta sin permiso definido: GET /prueba-sin-permiso
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-304c49a6-9841-4d0b-b41e-9c754a6e702b (coordinador) en POST /usuarios/{usuario_id}/actualizacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en GET /eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en GET /mis-asignaciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /contratos/{contrato_id}/comunicacion-politica-no-reembolso
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /contratos/{contrato_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /contratos/{contrato_id}/firma
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /contratos/{contrato_id}/seguimiento-anticipo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/cancelacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/cancelacion-por-falta-de-regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /propuestas/{propuesta_id}/aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /propuestas/{propuesta_id}/cierre-por-no-aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /propuestas/{propuesta_id}/contrato
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /propuestas/{propuesta_id}/versiones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/aprobacion-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/decision-espera
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /sustituciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /sustituciones/{sustitucion_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /sustituciones/{sustitucion_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-4888761c-a20b-44a5-92e0-84c08fb9fbc7 (administrador) en POST /sustituciones/{sustitucion_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en GET /mis-asignaciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /proveedores/{proveedor_id}/activacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dba512b-b477-4dc8-9e65-3369c28d389f (coordinador) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /devoluciones-pendientes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /eventos/{evento_id}/administracion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /eventos/{evento_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /eventos/{evento_id}/solicitudes-pendientes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /pagos-pendientes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /servicios-pendientes-confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /solicitudes
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /contratos/{contrato_id}/comunicacion-politica-no-reembolso
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /contratos/{contrato_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /contratos/{contrato_id}/firma
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /contratos/{contrato_id}/seguimiento-anticipo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/protocolo-cobro
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /estados-cuenta/{estado_cuenta_id}/vencimiento-saldo-original
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/cancelacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/cancelacion-por-falta-de-regularizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/propuestas
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/revision-administrativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /propuestas/{propuesta_id}/aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /propuestas/{propuesta_id}/cierre-por-no-aceptacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /propuestas/{propuesta_id}/contrato
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /propuestas/{propuesta_id}/versiones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /proveedores/{proveedor_id}/activacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/aprobacion-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/decision-espera
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/solicitud-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones/{sustitucion_id}/anexo
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones/{sustitucion_id}/confirmacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones/{sustitucion_id}/decision-cliente
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /sustituciones/{sustitucion_id}/importe-adicional
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /usuarios/{usuario_id}/actualizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-ae161330-8ff3-448d-894a-07c0c552def1 (proveedor) en POST /usuarios/{usuario_id}/estado
+...WARNI [eventosnova.seguridad] CSRF inválido de la cuenta US-b55d65c4-3da1-4c3c-b938-6fffd3896e6d en POST /eventos
+WARNI [eventosnova.seguridad] CSRF inválido de la cuenta US-b55d65c4-3da1-4c3c-b938-6fffd3896e6d en POST /eventos
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d4cc5005-410b-4c8e-81ce-240c5cbcde67 (administrador) en POST /eventos
+...WARNI [eventosnova.seguridad] CSRF inválido de la cuenta US-01e58935-6922-45c3-acfd-761961acc399 en POST /eventos
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dcd903b-b129-4d1c-89ea-7e005b39b572 (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8dcd903b-b129-4d1c-89ea-7e005b39b572 (coordinador) en GET /mis-asignaciones
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-816afcda-2ca2-4ce0-ac07-df5f2cfb93d8 (administrador) en GET /mis-asignaciones
+.............WARNI [eventosnova.seguridad] Origen rechazado https://sitio-malicioso.example en POST /eventos
+WARNI [eventosnova.seguridad] Origen rechazado https://sitio-malicioso.example en POST /auth/inicio-sesion
+.....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en GET /usuarios
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /usuarios/{usuario_id}/estado
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /usuarios/{usuario_id}/contrasena
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/pagos/{pago_id}/verificacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /estados-cuenta/{estado_cuenta_id}/devoluciones/{devolucion_id}/ejecucion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /sustituciones/{sustitucion_id}/autorizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-669ebe10-b749-4916-8ca2-c5939833d62e (coordinador) en POST /eventos/{evento_id}/revision-administrativa
+..WARNI [eventosnova.seguridad] Proveedor US-62afc284-d011-4b1f-940b-2d8f65152bc8 intentó acceder a otro proveedor en GET /proveedores/{proveedor_id}
+WARNI [eventosnova.seguridad] Proveedor US-62afc284-d011-4b1f-940b-2d8f65152bc8 intentó acceder a otro proveedor en GET /proveedores/{proveedor_id}/eventos/{evento_id}
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-62afc284-d011-4b1f-940b-2d8f65152bc8 (proveedor) en GET /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-62afc284-d011-4b1f-940b-2d8f65152bc8 (proveedor) en GET /eventos
+....ERROR [eventosnova.seguridad] Ruta sin permiso definido: GET /prueba-sin-permiso
+......................
+----------------------------------------------------------------------
+Ran 239 tests in 315.092s
+
+OK

@@ -1,0 +1,52 @@
+Base de pruebas usada: eventosnova_regresion_test | aceptada como desechable: True
+<RAIZ_DEL_PROYECTO>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+....................INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+..............................................................................................................<RAIZ_DEL_PROYECTO>\tests\test_interfaz_responsiva.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\paginas\\ingreso.js' mode='r' encoding='utf-8'>
+  js = open(os.path.join(WEB, 'js', 'paginas', 'ingreso.js'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.<RAIZ_DEL_PROYECTO>\tests\test_interfaz_responsiva.py:80: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js\\main.js' mode='r' encoding='utf-8'>
+  js = open(os.path.join(WEB, 'js', 'main.js'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......<RAIZ_DEL_PROYECTO>\tests\test_interfaz_responsiva.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js/main.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(os.path.join(WEB, f), encoding='utf-8').read(), r'(?i)style\.zoom|transform\s*=\s*[\'"]scale')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_responsiva.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\js/ui.js' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(os.path.join(WEB, f), encoding='utf-8').read(), r'(?i)style\.zoom|transform\s*=\s*[\'"]scale')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<RAIZ_DEL_PROYECTO>\tests\test_interfaz_responsiva.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='<RAIZ_DEL_PROYECTO>\\src\\web\\index.html' mode='r' encoding='utf-8'>
+  self.assertNotRegex(open(os.path.join(WEB, f), encoding='utf-8').read(), r'(?i)style\.zoom|transform\s*=\s*[\'"]scale')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.................................................WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.
+----------------------------------------------------------------------
+Ran 212 tests in 63.138s
+
+OK

@@ -1,0 +1,59 @@
+Base de pruebas usada: eventosnova_regresion_test | aceptada como desechable: True
+<RAIZ_DEL_PROYECTO>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+ERROR [eventosnova.trabajador] Falló un ciclo de despacho del Outbox
+Traceback (most recent call last):
+  File "<RAIZ_DEL_PROYECTO>\src\infrastructure\persistencia\trabajador_outbox.py", line 34, in ejecutar
+    procesados = contenedor.despachador.despachar()
+  File "<PYTHON_3.13>\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "<PYTHON_3.13>\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "<PYTHON_3.13>\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+infrastructure.persistencia.errores.ErrorDePersistencia: x
+.WARNI [eventosnova.api] Violación de restricción: fk_secreta (tabla tabla_interna)
+WARNI [eventosnova.api] Dato no almacenable: integer out of range
+ERROR [eventosnova.api] Base de datos no disponible: password authentication failed for user x
+ERROR [eventosnova.api] Error de persistencia: algo interno
+.WARNI [eventosnova.api] Violación de restricción: fk_secreta (tabla tabla_interna)
+WARNI [eventosnova.api] Dato no almacenable: integer out of range
+ERROR [eventosnova.api] Base de datos no disponible: password authentication failed for user x
+ERROR [eventosnova.api] Error de persistencia: algo interno
+...WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.................WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5e5caa72-306a-4c5d-9609-3d854c535bcb (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+.....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-e3072307-f68e-40c4-9c9c-02e538925d0e (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-83cd3d38-f235-479d-a9ef-70dcd4f5a258 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-907f4ac2-6eb7-4a25-bc03-113cc52e1a21 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-907f4ac2-6eb7-4a25-bc03-113cc52e1a21 (administrador) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-907f4ac2-6eb7-4a25-bc03-113cc52e1a21 (administrador) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-2be2aad5-6d11-461c-aed2-3521be445788 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-2be2aad5-6d11-461c-aed2-3521be445788 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-2be2aad5-6d11-461c-aed2-3521be445788 (proveedor) en POST /sustituciones/{sustitucion_id}/alternativa
+....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a492df12-67aa-488d-8488-f4a394864b44 (coordinador) en POST /solicitudes-cambio/{solicitud_id}/autorizacion
+......WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-a6d0811d-9cff-496f-aa20-72c61ed3e2cb (coordinador) en POST /sustituciones/{sustitucion_id}/importe-adicional
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b11b3e2a-3d56-49ae-b732-a88a1bf0a2d4 (coordinador) en POST /solicitudes-servicio-adicional/{solicitud_id}/autorizacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b747b3ec-27db-41ca-9d95-8bcc7ceccbc7 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b747b3ec-27db-41ca-9d95-8bcc7ceccbc7 (administrador) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-b747b3ec-27db-41ca-9d95-8bcc7ceccbc7 (administrador) en POST /sustituciones/{sustitucion_id}/alternativa
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-20800615-353f-48e9-9cd4-922fb85b7720 (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/disponibilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-20800615-353f-48e9-9cd4-922fb85b7720 (proveedor) en POST /solicitudes-cambio/{solicitud_id}/viabilidad
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-20800615-353f-48e9-9cd4-922fb85b7720 (proveedor) en POST /sustituciones/{sustitucion_id}/alternativa
+..............................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 242 tests in 337.028s
+
+OK
