@@ -26,3 +26,18 @@ El contrato es generado por FastAPI a partir del código y su igualdad con el ar
 
 
 **Bloque A (05/11/2026).** COR-05 dejó de devolver `condiciones` en `GET /mis-asignaciones` y `GET /proveedores/{proveedor_id}/eventos/{evento_id}` (vista del proveedor). La respuesta 200 de esas rutas se declara sin esquema (`schema: {}`), por lo que el contrato OpenAPI no cambió; el cambio está cubierto por las pruebas `test_h01_h02_proveedores` y por la verificación en Chrome del Bloque A.
+
+
+## Actualización del 15/11/2026 — catálogo de clientes (rama local `feat/catalogo-clientes`, sin fusionar ni desplegar)
+
+Verificada sobre `docs/api/openapi.json` generado por `scripts/exportar_openapi.py` a partir del código de la rama local (no es el contrato desplegado en producción, que sigue con 77 operaciones).
+
+| Comprobación | Resultado |
+|---|---|
+| Operaciones en openapi.json | 79 (21 GET y 58 POST) en 75 rutas |
+| Operaciones públicas / protegidas | 4 / 75 |
+| Esquemas de componentes | 49 |
+| Nuevas operaciones | `GET /clientes` y `GET /clientes/{cliente_id}` (permiso `clientes.consultar`: Administración y Coordinación) |
+| Operación modificada | `POST /eventos`: acepta `cliente` (nombres, apellidos, teléfono, correo) o, por compatibilidad, `cliente_id`; responde además `cliente` y `cliente_nuevo` con la forma vigente |
+| openapi.yaml equivalente a openapi.json | Sí: regenerado el 15/11/2026 desde el JSON y comprobado al cargarlos. El YAML anterior estaba desfasado desde la PR #8 (descripción de `SesionCookie`) |
+| Operaciones en `CATALOGO_OPERACIONES.csv` | 79 de 79 (se añadieron las dos filas de clientes) |

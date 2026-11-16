@@ -1,7 +1,7 @@
 /* Componentes comunes: creación de elementos, iconos, avisos, estados de carga, tablas y formularios con validación. */
 import { ErrorApi } from './api.js';
 import { AYUDA_ESTADO, ahoraNegocio, fmtFechaHora, tono } from './negocio.js';
-import { humanizar, sinVacios } from './texto.js';
+import { MENSAJE_TELEFONO, humanizar, sinVacios, soloDigitos, telefonoValido } from './texto.js';
 import { puede } from './sesion.js';
 
 /** h('div', {class:'x', onclick}, hijo1, 'texto') */
@@ -114,8 +114,8 @@ export const tarjeta = (titulo, contenido, { acciones, clase } = {}) =>
 /** Proveedor de un servicio: nombre legible (si figura en el catálogo) con su identificador, o «Sin asignar» si de verdad no hay asignación. */
 export function celdaProveedor(s) {
   if (!s.proveedorId) return h('span', { class: 'peq' }, 'Sin asignar');
-  return h('div', null, h('a', { href: `#/proveedores/${encodeURIComponent(s.proveedorId)}` }, s.proveedorNombre || s.proveedorId),
-    s.proveedorNombre ? h('div', { class: 'peq id' }, s.proveedorId) : h('div', { class: 'peq' }, 'No figura en el catálogo'));
+  return h('div', null, h('a', { href: `#/proveedores/${encodeURIComponent(s.proveedorId)}` }, s.proveedorNombre || 'Proveedor sin nombre en el catálogo'),
+    s.proveedorNombre ? null : h('div', { class: 'peq' }, 'No figura en el catálogo'));
 }
 
 /** S-5: la respuesta de un servicio y su procedencia (directa del proveedor o capturada por Coordinación). */
@@ -135,6 +135,7 @@ export function copiable(texto) {
 
 // ---------------------------------------------------------------- formularios
 const RE_IMPORTE = /^\d+(\.\d+)?$/;
+const RE_CORREO = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
 
 /** Botón «Mostrar/Ocultar» para un campo de contraseña. Solo cambia cómo se ve lo escrito; el valor no se modifica ni se guarda. */
 export function conOjo(input) {
@@ -180,12 +181,33 @@ function crearControl(campo, id, valor) {
     case 'fechahora': return h('input', { ...comunes, type: 'datetime-local', step: 60, value: (valor || '').slice(0, 16) });
     case 'importe': return h('input', { ...comunes, type: 'text', inputmode: 'decimal', autocomplete: 'off', placeholder: '0.00', value: valor ?? '' });
     case 'entero': return h('input', { ...comunes, type: 'text', inputmode: 'numeric', autocomplete: 'off', value: valor ?? '' });
+    case 'checks': if (!(campo.opciones || []).length) return h('div', { id, class: 'nota-form nota-alerta', role: 'note', tabindex: '-1' }, campo.sinOpciones || 'No hay opciones disponibles.');
+      return h('div', { id, class: 'grupo-checks', role: 'group', tabindex: '-1', 'aria-describedby': `${id}-ayuda ${id}-error` },
+      (campo.opciones || []).map((o, i) => h('label', { class: 'check-opcion', for: `${id}-${i}` },
+        h('input', { type: 'checkbox', id: `${id}-${i}`, value: o.valor, checked: (valor || []).includes(o.valor) ? true : null }),
+        h('span', null, o.texto, o.detalle ? h('small', { class: 'peq' }, o.detalle) : null))));
+    case 'nota': return h('div', { id, class: 'nota-form', role: 'note' }, campo.contenidoDe ? '' : (campo.contenido || ''));       // `contenidoDe(valores)` se vuelve a calcular con cada cambio (p. ej., un total)
+    case 'correo': return h('input', { ...comunes, type: 'email', inputmode: 'email', autocomplete: 'off', spellcheck: 'false', maxlength: 254, value: valor ?? '' });
+    case 'telefono': {
+      const el = h('input', { ...comunes, type: 'tel', inputmode: 'numeric', autocomplete: 'off', pattern: '[0-9]{10}', placeholder: '10 dígitos, sin espacios', value: valor ?? '' });
+      // Al teclear: solo dígitos y como máximo 10. Al pegar: se quitan espacios, guiones y letras; si quedan más de 10 dígitos NO se recorta (se marca como inválido).
+      el.addEventListener('beforeinput', (e) => {
+        if (typeof e.inputType === 'string' && e.inputType === 'insertText' && e.data !== null) {
+          const seleccionados = (el.selectionEnd ?? 0) - (el.selectionStart ?? 0);
+          if (!/^[0-9]+$/.test(e.data) || el.value.length - seleccionados + e.data.length > 10) e.preventDefault();
+        }
+      });
+      el.addEventListener('input', () => { const limpio = soloDigitos(el.value); if (limpio !== el.value) el.value = limpio; });
+      return el;
+    }
     default: return h('input', { ...comunes, type: 'text', autocomplete: 'off', value: valor ?? '' });
   }
 }
 
 function leer(campo, control) {
   if (campo.tipo === 'bool') return control.checked;
+  if (campo.tipo === 'checks') return [...control.querySelectorAll('input[type=checkbox]:checked')].map((x) => x.value);
+  if (campo.tipo === 'nota') return '';
   const v = campo.tipo === 'contrasena' ? control.value : control.value.trim();      // la contraseña no se recorta
   if (campo.tipo === 'fechahora') return v ? (v.length === 16 ? `${v}:00` : v) : '';
   return v;
@@ -193,14 +215,17 @@ function leer(campo, control) {
 
 function validarCampo(campo, v) {
   const vacioV = v === '' || v === undefined || (Array.isArray(v) && !v.length);
-  if (campo.tipo === 'bool') return null;
-  if (vacioV) return campo.requerido ? 'Este campo es obligatorio. Introduce la información para continuar.' : null;
+  if (campo.tipo === 'bool' || campo.tipo === 'nota') return null;
+  if (vacioV) return campo.requerido ? (campo.mensajeVacio || (campo.tipo === 'checks' ? 'Selecciona al menos una opción.' : 'Este campo es obligatorio. Introduce la información para continuar.')) : null;
   if (campo.tipo === 'importe') {
     if (!RE_IMPORTE.test(v)) return 'Escribe un importe válido con números y, si hace falta, punto decimal (por ejemplo, 1500.50).';
     if (campo.positivo && Number(v) <= 0) return 'El importe debe ser mayor que cero.';
   }
   if (campo.tipo === 'entero' && (!/^\d+$/.test(v) || Number(v) < (campo.minimo ?? 0))) return `Escribe un número entero${campo.minimo ? ` igual o mayor que ${campo.minimo}` : ''}.`;
   if (campo.tipo === 'fechahora' && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(v)) return 'Escribe una fecha y hora válidas.';
+  if (campo.tipo === 'correo' && !RE_CORREO.test(v)) return 'Escribe un correo electrónico válido (por ejemplo, nombre@dominio.com).';
+  if (campo.tipo === 'telefono' && !telefonoValido(v)) return MENSAJE_TELEFONO;
+  if (campo.maxLongitud && v.length > campo.maxLongitud) return `Escribe como máximo ${campo.maxLongitud} caracteres.`;
   if (campo.tipo === 'contrasena' && campo.minLongitud && v.length < campo.minLongitud) return `La contraseña debe tener al menos ${campo.minLongitud} caracteres.`;
   return null;
 }
@@ -232,7 +257,7 @@ export function abrirFormulario(def) {
       const ctl = crearControl(c, id, c.valor);
       controles.set(c.nombre, ctl);
       const buscable = c.tipo === 'select' && (c.buscable ?? c.opciones.length > UMBRAL_BUSQUEDA);
-      const fila = h('div', { class: `campo ${c.tipo === 'bool' ? 'campo-bool' : ''}` },
+      const fila = c.tipo === 'nota' ? h('div', { class: 'campo' }, ctl, h('span', { id: `${id}-ayuda` }), h('div', { class: 'error-campo', id: `${id}-error`, role: 'alert' })) : h('div', { class: `campo ${c.tipo === 'bool' ? 'campo-bool' : ''}` },
         c.tipo === 'bool'
           ? h('label', { for: id }, ctl, h('span', null, c.etiqueta))
           : [h('label', { for: id }, c.etiqueta, c.requerido ? h('span', { class: 'req', 'aria-hidden': 'true' }, ' *') : h('span', { class: 'opc' }, ' (opcional)')),
@@ -240,6 +265,7 @@ export function abrirFormulario(def) {
         c.ayuda ? h('div', { class: 'ayuda', id: `${id}-ayuda` }, c.ayuda) : h('span', { id: `${id}-ayuda` }),
         h('div', { class: 'error-campo', id: `${id}-error`, role: 'alert' }));
       filas.set(c.nombre, fila);
+      if (c.seccion) fila.prepend(h('h3', { class: 'seccion-form' }, c.seccion));       // encabezado de grupo de campos; forma parte de la fila: si la fila se oculta, también el encabezado
       forma.append(fila);
       ctl.addEventListener('input', () => { fila.querySelector('.error-campo').textContent = ''; fila.classList.remove('invalido'); ctl.removeAttribute('aria-invalid'); actualizarVisibilidad(); });
       ctl.addEventListener('change', actualizarVisibilidad);
@@ -249,13 +275,14 @@ export function abrirFormulario(def) {
       const v = {};
       for (const c of campos) {
         const bruto = leer(c, controles.get(c.nombre));
-        v[c.nombre] = c.tipo === 'lista' ? bruto.split(',').map((x) => x.trim()).filter(Boolean) : bruto;
+        v[c.nombre] = c.tipo === 'lista' ? bruto.split(/[;,]/).map((x) => x.trim()).filter(Boolean) : bruto;
       }
       return v;
     };
     const visible = (c, v) => !c.visibleSi || c.visibleSi(v);
     function actualizarVisibilidad() {
       const v = valores();
+      for (const c of campos) if (c.tipo === 'nota' && c.contenidoDe) { const r = c.contenidoDe(v); controles.get(c.nombre).replaceChildren(...sinVacios(r)); }
       for (const c of campos) {
         const fila = filas.get(c.nombre), ahoraVisible = visible(c, v);
         fila.hidden = !ahoraVisible;
@@ -312,7 +339,7 @@ export function abrirFormulario(def) {
         } else if (e instanceof ErrorApi) {
           mostrarAlerta('error', h('strong', null, e.message),
             e.pendientes.length ? h('ul', null, e.pendientes.map((p) => h('li', null, p))) : null,
-            e.tipo === 'negocio' ? h('p', { class: 'peq' }, 'No es posible realizar esta operación en el estado actual. Consulta el motivo indicado y las acciones disponibles.') : null,
+            e.tipo === 'negocio' ? h('p', { class: 'peq' }, 'Revisa el motivo indicado: el sistema no guardó ningún cambio.') : null,
             e.crudo ? h('details', null, h('summary', null, 'Detalles técnicos'), h('pre', null, JSON.stringify(e.crudo, null, 2))) : null);
         } else {
           mostrarAlerta('error', 'Ocurrió un problema inesperado. No se han confirmado los cambios.');
@@ -375,10 +402,14 @@ export async function ejecutarAccion(accion, contexto, alTerminar) {
     peligro: accion.peligro,
     textoEnviar: accion.textoEnviar || accion.titulo,
     resumen: accion.resumen ? (v) => accion.resumen(v, contexto) : (accion.peligro || !campos.length ? () => `¿Confirmas «${accion.titulo.toLowerCase()}»?` : null),
-    enviar: (v) => accion.enviar(v, contexto),
+    enviar: async (v) => {                                     // la respuesta conserva (sin serializarse) lo capturado, para redactar un mensaje específico
+      const r = await accion.enviar(v, contexto);
+      if (r && typeof r === 'object') Object.defineProperty(r, '_valores', { value: v, enumerable: false });
+      return r;
+    },
   });
   if (respuesta === null) return null;
-  const mensaje = respuesta && respuesta.mensaje ? humanizar(respuesta.mensaje) : 'La operación se completó correctamente.';
+  const mensaje = accion.mensajeExito ? accion.mensajeExito(respuesta, contexto) : (respuesta && respuesta.mensaje ? humanizar(respuesta.mensaje) : 'La operación se completó correctamente.');
   aviso('ok', mensaje, accion.exito ? accion.exito(respuesta, contexto) : null);
   if (accion.despues) accion.despues(respuesta, contexto);
   if (alTerminar) alTerminar(respuesta);

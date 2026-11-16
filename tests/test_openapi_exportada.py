@@ -1,4 +1,4 @@
-"""docs/api/openapi.json (estructura mínima del PIA) está al día con la API real y describe las 77 operaciones."""
+"""docs/api/openapi.json (estructura mínima del PIA) está al día con la API real y describe las 80 operaciones."""
 import importlib.util, json, os, unittest
 
 RAIZ = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -12,10 +12,10 @@ class OpenApiExportada(unittest.TestCase):
         with open(os.path.join(RAIZ, 'docs', 'api', 'openapi.json'), encoding='utf-8') as f:
             self.assertEqual(f.read(), modulo.generar())
 
-    def test_describe_las_77_operaciones_y_el_esquema_de_errores(self):
+    def test_describe_las_80_operaciones_y_el_esquema_de_errores(self):
         with open(os.path.join(RAIZ, 'docs', 'api', 'openapi.json'), encoding='utf-8') as f:
             doc = json.load(f)
-        self.assertEqual(sum(len(v) for v in doc['paths'].values()), 77)
+        self.assertEqual(sum(len(v) for v in doc['paths'].values()), 80)
         self.assertTrue(doc['openapi'].startswith('3.'))
         self.assertTrue(all('summary' in op for ops in doc['paths'].values() for op in ops.values()))
 

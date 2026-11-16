@@ -307,7 +307,7 @@ class Decisiones(Ayudas):
         for rol in ROLES:
             self.assertNotEqual(permisos_del_rol(rol), todos, rol)
         self.assertEqual(permisos_del_rol(ADMINISTRADOR) & permisos_del_rol(COORDINADOR),
-                         {'eventos.consultar', 'pagos.consultar', 'proveedores.consultar', 'proveedores.registrar'})         # lo único compartido
+                         {'clientes.consultar', 'eventos.consultar', 'pagos.consultar', 'proveedores.consultar', 'proveedores.registrar'})         # lo único compartido
         self.assertFalse(any('super' in p or 'todo' in p for p in todos))
 
 

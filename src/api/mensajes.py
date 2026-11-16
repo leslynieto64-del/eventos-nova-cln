@@ -46,6 +46,8 @@ _FRASES: Dict[Tuple[str, str], List[Tuple[str, str]]] = {
     ("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor"):
         [("Disponibilidad confirmada", "El proveedor confirmó su disponibilidad y la respuesta quedó registrada."),
          ("Indisponibilidad registrada", "El proveedor indicó que no está disponible y la respuesta quedó registrada.")],
+    ("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad"):
+        [("Indisponibilidad reportada", "La indisponibilidad quedó reportada; Coordinación buscará una alternativa.")],
     ("POST", "/proveedores"): [("Proveedor registrado", "El proveedor se registró correctamente.")],
 }
 

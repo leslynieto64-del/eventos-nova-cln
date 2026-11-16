@@ -24,12 +24,12 @@ export function eventos(contenedor) {
   function pintar(lista) {
     const t = estadoUi.texto.trim().toLowerCase();
     const filtrados = lista.filter((e) => (!estadoUi.estado || e.estadoEvento === estadoUi.estado)
-      && (!t || [e.eventoId, e.tipoEvento, e.lugar, e.clienteId].some((x) => String(x).toLowerCase().includes(t))));
+      && (!t || [e.eventoId, e.tipoEvento, e.lugar, e.clienteId, e.clienteNombre || ''].some((x) => String(x).toLowerCase().includes(t))));
     return tarjeta(`${filtrados.length} evento(s)`, tabla([
       { titulo: 'Evento', celda: (e) => h('a', { href: `#/evento/${e.eventoId}` }, `${e.tipoEvento}`, h('div', { class: 'peq id' }, e.eventoId)) },
       { titulo: 'Fecha y hora', celda: (e) => fmtFechaHora(e.fechaHora) },
       { titulo: 'Lugar', celda: (e) => e.lugar },
-      { titulo: 'Cliente', celda: (e) => e.clienteId },
+      { titulo: 'Cliente', celda: (e) => (e.clienteNombre ? h('span', null, e.clienteNombre, h('div', { class: 'peq id' }, e.clienteId)) : e.clienteId) },
       { titulo: 'Estado', celda: (e) => insignia(e.estadoEvento) },
       { titulo: 'Acciones', celda: (e) => h('a', { class: 'btn btn-peq', href: `#/evento/${e.eventoId}` }, 'Abrir') },
     ], filtrados, { vacioTitulo: 'No hay eventos con esos criterios', vacioDetalle: 'Cambia el rango de fechas o los filtros, o registra un evento nuevo.' }));
@@ -49,7 +49,7 @@ export function eventos(contenedor) {
       h('div', { class: 'campo' }, h('label', { for: 'f-estado' }, 'Estado'),
         h('select', { id: 'f-estado', onchange: (e) => { estadoUi.estado = e.target.value; consultar(); } }, h('option', { value: '' }, 'Todos'), ESTADOS.map((s) => h('option', { value: s }, s)))),
       h('div', { class: 'campo' }, h('label', { for: 'f-texto' }, 'Buscar'),
-        h('input', { id: 'f-texto', type: 'search', placeholder: 'Tipo, lugar, cliente o identificador', oninput: (e) => { estadoUi.texto = e.target.value; } })),
+        h('input', { id: 'f-texto', type: 'search', placeholder: 'Tipo, lugar, cliente (nombre o identificador) o evento', oninput: (e) => { estadoUi.texto = e.target.value; } })),
       h('button', { class: 'btn btn-primario', type: 'submit' }, 'Consultar')),
     abrirPorId, resultado);
   consultar();

@@ -20,7 +20,7 @@ class EsquemaReal(BaseConBD):
 
     def test_la_base_esta_en_la_ultima_revision(self):
         with self.motor.connect() as con:
-            self.assertEqual(con.execute(sa.text('select version_num from alembic_version')).scalars().all(), ['0009'])
+            self.assertEqual(con.execute(sa.text('select version_num from alembic_version')).scalars().all(), ['0012'])
             self.assertEqual(len(sa.inspect(con).get_table_names()) - 1, len(metadata.tables))     # menos alembic_version
 
     def test_proveedor_original_admite_null_tras_la_revision_0002(self):

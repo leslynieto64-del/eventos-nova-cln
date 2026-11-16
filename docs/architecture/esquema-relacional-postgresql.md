@@ -355,7 +355,7 @@ Referencias que **permanecen sin clave foránea**, con motivo:
 | `contrato_anexo.origen_id`, `obligacion_pago.origen_id`, `estado_cuenta_cierre_sin_realizar.origen_id`, `devolucion.solicitud_id`, `outbox_evento.agregado_id` | Identificadores **polimórficos**: apuntan a una de varias tablas |
 | `solicitud_cambio/_servicio_adicional/sustitucion.anexo_id`, `obligacion_pago_id` | Apuntan a **filas hijas** de otro agregado (`contrato_anexo`, `obligacion_pago`); su protección depende de cómo se persistan esas hijas (actualización o reemplazo), decisión de los repositorios SQL |
 | `sustitucion_proveedor.servicio_contratado_id` | Fila hija de `Evento` (`evento_servicio_contratado`): igual que el anterior |
-| `cliente_id`, `proveedor_id`, `proveedor_original_id`, `proveedores_considerados` | No existen tablas de clientes ni de proveedores en el dominio |
+| `cliente_id`, `proveedor_id`, `proveedor_original_id`, `proveedores_considerados` | Referencias blandas. *Nota 15/11/2026:* ya existen los catálogos `proveedor` (0005) y `cliente` (0010, rama local); siguen sin clave foránea para conservar los identificadores históricos |
 | Coherencia `solicitud.evento_id` = `contrato.evento_id` | Ningún servicio la valida hoy; imponerla sería una regla nueva |
 
 **Estado de D-01.** Decisión operativa del equipo para la implementación: **mantener las claves foráneas actuales (incluidas las compuestas de versión vigente y aceptada) y no incorporar nuevas relaciones entre raíces de agregado por ahora**. Razones:
@@ -375,7 +375,7 @@ Referencias que **permanecen sin clave foránea**, con motivo:
 | `solicitud_*.anexo_id` | Opcional, fila hija de otro agregado | `al_registrarse_anexo` la asigna a partir del evento `AnexoContratoRegistrado`, tras leer la solicitud | Ídem |
 | `solicitud_*.obligacion_pago_id` | Opcional, fila hija de otro agregado | `comunicar_solicitud_pago*` crea la obligación y marca la solicitud en la misma operación | Ídem |
 | `sustitucion_proveedor.servicio_contratado_id` | Obligatoria, fila hija de `Evento` | El servicio exige `_existente(ev.servicios.get(...))` antes de crear la sustitución | Ídem |
-| `cliente_id` (evento y propuesta) | Obligatoria, sin agregado Cliente | **No verificable**: no existe repositorio de clientes | Sin protección; es un identificador externo |
+| `cliente_id` (evento y propuesta) | Obligatoria, sin agregado Cliente | Con la forma vigente de `POST /eventos` siempre apunta a un cliente del catálogo (0010, rama local); con la forma anterior sigue siendo un identificador libre | Sin FK por compatibilidad con los eventos anteriores |
 | `proveedor_id`, `proveedor_original_id`, `proveedores_considerados` | Externa | Provienen del servicio de disponibilidad (`IConsultaDisponibilidadProveedor`), no de un repositorio | Sin protección |
 | `outbox_evento.agregado_id` | Polimórfica, histórica | Lo asigna el agregado que genera el evento | Ídem |
 
@@ -442,6 +442,44 @@ Cambio aditivo aplicado a desarrollo y pruebas: `estado_cuenta.cierre_contrataci
 ### 14.2 Revisión 0004: control de concurrencia optimista
 
 Cambio aditivo aplicado a desarrollo y pruebas: `version BIGINT NOT NULL DEFAULT 0` (con `CHECK version >= 0`) en `propuesta`, `contrato`, `evento`, `solicitud_cambio`, `solicitud_servicio_adicional`, `sustitucion_proveedor` y `estado_cuenta`. Las filas existentes quedan en la versión 0. Un agregado nuevo se inserta con `ON CONFLICT DO NOTHING` y, si el id ya existe, falla en vez de sobrescribir; un agregado leído se actualiza solo si su versión sigue siendo la leída. Límite: no hay reintento automático en la API (el cliente recibe 409 y repite); el Outbox sí reintenta la reacción.
+
+## 16. Catálogo de clientes (revisión 0010, actualización del 15/11/2026)
+
+> **Estado:** implementada y probada en local (rama `feat/catalogo-clientes`); **no** está fusionada en `main` ni aplicada en producción, donde la cabeza sigue en 0009 hasta que se despliegue.
+
+Revisión `0010` (aditiva, reversible): crea la tabla `cliente` y no modifica ninguna tabla ni fila existente.
+
+| Columna | Tipo | Nulo | Observación |
+|---|---|---|---|
+| `cliente_id` | TEXT | No | PK (`CL-<uuid v4>`, generado por el servidor) |
+| `nombres` | TEXT | No | `CHECK btrim(nombres) <> '' AND btrim(apellidos) <> ''` |
+| `apellidos` | TEXT | No | |
+| `telefono` | TEXT | No | Tal como lo capturó la persona (validado: 10 a 15 dígitos) |
+| `correo` | TEXT | No | Minúsculas y sin espacios |
+| `correo_normalizado` | TEXT | No | `UNIQUE`; `CHECK correo_normalizado = lower(btrim(correo_normalizado))`. Es la clave con la que se reconoce al cliente |
+| `registrado_en` | TIMESTAMP | No | Sin zona (America/Mexico_City) |
+
+- **Identificador:** `CL-` + UUID versión 4, igual que `PV-`, `EV-`, `PR-`… (`nuevo_id`). Nunca `MAX(id)+1` ni generación en JavaScript.
+- **Reconocer al cliente:** por el correo normalizado, nunca por el nombre. Con el mismo correo y los mismos nombre y teléfono se reutiliza el identificador; si el nombre o el teléfono no coinciden se rechaza (422) sin unir registros. Dos altas simultáneas con el mismo correo dejan una sola fila (`INSERT … ON CONFLICT DO NOTHING` sobre la restricción única).
+- **Sin clave foránea:** `evento.cliente_id` y `propuesta.cliente_id` siguen siendo referencias blandas, para no invalidar los eventos existentes ni los identificadores históricos (`CL-DEMO-01/02/03`, `CL-1`…). No se crean clientes para los eventos anteriores: su detalle muestra el identificador sin ficha de contacto.
+- **Datos personales:** solo nombre, apellidos, teléfono y correo; sin CURP ni identificación oficial. La consulta (`GET /clientes`, `GET /clientes/{cliente_id}`) exige el permiso `clientes.consultar` (Administración y Coordinación).
+- **Reversión:** `alembic downgrade 0009` elimina la tabla `cliente`; los eventos conservan su `cliente_id`.
+
+## 18. Reporte de indisponibilidad y desglose de propuestas (revisión 0012, actualización del 16/11/2026)
+
+> **Estado:** implementada y probada en local (rama `feat/catalogo-clientes`); no está en `main` ni en producción.
+
+Revisión `0012` (aditiva, reversible; solo columnas que admiten NULL):
+- `sustitucion_proveedor`: `reporte_motivo`, `reporte_descripcion`, `reporte_en`, `reporte_proveedor_id`, `reporte_aceptado_en`. Guardan el reporte del proveedor que ya había aceptado (y la fecha de su aceptación). Las sustituciones anteriores quedan sin reporte.
+- `version_propuesta.desglose` (JSONB): `[{servicio, proveedor_id, importe}]` de cada versión; el `costo_total` es la suma. Las versiones anteriores quedan en NULL y conservan solo su costo total.
+
+`alembic downgrade 0011` elimina esas columnas. No se agregan claves foráneas.
+
+## 17. Teléfono opcional de proveedores (revisión 0011, actualización del 15/11/2026)
+
+> **Estado:** implementada y probada en local (rama `feat/catalogo-clientes`); no está en `main` ni en producción.
+
+Revisión `0011` (aditiva, reversible): agrega `proveedor.telefono TEXT NOT NULL DEFAULT ''` y `CHECK (telefono = '' OR telefono ~ '^[0-9]{10}$')`. Los proveedores existentes quedan con `''`; `contacto` sigue siendo texto libre. `alembic downgrade 0010` elimina la restricción y la columna. En `cliente` el teléfono no tiene restricción de formato en la base (la regla de 10 dígitos se aplica al registrar, para conservar los registros históricos).
 
 ## 15. Revisiones 0005 a 0009 y esquema vigente (actualización del 05/11/2026)
 

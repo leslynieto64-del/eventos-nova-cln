@@ -125,7 +125,7 @@ class Cabeceras(unittest.TestCase):
         texto, tipo = msg(r)
         self.assertEqual(tipo, ADVERTENCIA)
         self.assertTrue(texto.startswith('Hay datos no válidos en la solicitud:'), texto)
-        self.assertIn('«cliente_id» es obligatorio', texto)
+        self.assertIn('«datos» es obligatorio', texto)
 
     def test_422_de_regla_de_negocio(self):
         r = self.http.post('/eventos', json={**EVENTO, 'datos': {**DATOS, 'lugar': ''}})
@@ -344,10 +344,10 @@ class SwaggerYCsrf(unittest.TestCase):
         r = admin.post('/usuarios', json={'correo': 'x@ejemplo.mx', 'nombre': 'X', 'rol': COORDINADOR, 'contrasena': CLAVE}, headers={'X-CSRF-Token': token})
         self.assertEqual(r.status_code, 201)
 
-    def test_el_esquema_de_cookie_explica_httponly_y_csrf_y_swagger_muestra_las_77_operaciones(self):
+    def test_el_esquema_de_cookie_explica_httponly_y_csrf_y_swagger_muestra_las_80_operaciones(self):
         esquema = TestClient(self.app).get('/openapi.json').json()
         operaciones = [m for ruta in esquema['paths'].values() for m in ruta if m in ('get', 'post', 'put', 'patch', 'delete')]
-        self.assertEqual(len(operaciones), 77)
+        self.assertEqual(len(operaciones), 80)
         descripcion = esquema['components']['securitySchemes']['SesionCookie']['description']
         self.assertIn('HttpOnly', descripcion)
         self.assertIn('X-CSRF-Token', descripcion)

@@ -206,16 +206,39 @@ class DatosEvento:
 
 
 @dataclass(frozen=True)
+class DesgloseServicio:
+    """Un renglón de la cotización de una propuesta: el servicio, el proveedor considerado y el importe cotizado por Coordinación."""
+    servicio: str
+    proveedor_id: str
+    importe: Importe
+
+    def __post_init__(self):
+        if not self.servicio or not self.servicio.strip():
+            raise ErrorDominio("Cada renglón de la cotización debe indicar el servicio.")
+        if not self.proveedor_id or not self.proveedor_id.strip():
+            raise ErrorDominio(f"Indica el proveedor considerado para el servicio «{self.servicio}».")
+        _exigir_importe(self.importe, f"El importe del servicio «{self.servicio}»")
+
+
+@dataclass(frozen=True)
 class ContenidoPropuesta:
     servicios: tuple
     proveedores_considerados: tuple
     costo_total: Importe
     condiciones: str
+    desglose: tuple = ()          # opcional: DesgloseServicio por servicio. Las propuestas anteriores no lo tienen (solo costo total).
 
     def __post_init__(self):
         if not self.servicios or not self.condiciones:
             raise ErrorDominio("La propuesta debe incluir servicios, proveedores, costos y condiciones (CA-005).")
         _exigir_importe(self.costo_total, "El costo total de la propuesta")
+        if self.desglose:
+            suma = sum((d.importe.cantidad for d in self.desglose), Decimal(0))
+            if suma != self.costo_total.cantidad:
+                raise ErrorDominio(f"El total de la propuesta ({self.costo_total.cantidad}) debe ser la suma de los importes por servicio ({suma}).")
+            nombres = [" ".join(d.servicio.lower().split()) for d in self.desglose]
+            if len(set(nombres)) != len(nombres):
+                raise ErrorDominio("Un servicio aparece dos veces en la cotización de la propuesta.")
 
 
 @dataclass(frozen=True)

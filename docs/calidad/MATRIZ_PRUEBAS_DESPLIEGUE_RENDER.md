@@ -34,7 +34,7 @@ Procedimiento: [`docs/manuales/GUIA_DESPLIEGUE_RENDER.md`](../manuales/GUIA_DESP
 
 ## C. Flujos de negocio (con la interfaz o la API)
 
-El Cliente no tiene cuenta: «registro de clientes» se refiere al identificador `cliente_id` con el que el Coordinador registra un evento.
+El Cliente no tiene cuenta: «registro de clientes» se refiere a los datos del cliente (nombre, apellidos, teléfono, correo) con los que el Coordinador registra un evento y que generan su identificador. *Nota 15/11/2026: esta matriz se ejecutó en producción con la versión anterior (campo `cliente_id`); la versión con catálogo de clientes solo está probada en local.*
 
 | ID | Operación | Pasos | Resultado esperado | Evidencia | Criterio de aprobación | Estado |
 |---|---|---|---|---|---|---|

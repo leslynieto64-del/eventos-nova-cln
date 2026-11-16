@@ -44,11 +44,13 @@ class Trazabilidad(unittest.TestCase):
         gen.verificar_respaldo()                                                      # falla si una cita no existe en las fuentes
         filas = re.findall(r'^\| \w+ \| (?:GET|POST) \| .*\| (Negocio[^|]*|Técnica|Sin respaldo[^|]*) \| [^|]+ \|$', self.doc, flags=re.M)
         self.assertEqual(len(filas), len(re.findall(r'^\| \w+ \| (?:GET|POST) \|', self.doc, flags=re.M)))
-        # Única excepción: el catálogo de proveedores (extensión D-P1, pendiente de aprobación del equipo). Cualquier otra ruta sin respaldo falla.
+        # Únicas excepciones: el catálogo de proveedores (extensión D-P1) y la consulta del catálogo de clientes (extensión del 15/11/2026), ambas pendientes
+        # de aprobación del equipo. Cualquier otra ruta sin respaldo falla.
         sin = set(re.findall(r'^\| \w+ \| (GET|POST) \| `([^`]+)` \|.*\| Sin respaldo[^|]* \| [^|]+ \|$', self.doc, flags=re.M))
         self.assertEqual(sin, {('POST', '/proveedores'), ('GET', '/proveedores'), ('GET', '/proveedores/{proveedor_id}'),
                                ('POST', '/proveedores/{proveedor_id}/edicion'), ('POST', '/proveedores/{proveedor_id}/desactivacion'),
-                               ('POST', '/proveedores/{proveedor_id}/activacion')})
+                               ('POST', '/proveedores/{proveedor_id}/activacion'), ('GET', '/clientes'), ('GET', '/clientes/{cliente_id}'),
+                               ('POST', '/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad')})
         self.assertEqual(set(gen.TECNICAS), {('GET', '/'), ('GET', '/health'), ('GET', '/ready')})
         self.assertIn('## Operaciones técnicas (sin historia de usuario)', self.doc)
 

@@ -19,12 +19,13 @@ RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "src"))
 DESTINO = RAIZ / "docs" / "architecture" / "trazabilidad-api-persistencia.md"
 MATRIZ = RAIZ / "docs" / "trazabilidad" / "matriz-trazabilidad.xlsx"
-MODULOS = ["rutas_propuestas", "rutas_contratacion", "rutas_pagos", "rutas_eventos", "rutas_solicitudes", "rutas_consultas", "rutas_proveedores"]
+MODULOS = ["rutas_propuestas", "rutas_contratacion", "rutas_pagos", "rutas_eventos", "rutas_solicitudes", "rutas_consultas", "rutas_proveedores", "rutas_clientes"]
 ETIQUETA = re.compile(r"\b(?:CU|US|CA|BN|SE|GL)-\d+[A-Za-z]?\b")
 PATRONES = (("servicios", re.compile(r"servicios\.(\w+)\.(\w+)\(")), ("queries", re.compile(r"queries\.(\w+)\.handle")),
             ("commands", re.compile(r"commands\.(\w+)\.handle")))
 SERVICIO_INYECTADO = re.compile(r"\bservicio\.(\w+)\(")       # rutas de CU-01: el servicio llega por inyección de dependencias
 SIN_FILA = "(sin fila propia en la matriz)"
+ALIAS_EN_MATRIZ = {"registrar_evento_de_cliente": "registrar_evento"}     # el alta con datos del cliente es el mismo caso de uso CU-01 de la matriz
 USER_STORIES = RAIZ / "docs" / "unidad 2" / "User_Stories_corregido.docx"
 CIERRE = RAIZ / "Cierre_Alcance_Eventos_Nova_FINAL_APROBADO_20261023.md"
 # Operaciones técnicas: no corresponden a ninguna historia de usuario (observabilidad y descubrimiento de la API).
@@ -40,6 +41,7 @@ RESPALDO = {
     ("POST", "/eventos/{evento_id}/cancelacion-por-falta-de-regularizacion"): ("Negocio", "US-027, US-028", "CA-091", "CA-091 y US-028: cancelación registrada por el Coordinador por falta de liquidación del saldo"),
     ("GET", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad"): ("Negocio", "US-013", "CA-029", ""),
     ("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor"): ("Negocio", "US-014", "CA-030, CA-031", ""),
+    ("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad"): ("Sin respaldo documental suficiente", "", "", "Extensión (15/11/2026): el proveedor reporta por sí mismo que ya no puede cumplir un servicio aceptado; el BRD y el BPMN SP-05 solo describen el aviso del proveedor a Coordinación, que inicia la sustitución. Pendiente de aprobación del equipo"),
     ("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor"): ("Negocio", "US-016", "", "US-016: el Proveedor confirma su disponibilidad y las condiciones; no hay un criterio de aceptación propio en esta lista"),
     ("POST", "/solicitudes-servicio-adicional/{solicitud_id}/disponibilidad"): ("Negocio", "US-025", "CA-073, CA-075, CA-076", "D-P3: Coordinación registra a mano el proveedor del catálogo, su costo (mayor que cero) y sus condiciones; sustituye la consulta a una fuente"),
     ("POST", "/sustituciones/{sustitucion_id}/alternativa"): ("Negocio", "US-021", "CA-046, CA-048", "D-P3: Coordinación registra a mano la alternativa (proveedor del catálogo, condiciones y costo adicional opcional)"),
@@ -62,6 +64,8 @@ RESPALDO = {
     ("POST", "/proveedores/{proveedor_id}/activacion"): ("Sin respaldo documental suficiente", "", "", "Extensión D-P1 (catálogo de proveedores): reactivar un proveedor desactivado no aparece en ninguna US aprobada; pendiente de aprobación del equipo"),
     ("POST", "/proveedores"): ("Sin respaldo documental suficiente", "", "", "Extensión D-P1 (catálogo de proveedores): el BRD (BN-004) pide conocer los proveedores asignados, pero ninguna US aprobada describe su alta ni su consulta; pendiente de aprobación del equipo"),
     ("GET", "/proveedores"): ("Sin respaldo documental suficiente", "", "", "Extensión D-P1 (catálogo de proveedores): el BRD (BN-004) pide conocer los proveedores asignados, pero ninguna US aprobada describe su alta ni su consulta; pendiente de aprobación del equipo"),
+    ("GET", "/clientes"): ("Sin respaldo documental suficiente", "", "", "Extensión (catálogo de clientes, 15/11/2026): el BRD pide registrar la información del cliente y del evento, pero ninguna US aprobada describe la consulta del catálogo; pendiente de aprobación del equipo"),
+    ("GET", "/clientes/{cliente_id}"): ("Sin respaldo documental suficiente", "", "", "Extensión (catálogo de clientes, 15/11/2026): el BRD pide registrar la información del cliente y del evento, pero ninguna US aprobada describe la consulta del catálogo; pendiente de aprobación del equipo"),
     ("GET", "/proveedores/{proveedor_id}"): ("Sin respaldo documental suficiente", "", "", "Extensión D-P1 (catálogo de proveedores): el BRD (BN-004) pide conocer los proveedores asignados, pero ninguna US aprobada describe su alta ni su consulta; pendiente de aprobación del equipo"),
 }
 
@@ -166,7 +170,7 @@ def generar() -> str:
         for ruta in modulo.router.routes:
             objeto, metodo, destino, clave = resolver(inspect.getsource(ruta.endpoint), contenedor)
             codigo = inspect.getsource(inspect.unwrap(metodo)) + (inspect.getdoc(type(objeto)) or "")
-            bn, us_ca, cu = de_matriz(indice.get(clave))
+            bn, us_ca, cu = de_matriz(indice.get(ALIAS_EN_MATRIZ.get(clave, clave)))
             for metodo_http in sorted(ruta.methods - {"HEAD", "OPTIONS"}):
                 filas.append((nombre.replace("rutas_", ""), metodo_http, ruta.path, destino, bn, us_ca, cu, etiquetas(codigo)))
     verificar_respaldo()

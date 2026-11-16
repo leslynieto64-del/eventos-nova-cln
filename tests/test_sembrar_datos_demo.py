@@ -27,6 +27,7 @@ from apoyo_bd import BaseConBD  # noqa: E402
 from argon2 import PasswordHasher  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
 
+from api.dependencias import obtener_reloj  # noqa: E402
 from api.main import crear_app  # noqa: E402
 from application.seguridad import MATRIZ, ConfiguracionSeguridad, autoriza  # noqa: E402
 from infrastructure.persistencia import configuracion as C  # noqa: E402
@@ -139,6 +140,7 @@ class BaseSiembra(BaseConBD):
         self.dir = tempfile.mkdtemp(prefix='sembrado_')
         self.addCleanup(shutil.rmtree, self.dir, True)
         self.llamadas, self.prompts, self.ahora = [], [], AHORA
+        self.app.dependency_overrides[obtener_reloj] = lambda: (lambda: self.ahora)      # el reloj de la API es el del ensayo: los plazos no dependen de la fecha real
 
     # -- ejecución del script
     def correr(self, *args, url=URL, entorno='local', entradas=(), regla=None, claves=None):

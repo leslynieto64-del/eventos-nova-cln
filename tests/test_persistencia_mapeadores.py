@@ -45,7 +45,7 @@ class SieteAgregados(unittest.TestCase):
         for m in MAPEADORES.values():
             tablas.add(m.tabla_raiz)
             tablas |= {h[0] for h in m.hijas}
-        self.assertEqual(set(metadata.tables) - tablas, {'outbox_evento', 'outbox_reaccion', 'proveedor', 'usuario', 'sesion', 'intento_acceso'})   # catálogo y seguridad no son agregados: repositorio propio
+        self.assertEqual(set(metadata.tables) - tablas, {'outbox_evento', 'outbox_reaccion', 'proveedor', 'cliente', 'usuario', 'sesion', 'intento_acceso'})   # catálogo y seguridad no son agregados: repositorio propio
 
 
 class IdaYVuelta(unittest.TestCase):

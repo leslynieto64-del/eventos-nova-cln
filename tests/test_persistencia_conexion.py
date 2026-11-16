@@ -112,7 +112,7 @@ class ConAlmacen(BaseConBD):
 
     def test_exigir_esquema_al_dia(self):
         from infrastructure.persistencia.preparacion import exigir_esquema_al_dia, revision_actual
-        self.assertEqual(revision_actual(self.motor), '0009')
+        self.assertEqual(revision_actual(self.motor), '0012')
         exigir_esquema_al_dia(self.motor)
 
     def test_trabajador_una_vez_desde_la_linea_de_comandos(self):

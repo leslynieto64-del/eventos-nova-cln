@@ -132,6 +132,12 @@ def registrar_cabeceras(aplicacion, cfg: ConfiguracionSeguridad) -> None:
         h.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
         if request.url.path.startswith("/app"):
             h.setdefault("Content-Security-Policy", CSP_INTERFAZ)          # Swagger (/docs) carga recursos externos: sin CSP estricta allí
+            # La interfaz se revalida SIEMPRE (ETag): sin esta cabecera el navegador aplica caché heurística según «Last-Modified» y puede mezclar módulos
+            # JavaScript de versiones distintas tras reconstruir la aplicación (menú visible y contenido en blanco).
+            h.setdefault("Cache-Control", "no-cache")
+            if request.url.path.rstrip("/") == "/app/reiniciar.html":       # página de rescate: pide al navegador vaciar SOLO su caché (no cookies ni almacenamiento)
+                h["Clear-Site-Data"] = '"cache"'
+                h["Cache-Control"] = "no-store"
         elif not request.url.path.startswith(("/docs", "/redoc")):
             h.setdefault("Cache-Control", "no-store")                      # respuestas de la API con datos de negocio: no se guardan en cachés
         if cfg.hsts:

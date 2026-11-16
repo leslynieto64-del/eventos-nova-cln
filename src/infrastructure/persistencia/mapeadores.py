@@ -20,9 +20,9 @@ from domain.contrato import AnexoContrato, Contrato
 from domain.estado_cuenta import Devolucion, EstadoCuenta, ObligacionPago, Pago
 from domain.evento import Evento, RespuestaProveedor, RevisionAdministrativa, ServicioContratado, SolicitudCancelacion
 from domain.propuesta import Propuesta, VersionPropuesta
-from domain.solicitudes import (AlternativaPropuesta, SolicitudCambio, SolicitudServicioAdicional, SustitucionProveedor)
+from domain.solicitudes import (AlternativaPropuesta, ReporteIndisponibilidad, SolicitudCambio, SolicitudServicioAdicional, SustitucionPorIndisponibilidad, SustitucionProveedor)
 from domain.valores import (AnticipacionSolicitud, CausaCierreSolicitud, CondicionesContractuales, CondicionesServicio,
-                            ConceptoPago, ContenidoPropuesta, DatosEvento, Decision, DisponibilidadProveedor,
+                            ConceptoPago, ContenidoPropuesta, DatosEvento, Decision, DesgloseServicio, DisponibilidadProveedor,
                             EstadoContrato, EstadoDevolucion, TipoDevolucion, EstadoEvento, EstadoObligacionPago, EstadoPago,
                             EstadoPropuesta, EstadoServicioContratado, EstadoSolicitudCambio, EstadoSolicitudCancelacion,
                             EstadoSolicitudServicioAdicional, EstadoSustitucionProveedor, ImpactoModificacion, Importe,
@@ -176,7 +176,9 @@ class MapeadorPropuesta(Mapeador):
         versiones = [{"version_id": v.version_id, "propuesta_id": p.id, "numero": v.numero,
                       "fecha_actualizacion": v.fecha_actualizacion, "servicios": list(v.contenido.servicios),
                       "proveedores_considerados": list(v.contenido.proveedores_considerados),
-                      "costo_total": v.contenido.costo_total.cantidad, "condiciones": v.contenido.condiciones}
+                      "costo_total": v.contenido.costo_total.cantidad, "condiciones": v.contenido.condiciones,
+                      "desglose": [{"servicio": d.servicio, "proveedor_id": d.proveedor_id, "importe": str(d.importe.cantidad)}
+                                   for d in v.contenido.desglose] or None}
                      for v in p.versiones]
         return Filas(raiz, {"version_propuesta": versiones})
 
@@ -184,7 +186,9 @@ class MapeadorPropuesta(Mapeador):
         r = f.raiz
         versiones = [VersionPropuesta(v["version_id"], v["numero"], v["fecha_actualizacion"],
                                       ContenidoPropuesta(tuple(v["servicios"]), tuple(v["proveedores_considerados"]),
-                                                         Importe(v["costo_total"]), v["condiciones"]))
+                                                         Importe(v["costo_total"]), v["condiciones"],
+                                                         tuple(DesgloseServicio(d["servicio"], d["proveedor_id"], Importe(Decimal(d["importe"])))
+                                                               for d in (v.get("desglose") or ()))))
                      for v in f.hijas["version_propuesta"]]
         return _rehidratar(Propuesta, r["propuesta_id"], evento_id=r["evento_id"], cliente_id=r["cliente_id"],
                            versiones=versiones, version_vigente_id=r["version_vigente_id"],
@@ -359,9 +363,13 @@ class MapeadorSustitucionProveedor(Mapeador):
     hijas = (("sustitucion_alternativa", "sustitucion_id", ("posicion",)),)
 
     def a_filas(self, s: SustitucionProveedor) -> Filas:
+        rep = getattr(s, "reporte", None)             # solo las sustituciones abiertas por un reporte del proveedor lo tienen
         raiz = {"sustitucion_id": s.id, **_base_solicitud_a_filas(s), "servicio_contratado_id": s.servicio_contratado_id,
                 "proveedor_original_id": s.proveedor_original_id, "costo_adicional": _monto(s.costo_adicional),
-                "aprobada_despues_del_limite": s.aprobada_despues_del_limite}
+                "aprobada_despues_del_limite": s.aprobada_despues_del_limite,
+                "reporte_motivo": rep.motivo if rep else None, "reporte_descripcion": rep.descripcion if rep else None,
+                "reporte_en": rep.reportado_en if rep else None, "reporte_proveedor_id": rep.proveedor_id if rep else None,
+                "reporte_aceptado_en": rep.aceptado_en if rep else None}
         alternativas = [{"sustitucion_id": s.id, "posicion": i, "proveedor_id": a.proveedor_id,
                          **_disponibilidad_a_filas("disponibilidad", a.disponibilidad),
                          **_impacto_a_filas("impacto", a.impacto),
@@ -376,11 +384,14 @@ class MapeadorSustitucionProveedor(Mapeador):
                                              _impacto_desde("impacto", a), _decision_desde("decision_cliente", a),
                                              _decision_desde("autorizacion", a))
                         for a in f.hijas["sustitucion_alternativa"]]
+        con_reporte = bool(r["reporte_motivo"])
         return _rehidratar(
-            SustitucionProveedor, r["sustitucion_id"], **_base_solicitud_desde(r, EstadoSustitucionProveedor),
+            SustitucionPorIndisponibilidad if con_reporte else SustitucionProveedor, r["sustitucion_id"], **_base_solicitud_desde(r, EstadoSustitucionProveedor),
             servicio_contratado_id=r["servicio_contratado_id"], proveedor_original_id=r["proveedor_original_id"],
             alternativas=alternativas, costo_adicional=_importe(r["costo_adicional"]),
-            aprobada_despues_del_limite=r["aprobada_despues_del_limite"])
+            aprobada_despues_del_limite=r["aprobada_despues_del_limite"],
+            **({"reporte": ReporteIndisponibilidad(r["reporte_motivo"], r["reporte_descripcion"] or "", r["reporte_en"], r["reporte_proveedor_id"] or "",
+                                                   r["reporte_aceptado_en"])} if con_reporte else {}))
 
 
 # ================================================================ EstadoCuenta

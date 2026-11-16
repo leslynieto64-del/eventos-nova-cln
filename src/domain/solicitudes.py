@@ -552,6 +552,21 @@ class AlternativaPropuesta:
     autorizacion_administracion: Optional[Decision] = None
 
 
+@dataclass(frozen=True)
+class ReporteIndisponibilidad:
+    """El proveedor asignado informó, después de aceptar, que ya no puede cumplir el servicio. Se conserva con la sustitución (aunque el servicio se
+    reasigne) junto con la fecha en que había aceptado."""
+    motivo: str
+    descripcion: str
+    reportado_en: datetime
+    proveedor_id: str
+    aceptado_en: Optional[datetime] = None
+
+    def __post_init__(self):
+        if not self.motivo or not self.motivo.strip():
+            raise ErrorDominio("Indica el motivo de la indisponibilidad.")
+
+
 class SustitucionProveedor(_SolicitudBase):
     FINALES = (ESP.CONFIRMADA, ESP.CERRADA_INICIO_EVENTO, ESP.CERRADA_EVENTO_CANCELADO)
     CERRADA_CANCELACION = ESP.CERRADA_EVENTO_CANCELADO
@@ -699,3 +714,12 @@ class SustitucionProveedor(_SolicitudBase):
         if self.pendiente:
             self.MAQUINA.validar(self.estado, self.Accion.CERRAR_POR_CANCELACION_EVENTO)
         return super().cerrar_por_cancelacion_evento(ahora)
+
+
+class SustitucionPorIndisponibilidad(SustitucionProveedor):
+    """Sustitución abierta porque el proveedor ya asignado reportó que no puede cumplir. Es la misma máquina de estados; solo conserva el reporte
+    (motivo, fecha y aceptación original). La clase base no cambia: las sustituciones registradas por Coordinación no tienen reporte."""
+    def __init__(self, id_, evento_id, servicio_contratado_id, proveedor_original_id, contrato_id, estado_cuenta_id, ahora,
+                 reporte: ReporteIndisponibilidad):
+        super().__init__(id_, evento_id, servicio_contratado_id, proveedor_original_id, contrato_id, estado_cuenta_id, ahora)
+        self.reporte = reporte

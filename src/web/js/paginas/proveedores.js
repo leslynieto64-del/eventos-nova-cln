@@ -16,7 +16,7 @@ export function proveedores(contenedor, _p, consulta) {
     return tarjeta(`${lista.length} proveedor(es)`, tabla([
       { titulo: 'Proveedor', celda: (p) => h('a', { href: `#/proveedores/${encodeURIComponent(p.proveedorId)}` }, p.nombre, h('div', { class: 'peq id' }, p.proveedorId)) },
       { titulo: 'Servicios que ofrece', celda: (p) => (p.servicios.length ? p.servicios.join(', ') : h('span', { class: 'peq' }, 'Sin servicios indicados')) },
-      { titulo: 'Contacto', celda: (p) => p.contacto || '—' },
+      { titulo: 'Teléfono', celda: (p) => p.telefono || '—' }, { titulo: 'Otros datos de contacto', celda: (p) => p.contacto || '—' },
       { titulo: 'Estado', celda: (p) => insignia(p.activo === false ? 'Desactivado' : 'Activo') },
       { titulo: 'Acciones', celda: (p) => h('a', { class: 'btn btn-peq', href: `#/proveedores/${encodeURIComponent(p.proveedorId)}` }, 'Ver datos') },
     ], lista, hayFiltro
@@ -49,10 +49,10 @@ export async function proveedorFicha(contenedor, [proveedorId]) {
   }
   contenedor.replaceChildren(
     h('header', { class: 'pagina-cab' }, h('a', { href: '#/proveedores', class: 'migas' }, '← Proveedores'), h('h1', null, p.nombre),
-      h('p', { class: 'peq' }, 'Identificador: ', copiable(p.proveedorId))),
+      null),
     tarjeta('Datos del proveedor', datos(
       ['Nombre', p.nombre], ['Servicios que ofrece', p.servicios.length ? p.servicios.join(', ') : 'Sin servicios indicados'],
-      ['Contacto', p.contacto || '—'], ['Estado', p.activo === false ? 'Desactivado (no se propone para asignaciones nuevas)' : 'Activo'], ['Registrado', fmtFechaHora(p.registradoEn)]),
+      ['Teléfono', p.telefono || '—'], ['Otros datos de contacto', p.contacto || '—'], ['Estado', p.activo === false ? 'Desactivado (no se propone para asignaciones nuevas)' : 'Activo'], ['Registrado', fmtFechaHora(p.registradoEn)]),
       { acciones: [
         botonAccion(ACCIONES.editarProveedor, { proveedor: p }, reintentar, { texto: 'Editar' }),
         botonAccion(p.activo === false ? ACCIONES.activarProveedor : ACCIONES.desactivarProveedor, { proveedor: p }, reintentar, { texto: p.activo === false ? 'Activar' : 'Desactivar' })] }),

@@ -146,7 +146,7 @@ class ConsultarEstadoPagosHandler:
             adicionales = [{"concepto": o.concepto.value, "importe": str(o.importe.cantidad), "plazo": o.plazo.vence.isoformat() if o.plazo else None,
                             "estado": o.estado.value, "origenId": o.origen_id, **_cobertura(ec, o)} for o in ec.obligaciones.values()
                            if o.concepto not in (ConceptoPago.ANTICIPO, ConceptoPago.SALDO_CONTRATO_ORIGINAL)]
-            pagos = [{"concepto": ec.obligaciones[p.obligacion_id].concepto.value, "importe": str(p.importe.cantidad),
+            pagos = [{"pagoId": p.pago_id, "concepto": ec.obligaciones[p.obligacion_id].concepto.value, "importe": str(p.importe.cantidad),
                       "fecha": p.fecha.isoformat(), "estado": p.estado.value,
                       "registradoEn": p.registrado_en.isoformat() if p.registrado_en else None,
                       "verificadoEn": p.verificado_en.isoformat() if p.verificado_en else None} for p in ec.pagos]
@@ -271,6 +271,8 @@ class PropuestaViewModel:
     costoTotal: str
     condiciones: str
     motivoCierre: Optional[str] = None
+    desglose: List[dict] = field(default_factory=list)            # cotización de la versión vigente: servicio, proveedor (nombre), importe; vacío en versiones anteriores
+    versiones: List[dict] = field(default_factory=list)           # historial completo (de la primera a la vigente), cada una con sus servicios, proveedores, costos y condiciones
 
 
 @dataclass
@@ -281,18 +283,25 @@ class PropuestasEventoViewModel:
 
 class ConsultarPropuestasEventoHandler:
     """Solo lectura (S-9): las propuestas de un evento con su versión vigente. Devuelve None si el evento no existe."""
-    def __init__(self, eventos: IEventoRepository, propuestas: IPropuestaRepository):
-        self.eventos, self.propuestas = eventos, propuestas
+    def __init__(self, eventos: IEventoRepository, propuestas: IPropuestaRepository, proveedores=None):
+        self.eventos, self.propuestas, self.proveedores = eventos, propuestas, proveedores
 
     def handle(self, q: ConsultarPropuestasEventoQuery) -> Optional[PropuestasEventoViewModel]:
         if self.eventos.obtener_por_id(q.eventoId) is None:
             return None
+        nombres = _nombres_de_proveedores(self.proveedores)
+        nombre = lambda pid: nombres.get(pid) or "Proveedor sin nombre en el catálogo"
+        desglose_de = lambda c: [{"servicio": d.servicio, "proveedor": nombre(d.proveedor_id), "proveedorId": d.proveedor_id, "importe": str(d.importe.cantidad)} for d in c.desglose]
         vm = PropuestasEventoViewModel(q.eventoId)
         for p in sorted(self.propuestas.listar_por_evento_id(q.eventoId), key=lambda p: p.id):
             v = next(v for v in p.versiones if v.version_id == p.version_vigente_id)
             c = v.contenido
+            historial = [{"numero": x.numero, "vigente": x.version_id == p.version_vigente_id, "fecha": x.fecha_actualizacion.isoformat(),
+                          "servicios": list(x.contenido.servicios), "proveedores": [nombre(i) for i in x.contenido.proveedores_considerados],
+                          "costoTotal": str(x.contenido.costo_total.cantidad), "condiciones": x.contenido.condiciones, "desglose": desglose_de(x.contenido)}
+                         for x in sorted(p.versiones, key=lambda x: x.numero)]
             vm.propuestas.append(PropuestaViewModel(p.id, p.estado.value, v.version_id, v.numero, list(c.servicios), list(c.proveedores_considerados),
-                                                    str(c.costo_total.cantidad), c.condiciones, p.motivo_cierre))
+                                                    str(c.costo_total.cantidad), c.condiciones, p.motivo_cierre, desglose_de(c), historial))
         return vm
 
 
@@ -343,7 +352,7 @@ class InformacionAdministrativaEventoViewModel:
     fechaHora: str
     lugar: str
     invitadosAproximados: int
-    contratos: List[dict] = field(default_factory=list)                 # contratoId, estado, costoTotal
+    contratos: List[dict] = field(default_factory=list)                 # contratoId, estado, costoTotal, propuestaId, política comunicada (y cuándo) y fecha de firma
     pagosRealizados: str = "0"                                          # suma de pagos Verificados de los estados de cuenta
     saldoPendienteContratoOriginal: str = "0"
     estadosCuenta: List[EstadoCuentaResumenViewModel] = field(default_factory=list)   # importes por concepto, por separado
@@ -352,6 +361,8 @@ class InformacionAdministrativaEventoViewModel:
     serviciosSolicitados: List[str] = field(default_factory=list)       # los pedidos al registrar el evento (aún sin proveedor ni contratación)
     cambiosPendientesAutorizacion: List[dict] = field(default_factory=list)
     serviciosAdicionales: List[dict] = field(default_factory=list)      # todos, con su estado original
+    clienteId: str = ""                                                 # referencia del evento (también en eventos anteriores al catálogo)
+    cliente: Optional[dict] = None                                      # datos del catálogo; None si el identificador es histórico y no está registrado
     solicitudesPendientes: List[SolicitudPendienteViewModel] = field(default_factory=list)
 
 
@@ -369,6 +380,7 @@ class EventoProximoViewModel:
     fechaHora: str
     lugar: str
     clienteId: str
+    clienteNombre: Optional[str] = None                                  # solo si el cliente figura en el catálogo (eventos anteriores: ausente)
 
 
 @dataclass
@@ -396,6 +408,18 @@ class SolicitudPorEstadoViewModel:
     # D-P3: lo que Coordinación registró de la cotización del proveedor, para que Administración lo revise antes de autorizar. None si aún
     # no se ha registrado nada. Claves: proveedorId (si aplica), costo (texto decimal o None) y condiciones (texto o None).
     datosProveedor: Optional[dict] = None
+    # Detalle para el proceso guiado (todo opcional: sin repositorios auxiliares no se calcula).
+    descripcion: Optional[str] = None
+    servicioNombre: Optional[str] = None                  # nombre legible del servicio afectado
+    registradaEn: Optional[str] = None
+    diasAnticipacion: Optional[int] = None                # días naturales entre la solicitud y el evento (regla de los 7 días del cambio)
+    proveedorOriginal: Optional[str] = None               # nombre (sustitución)
+    proveedorNuevo: Optional[str] = None                  # nombre del alternativo vigente (sustitución) o del proveedor elegido (servicio adicional)
+    reporte: Optional[dict] = None                        # indisponibilidad reportada por el proveedor (sustitución)
+    anexo: Optional[dict] = None                          # anexo registrado: descripcion, fecha, contratoId; None si aún no hay
+    importes: Optional[dict] = None                       # costoProveedor, cargoTardio, total, hayImportes, explicacion
+    pago: Optional[dict] = None                           # obligación de pago asociada: estado, pagado, saldo, plazo
+    proceso: Optional[dict] = None                        # pasos y siguiente acción (application.flujo_solicitudes)
 
 
 @dataclass
@@ -484,16 +508,110 @@ def _datos_proveedor(tipo, s) -> Optional[dict]:
             "condiciones": None if cond is None else cond.descripcion}
 
 
+def _anexo_dict(contrato, anexo_id) -> Optional[dict]:
+    if contrato is None or not anexo_id:
+        return None
+    a = next((x for x in contrato.anexos if x.anexo_id == anexo_id), None)
+    return None if a is None else {"anexoId": a.anexo_id, "tipo": a.tipo_origen.value, "descripcion": a.descripcion, "fecha": a.fecha.isoformat(),
+                                    "contratoId": contrato.id, "solicitudId": a.origen_id}
+
+
+def _obligacion_de(ec, tipo: str, s):
+    """La obligación de pago de la solicitud: por su identificador (cambio, servicio adicional) o por su origen (importe adicional de una sustitución)."""
+    if ec is None:
+        return None
+    if s.obligacion_pago_id:
+        return ec.obligaciones.get(s.obligacion_pago_id)
+    return next((o for o in ec.obligaciones.values() if o.origen_id == s.id), None)
+
+
+def _completar_detalle(fila, tipo, s, contratos, estados_cuenta, proveedores, eventos) -> None:
+    """Datos legibles y proceso guiado de una solicitud. Solo lectura; si faltan repositorios auxiliares deja los campos en None."""
+    from .flujo_solicitudes import proceso_de
+    nombres = _nombres_de_proveedores(proveedores)
+    ev = eventos.obtener_por_id(s.evento_id) if eventos is not None else None
+    contrato = contratos.obtener_por_id(s.contrato_id) if contratos is not None else None
+    ec = estados_cuenta.obtener_por_id(s.estado_cuenta_id) if estados_cuenta is not None else None
+    ob = _obligacion_de(ec, tipo, s)
+    nombre_prov = lambda pid: (nombres.get(pid) or "Proveedor sin nombre en el catálogo") if pid else None
+    if tipo == "cambio":
+        fila.descripcion, fila.servicioNombre = s.descripcion, None
+        fila.registradaEn, fila.diasAnticipacion = s.anticipacion.fecha_solicitud.isoformat(), s.anticipacion.dias_naturales
+        cargo = s.tarifa.importe.cantidad if s._cobra_cargo_tardio else Decimal(0)
+        costo = s.costo_proveedor.cantidad if s.costo_proveedor is not None else Decimal(0)
+        cobrados = sum((i.cantidad for _, i in s.importes_a_cobrar), Decimal(0))
+        explicacion = ("Con " + str(s.anticipacion.dias_naturales) + " días naturales de anticipación el cambio no genera cargo por cambio tardío (aplica con menos de 7)."
+                       if not s.aplica_cargo_tardio else
+                       ("Con menos de 7 días de anticipación aplica el cargo por cambio tardío, solo si el cambio es viable y se realiza." if s.tarifa.importe.cantidad > 0
+                        else "Con menos de 7 días aplica el cargo por cambio tardío, pero la tarifa registrada es $0."))
+        fila.importes = {"costoProveedor": str(costo), "cargoTardio": str(cargo), "total": str(cobrados), "hayImportes": bool(s.importes_por_pagar),
+                         "explicacion": explicacion, "viabilidadRegistrada": s.viabilidad is not None}
+    elif tipo == "servicio adicional":
+        fila.descripcion, fila.servicioNombre = f"Servicio adicional: {s.servicio}", s.servicio
+        fila.registradaEn, fila.diasAnticipacion = s.anticipacion.fecha_solicitud.isoformat(), s.anticipacion.dias_naturales
+        d = s.disponibilidad
+        fila.proveedorNuevo = nombre_prov(d.proveedor_id) if d is not None and d.disponible else None
+        costo = d.costo.cantidad if d is not None and d.disponible and d.costo is not None else Decimal(0)
+        fila.importes = {"costoProveedor": str(costo), "cargoTardio": "0", "total": str(costo), "hayImportes": costo > 0,
+                         "explicacion": "Eventos Nova no cobra por gestionar el servicio adicional: solo se considera el costo del proveedor."}
+    else:
+        sc = ev.servicios.get(s.servicio_contratado_id) if ev is not None else None
+        fila.servicioNombre = sc.servicio if sc is not None else None
+        fila.descripcion = f"Sustitución del proveedor de «{fila.servicioNombre or 'un servicio'}»"
+        fila.proveedorOriginal = nombre_prov(s.proveedor_original_id)
+        alt = s.alternativa_vigente
+        fila.proveedorNuevo = nombre_prov(alt.proveedor_id) if alt is not None else None
+        costo = s.costo_adicional.cantidad if s.costo_adicional is not None else Decimal(0)
+        fila.importes = {"costoProveedor": str(costo), "cargoTardio": "0", "total": str(costo), "hayImportes": costo > 0,
+                         "explicacion": "El costo adicional del proveedor alternativo se integra al saldo del contrato solo si el Cliente lo aprueba y Administración lo autoriza."}
+        rep = getattr(s, 'reporte', None)
+        if rep is not None:
+            fila.registradaEn = rep.reportado_en.isoformat()
+            fila.reporte = {"motivo": s.reporte.motivo, "descripcion": s.reporte.descripcion, "reportadoEn": s.reporte.reportado_en.isoformat(),
+                            "aceptadoEn": s.reporte.aceptado_en.isoformat() if s.reporte.aceptado_en else None, "proveedor": nombre_prov(s.reporte.proveedor_id)}
+    fila.anexo = _anexo_dict(contrato, s.anexo_id)
+    if ob is not None and ec is not None:
+        pagado = ec.importe_pagado(ob.obligacion_id)
+        fila.pago = {"concepto": ob.concepto.value, "importe": str(ob.importe.cantidad), "pagado": str(pagado), "saldo": str(max(ob.importe.cantidad - pagado, Decimal(0))),
+                     "estado": ob.estado.value, "plazo": ob.plazo.vence.isoformat() if ob.plazo else None}
+    fila.proceso = proceso_de(tipo, s, ob)
+
+
+def _datos_de_cliente(clientes, cliente_id: str) -> Optional[dict]:
+    """Datos del catálogo de clientes o None: los eventos anteriores al catálogo (CL-DEMO-01, CL-1...) conservan su identificador sin ficha."""
+    c = clientes.obtener_por_id(cliente_id) if clientes is not None else None
+    return None if c is None else {"clienteId": c.cliente_id, "nombres": c.nombres, "apellidos": c.apellidos, "nombreCompleto": c.nombre_completo,
+                                   "telefono": c.telefono, "correo": c.correo}
+
+
 class ConsultarInformacionAdministrativaEventoHandler:
     """Vista integral de un evento para Administración (CA-055 a CA-057). Devuelve None si el evento no existe."""
     def __init__(self, eventos: IEventoRepository, contratos: IContratoRepository, estados_cuenta: IEstadoCuentaRepository,
                  cambios: ISolicitudCambioRepository, adicionales: ISolicitudServicioAdicionalRepository,
-                 sustituciones: ISustitucionProveedorRepository, proveedores=None):
+                 sustituciones: ISustitucionProveedorRepository, proveedores=None, clientes=None):
         self.proveedores = proveedores
+        self.clientes = clientes
         self.eventos, self.contratos, self.ec = eventos, contratos, estados_cuenta
-        self.cambios, self.adicionales = cambios, adicionales
+        self.cambios, self.adicionales, self.sustituciones = cambios, adicionales, sustituciones
         self._pagos = ConsultarEstadoPagosHandler(estados_cuenta)
         self._pendientes = ConsultarSolicitudesPendientesHandler(cambios, adicionales, sustituciones, estados_cuenta)
+
+    def _anexo_legible(self, contrato, a) -> dict:
+        """Un anexo del contrato con la solicitud que lo originó, su estado y el importe adicional, para consultarlo sin conocer identificadores."""
+        repos = {"cambio": self.cambios, "servicio adicional": self.adicionales, "sustitución de proveedor": self.sustituciones}
+        repo = repos.get(a.tipo_origen.value)
+        s = repo.obtener_por_id(a.origen_id) if repo is not None else None
+        importe, estado = None, None
+        if s is not None:
+            estado = s.estado.value
+            if a.tipo_origen.value == "cambio":
+                importe = str(sum((i.cantidad for _, i in s.importes_a_cobrar), Decimal(0))) if s.importes_por_pagar else "0"
+            elif a.tipo_origen.value == "servicio adicional":
+                importe = str(s.disponibilidad.costo.cantidad) if s.disponibilidad is not None and s.disponibilidad.costo is not None else None
+            else:
+                importe = str(s.costo_adicional.cantidad) if s.costo_adicional is not None else "0"
+        return {"anexoId": a.anexo_id, "tipoSolicitud": a.tipo_origen.value, "solicitudId": a.origen_id, "descripcion": a.descripcion, "fecha": a.fecha.isoformat(),
+                "contratoId": contrato.id, "estadoSolicitud": estado, "importeAdicional": importe}
 
     def handle(self, q: ConsultarInformacionAdministrativaEventoQuery) -> Optional[InformacionAdministrativaEventoViewModel]:
         ev = self.eventos.obtener_por_id(q.eventoId)
@@ -502,7 +620,12 @@ class ConsultarInformacionAdministrativaEventoHandler:
         d = ev.datos
         vm = InformacionAdministrativaEventoViewModel(ev.id, ev.estado.value, d.tipo, d.fecha_hora.isoformat(), d.lugar,
                                                       d.invitados_aproximados)
-        vm.contratos = [{"contratoId": c.id, "estado": c.estado.value, "costoTotal": str(c.condiciones.costo_total.cantidad)}
+        vm.contratos = [{"contratoId": c.id, "estado": c.estado.value, "costoTotal": str(c.condiciones.costo_total.cantidad),
+                         "propuestaId": c.propuesta_id,
+                         "politicaComunicada": c.politica.comunicada(),
+                         "politicaComunicadaEn": c.politica.comunicada_en.isoformat() if c.politica.comunicada_en else None,
+                         "firmadoEn": c.fecha_firma.isoformat() if c.fecha_firma else None,
+                         "anexos": [self._anexo_legible(c, a) for a in sorted(c.anexos, key=lambda a: a.fecha)]}
                         for c in sorted(self.contratos.listar_por_evento_id(q.eventoId), key=lambda c: c.id)]
         estados = sorted(self.ec.listar_por_evento_id(q.eventoId), key=lambda x: x.id)
         vm.pagosRealizados = str(sum((x.pagos_realizados().cantidad for x in estados), Decimal(0)))
@@ -528,14 +651,16 @@ class ConsultarInformacionAdministrativaEventoHandler:
             {"solicitudId": s.id, "servicio": s.servicio, "estado": s.estado.value, "pendiente": s.pendiente}
             for s in sorted(self.adicionales.listar_por_evento_id(q.eventoId), key=lambda s: s.id)]
         vm.solicitudesPendientes = self._pendientes.handle(ConsultarSolicitudesPendientesQuery(q.eventoId)).solicitudes
+        vm.clienteId = ev.cliente_id
+        vm.cliente = _datos_de_cliente(self.clientes, ev.cliente_id)
         return vm
 
 
 class ConsultarEventosProximosHandler:
     """Eventos cuya fecha y hora caen en la ventana [desde, hasta] recibida; no se define aquí qué es «próximo» (D-D).
     Se muestran todos los estados del evento, con su estado, para que Administración decida."""
-    def __init__(self, eventos: IEventoRepository):
-        self.eventos = eventos
+    def __init__(self, eventos: IEventoRepository, clientes=None):
+        self.eventos, self.clientes = eventos, clientes
 
     def handle(self, q: ConsultarEventosProximosQuery) -> EventosProximosViewModel:
         if q.hasta < q.desde:
@@ -543,16 +668,18 @@ class ConsultarEventosProximosHandler:
         vm = EventosProximosViewModel(q.desde.isoformat(), q.hasta.isoformat())
         for ev in sorted(self.eventos.listar_todos(), key=lambda e: (e.datos.fecha_hora, e.id)):
             if q.desde <= ev.datos.fecha_hora <= q.hasta:
+                cliente = _datos_de_cliente(self.clientes, ev.cliente_id)
                 vm.eventos.append(EventoProximoViewModel(ev.id, ev.estado.value, ev.datos.tipo, ev.datos.fecha_hora.isoformat(),
-                                                         ev.datos.lugar, ev.cliente_id))
+                                                         ev.datos.lugar, ev.cliente_id, cliente["nombreCompleto"] if cliente else None))
         return vm
 
 
 class ConsultarSolicitudesPorEstadoHandler:
     """Solicitudes de cambio, servicio adicional y sustitución filtradas por estado original, evento y tipo."""
     def __init__(self, cambios: ISolicitudCambioRepository, adicionales: ISolicitudServicioAdicionalRepository,
-                 sustituciones: ISustitucionProveedorRepository):
+                 sustituciones: ISustitucionProveedorRepository, contratos=None, estados_cuenta=None, proveedores=None, eventos=None):
         self.repos = (("cambio", cambios), ("servicio adicional", adicionales), ("sustitución de proveedor", sustituciones))
+        self.contratos, self.estados_cuenta, self.proveedores, self.eventos = contratos, estados_cuenta, proveedores, eventos
 
     def handle(self, q: ConsultarSolicitudesPorEstadoQuery) -> SolicitudesPorEstadoViewModel:
         validos = {e.value for enum in (EstadoSolicitudCambio, EstadoSolicitudServicioAdicional, EstadoSustitucionProveedor)
@@ -567,8 +694,9 @@ class ConsultarSolicitudesPorEstadoHandler:
                 continue
             for s in sorted(_repo_de(repo, q.eventoId), key=lambda s: s.id):
                 if q.estado is None or s.estado.value == q.estado:
-                    vm.solicitudes.append(SolicitudPorEstadoViewModel(tipo, s.id, s.evento_id, _servicio_afectado(tipo, s),
-                                                                      s.estado.value, s.pendiente, _datos_proveedor(tipo, s)))
+                    fila = SolicitudPorEstadoViewModel(tipo, s.id, s.evento_id, _servicio_afectado(tipo, s), s.estado.value, s.pendiente, _datos_proveedor(tipo, s))
+                    _completar_detalle(fila, tipo, s, self.contratos, self.estados_cuenta, self.proveedores, self.eventos)
+                    vm.solicitudes.append(fila)
         return vm
 
 

@@ -11,6 +11,7 @@ from domain.estado_cuenta import EstadoCuenta
 from domain.eventos_dominio import EventoDominio
 from domain.valores import DisponibilidadProveedor
 from domain.proveedor import Proveedor
+from domain.cliente import Cliente
 
 
 # ---------------------------------------------------------------- Repository (uno por raíz)
@@ -110,6 +111,19 @@ class IProveedorRepository(ABC):
     @abstractmethod
     def actualizar(self, proveedor: Proveedor) -> bool:
         """Reemplaza los datos y el estado de un proveedor existente. False si no existe o si el nombre ya lo usa OTRO proveedor."""
+
+
+class IClienteRepository(ABC):
+    """Catálogo de clientes (registro de referencia, sin agregado ni Outbox). `guardar` devuelve False si ya existe un cliente con ese
+    identificador o con el mismo correo normalizado; nunca sobrescribe. Es la base de datos la que decide quién gana ante dos altas simultáneas."""
+    @abstractmethod
+    def guardar(self, cliente: Cliente) -> bool: ...
+    @abstractmethod
+    def obtener_por_id(self, cliente_id: str) -> Optional[Cliente]: ...
+    @abstractmethod
+    def obtener_por_correo(self, correo_normalizado: str) -> Optional[Cliente]: ...
+    @abstractmethod
+    def listar_todos(self) -> List[Cliente]: ...
 
 
 # ---------------------------------------------------------------- otros puertos

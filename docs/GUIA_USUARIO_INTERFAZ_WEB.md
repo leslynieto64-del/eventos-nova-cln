@@ -44,7 +44,7 @@ Abre **http://127.0.0.1:8010/app/**. Para comprobar que el servidor responde: `/
 
 ## 3. Flujo típico de una contratación
 
-1. **Registrar evento** (módulo Eventos). Queda **En gestión**.
+1. **Registrar evento** (módulo Eventos). El formulario tiene dos secciones: **Datos del cliente** (nombre(s), apellidos, teléfono y correo electrónico) y **Datos del evento**. El teléfono debe tener **exactamente 10 dígitos**, sin espacios ni guiones (por ejemplo, 5512345678). Nunca se escribe el identificador del cliente: el sistema lo asigna (`CL-…`) y, si el correo ya estaba registrado con los mismos datos, reutiliza al mismo cliente. Si el correo existe con otro nombre o teléfono, el sistema avisa para que se revisen los datos y no registra el evento. Al terminar muestra una confirmación con los identificadores del cliente y del evento, y el detalle del evento incluye la tarjeta **Cliente**. El evento queda **En gestión**. (Los eventos anteriores al catálogo de clientes conservan su identificador y no tienen ficha de contacto.)
 2. En el detalle, **Crear propuesta** (servicios, proveedores considerados, costo total y condiciones).
 3. **Aceptar propuesta** (versión vigente) y **Preparar contrato**.
 4. **Comunicar política de no reembolso** al Cliente y después **Registrar firma del contrato**. La firma solo anota que ocurrió: no es una firma electrónica.

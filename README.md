@@ -42,8 +42,8 @@ Todas las direcciones de producción respondieron HTTP 200 el 06/11/2026.
 | Aspecto | Situación |
 |---|---|
 | Código | `main` = `1dfcfdd` (60 commits; fusión de la PR #8 el 06/11/2026). PR #6: corrección visual de «Mis datos»; PR #7: mensajes de resultado en español (`X-Mensaje`) y página `/docs` propia; PR #8: Swagger UI añade el token CSRF a las escrituras y mejora los mensajes de seguridad. El código del Bloque A es el del commit `9c72bc7` |
-| API | 73 rutas, 77 operaciones (19 GET, 58 POST), 4 públicas; OpenAPI 3.1.0 |
-| Base de datos | PostgreSQL 18; 26 tablas + `alembic_version`; migraciones 0001–0009 (una sola cabeza) |
+| API | 73 rutas, 77 operaciones (19 GET, 58 POST), 4 públicas en `main` y en producción; OpenAPI 3.1.0. La rama local `feat/catalogo-clientes` añade `GET /clientes` y `GET /clientes/{cliente_id}` (76 rutas, 80 operaciones con `POST …/indisponibilidad`) |
+| Base de datos | PostgreSQL 18; 26 tablas + `alembic_version`; migraciones 0001–0009 en `main` y en producción. **En la rama local `feat/catalogo-clientes` (sin fusionar ni desplegar) se añaden la 0010 (tabla `cliente`), la 0011 (teléfono opcional de proveedores, exactamente 10 dígitos) y la 0012 (reporte de indisponibilidad y desglose por servicio de las propuestas)** |
 | Dominio | 7 agregados, 9 máquinas de estado, 12 especificaciones concretas, 31 eventos de dominio |
 | Roles | Administrador, Coordinador y Proveedor (el Cliente no tiene cuenta) |
 | Despliegue | Render (región Ohio): `eventosnova-api` (Docker, `preDeployCommand: alembic upgrade head`, health check `/ready`), `eventosnova-worker` y `eventosnova-db` (PostgreSQL 18). Ambos servicios Live con `1dfcfdd`; despliegue automático solo tras CI verde (`autoDeployTrigger: checksPass`). Swagger/OpenAPI publicados con `EVENTOSNOVA_DOCS=1` (definida a mano en el panel del servicio web) |
@@ -518,7 +518,7 @@ La API expone dos casos de uso existentes de `GestionPropuestaService`, sin regl
 
 | Ruta | Servicio | Respuesta correcta |
 |------|----------|--------------------|
-| `POST /eventos` | `registrar_evento(cliente_id, DatosEvento, servicios)` | `201` con `evento_id` y mensaje |
+| `POST /eventos` | `registrar_evento_de_cliente(nombres, apellidos, telefono, correo, DatosEvento, servicios, ahora)`; la forma anterior `registrar_evento(cliente_id, DatosEvento, servicios)` se conserva por compatibilidad | `201` con `evento_id`, mensaje y, con la forma vigente, `cliente` (incluye `clienteId`) y `cliente_nuevo` |
 | `POST /eventos/{evento_id}/propuestas` | `crear_propuesta(evento_id, ContenidoPropuesta, ahora)` | `201` con `propuesta_id`, `evento_id` y mensaje |
 
 > **Datos temporales.** Mientras la API use la composición en memoria (`infrastructure.composicion.construir`), los eventos y propuestas solo existen mientras el servidor está en marcha: **se pierden al detenerlo o reiniciarlo** (también con cada recarga de `--reload`). Es una implementación provisional para desarrollo y pruebas; la persistencia se incorpora por etapas con PostgreSQL 18. *Histórico:* el cierre de alcance aprobado condicionaba la persistencia (TP-01) a «recibir la base de datos oficial del proyecto»; el equipo resolvió esa condición el 2026-10-24 (el ZIP `16_Eventos_Nova` es la fuente oficial de datos recibida y el equipo construye la base de datos relacional con PostgreSQL, elegido por el equipo). Ver [`docs/architecture/resolucion-tp01.md`](docs/architecture/resolucion-tp01.md); el estado de cada etapa está en [`docs/architecture/registro-progreso-persistencia-fase2.md`](docs/architecture/registro-progreso-persistencia-fase2.md).
@@ -536,7 +536,7 @@ La API expone dos casos de uso existentes de `GestionPropuestaService`, sin regl
 **Prueba manual en Windows** (con el servidor en marcha, en PowerShell):
 
 ```powershell
-$evento = Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/eventos -ContentType "application/json" -Body '{"cliente_id":"CL-1","datos":{"tipo":"Boda","fecha_hora":"2026-11-20T18:00:00","lugar":"Salon","invitados_aproximados":100},"servicios":["Banquete"]}'
+$evento = Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/eventos -ContentType "application/json" -Body '{"cliente":{"nombres":"Ana María","apellidos":"López Pérez","telefono":"55 1234 5678","correo":"ana.lopez@ejemplo.com"},"datos":{"tipo":"Boda","fecha_hora":"2026-11-20T18:00:00","lugar":"Salon","invitados_aproximados":100},"servicios":["Banquete"]}'
 $evento
 Invoke-RestMethod -Method Post -Uri "http://127.0.0.1:8000/eventos/$($evento.evento_id)/propuestas" -ContentType "application/json" -Body '{"servicios":["Banquete"],"proveedores_considerados":["PV-1"],"costo_total":"10000.00","condiciones":"Condiciones generales"}'
 ```

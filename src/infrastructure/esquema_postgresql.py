@@ -148,6 +148,7 @@ version_propuesta = sa.Table(
     # ContenidoPropuesta
     sa.Column("servicios", pg.ARRAY(sa.Text), nullable=False), sa.Column("proveedores_considerados", pg.ARRAY(sa.Text), nullable=False),
     _importe("costo_total", nullable=False), _texto("condiciones", nullable=False),
+    sa.Column("desglose", pg.JSONB, nullable=True),                      # revisión 0012: [{servicio, proveedor_id, importe}]; NULL en las versiones anteriores
     sa.PrimaryKeyConstraint("version_id"),
     sa.ForeignKeyConstraint(["propuesta_id"], ["propuesta.propuesta_id"], ondelete="CASCADE"),
     sa.UniqueConstraint("propuesta_id", "numero"),                       # BN-002, CA-007: número consecutivo por propuesta
@@ -342,6 +343,8 @@ sustitucion_proveedor = sa.Table(
     _texto("servicio_contratado_id", nullable=False), _texto("proveedor_original_id"),
     _importe("costo_adicional"),
     sa.Column("aprobada_despues_del_limite", sa.Boolean, nullable=False, server_default=sa.false()),
+    # Revisión 0012: reporte de indisponibilidad del proveedor (opcional). `reporte_aceptado_en` conserva la fecha en que había aceptado.
+    _texto("reporte_motivo"), _texto("reporte_descripcion"), _fecha("reporte_en"), _texto("reporte_proveedor_id"), _fecha("reporte_aceptado_en"),
     sa.PrimaryKeyConstraint("sustitucion_id"),
     sa.CheckConstraint(_en_enum("estado", V.EstadoSustitucionProveedor), name="estado_valido"),
     sa.CheckConstraint("estado_antes_de_detener IS NULL OR " + _en_enum("estado_antes_de_detener", V.EstadoSustitucionProveedor),
@@ -467,9 +470,25 @@ proveedor = sa.Table(
     sa.Column("servicios", pg.ARRAY(sa.Text), nullable=False, server_default="{}"),
     _texto("contacto", nullable=False, server_default=""), _fecha("registrado_en", nullable=False),
     sa.Column("activo", sa.Boolean, nullable=False, server_default=sa.true()),                   # revisión 0007
+    _texto("telefono", nullable=False, server_default=""),                                       # revisión 0011: opcional; vacío o exactamente 10 dígitos
     sa.PrimaryKeyConstraint("proveedor_id"),
     sa.UniqueConstraint("nombre_normalizado"),                      # no hay dos proveedores con el mismo nombre (sin acentos ni mayúsculas)
     sa.CheckConstraint("btrim(nombre) <> ''", name="nombre_no_vacio"),
+    sa.CheckConstraint("telefono = '' OR telefono ~ '^[0-9]{10}$'", name="telefono_10_digitos"),
+)
+
+# Catálogo de clientes (revisión 0010). Registro de referencia: sin versión ni Outbox. `evento.cliente_id` y `propuesta.cliente_id` siguen siendo
+# referencias blandas: no se añade clave foránea para no invalidar los eventos existentes ni los identificadores históricos (CL-DEMO-01, CL-1...).
+cliente = sa.Table(
+    "cliente", metadata,
+    _texto("cliente_id", nullable=False), _texto("nombres", nullable=False), _texto("apellidos", nullable=False),
+    _texto("telefono", nullable=False), _texto("correo", nullable=False), _texto("correo_normalizado", nullable=False),
+    _fecha("registrado_en", nullable=False),
+    sa.PrimaryKeyConstraint("cliente_id"),
+    sa.UniqueConstraint("correo_normalizado"),                      # una sola persona por correo (sin mayúsculas ni espacios), también con altas simultáneas
+    sa.CheckConstraint("btrim(nombres) <> '' AND btrim(apellidos) <> ''", name="nombre_no_vacio"),
+    sa.CheckConstraint("btrim(telefono) <> '' AND btrim(correo) <> ''", name="contacto_no_vacio"),
+    sa.CheckConstraint("correo_normalizado = lower(btrim(correo_normalizado))", name="correo_normalizado_canonico"),
 )
 
 # ================================================================ Seguridad: cuentas, sesiones e intentos (revisión 0006)

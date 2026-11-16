@@ -10,7 +10,9 @@ import { cuentas } from './paginas/cuentas.js';
 import { ingreso } from './paginas/ingreso.js';
 import { ACCIONES } from './acciones.js';
 import { cargar as cargarSesion, cerrar as cerrarSesion, estado as sesion, ETIQUETA_ROL, olvidar, puede, requiereIngreso, rol } from './sesion.js';
-import { ejecutarAccion, h } from './ui.js';
+import { cargando, ejecutarAccion, h } from './ui.js';
+
+window.__eventosNovaListo = true;                     // avisa a arranque.js que los módulos se enlazaron: ya no hace falta su pantalla de rescate
 
 const RUTAS = [
   { patron: /^\/?$/, modulo: 'inicio', pagina: panel, titulo: 'Panel principal', permiso: 'eventos.consultar' },
@@ -125,7 +127,24 @@ window.addEventListener('sesion-expirada', (e) => {
   mostrarIngreso(e.detail || 'Tu sesión expiró. Inicia sesión nuevamente.');
 });
 
-(async () => {
-  try { await cargarSesion(); } catch (e) { console.error(e); }
-  navegar();
-})();
+/** Comprueba la sesión con el servidor y pinta la pantalla que corresponda. Nunca deja el contenido en blanco: sin sesión válida muestra el ingreso; si no se pudo
+    consultar al servidor, lo explica y permite reintentar (sin tratarlo como «sesión vencida»). */
+async function arrancar() {
+  const zona = contenido();
+  zona.replaceChildren(cargando('Comprobando tu sesión…'));
+  try { await cargarSesion(); } catch (e) {
+    console.error(e);
+    document.body.classList.add('sin-sesion');
+    const mensaje = e && e.tipo === 'conexion' ? e.message : 'El sistema no respondió como se esperaba al comprobar tu sesión. No se perdió ningún dato.';
+    zona.replaceChildren(h('div', { class: 'caja-error', role: 'alert' }, h('div', null, h('strong', null, 'No se pudo comprobar tu sesión'), h('p', null, mensaje),
+      h('button', { type: 'button', class: 'btn btn-primario', onclick: arrancar }, 'Reintentar'))));
+    return;
+  }
+  await navegar();
+  if (!contenido().textContent.trim() && !contenido().querySelector('form, table, img, svg')) {            // última defensa contra una pantalla en blanco
+    contenido().replaceChildren(h('div', { class: 'caja-error', role: 'alert' }, h('div', null, h('strong', null, 'No se pudo mostrar esta pantalla'),
+      h('p', null, 'Recarga la página o vuelve al inicio.'), h('button', { type: 'button', class: 'btn', onclick: () => location.reload() }, 'Recargar'))));
+  }
+}
+window.addEventListener('unhandledrejection', (e) => { console.error(e.reason); });
+arrancar();

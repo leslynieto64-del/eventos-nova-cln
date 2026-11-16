@@ -8,9 +8,9 @@ Leyenda: **✔** permitido · **—** denegado (HTTP 403) · **propio** permitid
 
 | Rol | Permisos |
 |---|---|
-| administrador | `devoluciones.ejecutar`, `eventos.consultar`, `eventos.revision_administrativa`, `pagos.cobranza`, `pagos.consultar`, `pagos.registrar`, `proveedores.consultar`, `proveedores.editar`, `proveedores.registrar`, `solicitudes.autorizar`, `solicitudes.importe_adicional`, `usuarios.administrar` |
-| coordinador | `contratos.gestionar`, `eventos.cancelar`, `eventos.ciclo`, `eventos.consultar`, `eventos.registrar`, `pagos.consultar`, `propuestas.gestionar`, `proveedores.asignar`, `proveedores.consultar`, `proveedores.registrar`, `proveedores.responder`, `solicitudes.gestionar`, `solicitudes.registrar` |
-| proveedor | `proveedores.propio`, `proveedores.responder` |
+| administrador | `clientes.consultar`, `devoluciones.ejecutar`, `eventos.consultar`, `eventos.revision_administrativa`, `pagos.cobranza`, `pagos.consultar`, `pagos.registrar`, `proveedores.consultar`, `proveedores.editar`, `proveedores.registrar`, `solicitudes.autorizar`, `solicitudes.importe_adicional`, `usuarios.administrar` |
+| coordinador | `clientes.consultar`, `contratos.gestionar`, `eventos.cancelar`, `eventos.ciclo`, `eventos.consultar`, `eventos.registrar`, `pagos.consultar`, `propuestas.gestionar`, `proveedores.asignar`, `proveedores.consultar`, `proveedores.registrar`, `proveedores.responder`, `solicitudes.gestionar`, `solicitudes.registrar` |
+| proveedor | `proveedores.propio`, `proveedores.reportar`, `proveedores.responder` |
 
 ## Operaciones públicas (sin sesión)
 
@@ -117,6 +117,7 @@ Además se sirve la interfaz estática en `/app/` (HTML, CSS y JavaScript sin da
 | Método | Ruta | Permiso | Administrador | Coordinador | Proveedor |
 |---|---|---|:-:|:-:|:-:|
 | GET | `/eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad` | `proveedores.asignar` | — | ✔ | — |
+| POST | `/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad` | `proveedores.reportar` | — | — | ✔ |
 | POST | `/eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor` | `proveedores.asignar` | — | ✔ | — |
 | POST | `/eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor` | `proveedores.responder` | — | propio | propio |
 | GET | `/mis-asignaciones` | `proveedores.propio` | — | — | propio |
@@ -141,4 +142,4 @@ Además se sirve la interfaz estática en `/app/` (HTML, CSS y JavaScript sin da
 | POST | `/usuarios/{usuario_id}/contrasena` | `usuarios.administrar` | ✔ | — | — |
 | POST | `/usuarios/{usuario_id}/estado` | `usuarios.administrar` | ✔ | — | — |
 
-Total de operaciones protegidas: **73**; públicas: **4**.
+Total de operaciones protegidas: **76**; públicas: **4**.
