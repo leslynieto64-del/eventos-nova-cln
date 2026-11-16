@@ -109,6 +109,14 @@ class AsignarProveedorEntrada(_Esquema):
     proveedor_id: str = Field(examples=["PV-1"])
 
 
+class IndisponibilidadEntrada(_Esquema):
+    """El proveedor que ya aceptó un servicio informa que ya no puede cumplirlo. La fecha y la hora las genera el servidor; el proveedor se compara con el
+    vinculado a la cuenta de la sesión (no con un dato libre)."""
+    proveedor_id: str = Field(examples=["PV-1"])
+    motivo: Literal["Problemas de disponibilidad", "Problemas operativos", "Imposibilidad de cumplir con el servicio", "Otro motivo"]
+    descripcion: str = Field(default="", max_length=500, description="Opcional (obligatoria con «Otro motivo»).")
+
+
 class RespuestaProveedorEntrada(_Esquema):
     """El proveedor responde desde su cuenta (sin `medio`). Coordinación registra lo que el proveedor le comunicó e INDICA el medio (S-5).
     El origen de la respuesta y la cuenta que la registra los decide el servidor a partir de la sesión, nunca este cuerpo."""

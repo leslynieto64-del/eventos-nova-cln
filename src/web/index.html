@@ -7,7 +7,7 @@
   <title>Eventos Nova</title>
   <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body class="sin-sesion">
   <a class="salto" href="#contenido">Saltar al contenido</a>
   <div class="app">
     <aside class="lateral" aria-label="Navegación principal">
@@ -33,12 +33,13 @@
         </button>
         <span class="barra-titulo">Eventos Nova</span>
       </header>
-      <main id="contenido" tabindex="-1"></main>
+      <main id="contenido" tabindex="-1"><div class="cargando" role="status"><span class="rueda"></span>Cargando Eventos Nova…</div></main>
     </div>
   </div>
   <div id="menu-fondo" class="menu-fondo" aria-hidden="true"></div>
   <div id="avisos" class="avisos" aria-live="polite"></div>
   <noscript>Esta aplicación necesita JavaScript para funcionar.</noscript>
+  <script src="js/arranque.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

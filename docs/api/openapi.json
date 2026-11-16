@@ -215,6 +215,52 @@
         "title": "CierreNoAceptacionEntrada",
         "type": "object"
       },
+      "ClienteEntrada": {
+        "additionalProperties": false,
+        "description": "Datos de contacto del cliente. El identificador lo genera el servidor; el cliente se reconoce por su correo (no por el nombre).",
+        "properties": {
+          "apellidos": {
+            "examples": [
+              "López Pérez"
+            ],
+            "maxLength": 100,
+            "title": "Apellidos",
+            "type": "string"
+          },
+          "correo": {
+            "examples": [
+              "ana.lopez@ejemplo.com"
+            ],
+            "maxLength": 254,
+            "title": "Correo",
+            "type": "string"
+          },
+          "nombres": {
+            "examples": [
+              "Ana María"
+            ],
+            "maxLength": 100,
+            "title": "Nombres",
+            "type": "string"
+          },
+          "telefono": {
+            "examples": [
+              "55 1234 5678"
+            ],
+            "maxLength": 30,
+            "title": "Telefono",
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombres",
+          "apellidos",
+          "telefono",
+          "correo"
+        ],
+        "title": "ClienteEntrada",
+        "type": "object"
+      },
       "ConceptoPago": {
         "enum": [
           "Anticipo",
@@ -245,7 +291,7 @@
       },
       "CrearPropuestaEntrada": {
         "additionalProperties": false,
-        "description": "Campos de ContenidoPropuesta. La fecha de la versión la asigna el servidor.",
+        "description": "Campos de ContenidoPropuesta. La fecha de la versión la asigna el servidor.\nForma vigente: `desglose` (servicio, proveedor e importe de cada servicio): el TOTAL lo calcula el servidor como la suma de los importes y los servicios y proveedores\nconsiderados salen del desglose. Forma anterior (se conserva): `servicios`, `proveedores_considerados` y `costo_total`.",
         "properties": {
           "condiciones": {
             "examples": [
@@ -261,6 +307,9 @@
               },
               {
                 "type": "string"
+              },
+              {
+                "type": "null"
               }
             ],
             "examples": [
@@ -268,35 +317,61 @@
             ],
             "title": "Costo Total"
           },
+          "desglose": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DesgloseServicioEntrada"
+                },
+                "maxItems": 60,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Desglose"
+          },
           "proveedores_considerados": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "examples": [
               [
                 "PV-1"
               ]
             ],
-            "items": {
-              "type": "string"
-            },
-            "title": "Proveedores Considerados",
-            "type": "array"
+            "title": "Proveedores Considerados"
           },
           "servicios": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "examples": [
               [
                 "Banquete"
               ]
             ],
-            "items": {
-              "type": "string"
-            },
-            "title": "Servicios",
-            "type": "array"
+            "title": "Servicios"
           }
         },
         "required": [
-          "servicios",
-          "proveedores_considerados",
-          "costo_total",
           "condiciones"
         ],
         "title": "CrearPropuestaEntrada",
@@ -392,6 +467,48 @@
           "acepta_esperar"
         ],
         "title": "DecisionEsperaEntrada",
+        "type": "object"
+      },
+      "DesgloseServicioEntrada": {
+        "additionalProperties": false,
+        "description": "Un renglón de la cotización: el servicio, el proveedor considerado y el importe cotizado por Coordinación (nunca se asigna un precio automáticamente).",
+        "properties": {
+          "importe": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "examples": [
+              "5000.00"
+            ],
+            "title": "Importe"
+          },
+          "proveedor_id": {
+            "examples": [
+              "PV-1"
+            ],
+            "title": "Proveedor Id",
+            "type": "string"
+          },
+          "servicio": {
+            "examples": [
+              "Banquete"
+            ],
+            "maxLength": 100,
+            "title": "Servicio",
+            "type": "string"
+          }
+        },
+        "required": [
+          "servicio",
+          "proveedor_id",
+          "importe"
+        ],
+        "title": "DesgloseServicioEntrada",
         "type": "object"
       },
       "DevolucionEntrada": {
@@ -668,6 +785,29 @@
       "EventoRegistradoRespuesta": {
         "additionalProperties": false,
         "properties": {
+          "cliente": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cliente"
+          },
+          "cliente_nuevo": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cliente Nuevo"
+          },
           "evento_id": {
             "title": "Evento Id",
             "type": "string"
@@ -725,6 +865,42 @@
           "importe"
         ],
         "title": "ImporteAdicionalSustitucionEntrada",
+        "type": "object"
+      },
+      "IndisponibilidadEntrada": {
+        "additionalProperties": false,
+        "description": "El proveedor que ya aceptó un servicio informa que ya no puede cumplirlo. La fecha y la hora las genera el servidor; el proveedor se compara con el\nvinculado a la cuenta de la sesión (no con un dato libre).",
+        "properties": {
+          "descripcion": {
+            "default": "",
+            "description": "Opcional (obligatoria con «Otro motivo»).",
+            "maxLength": 500,
+            "title": "Descripcion",
+            "type": "string"
+          },
+          "motivo": {
+            "enum": [
+              "Problemas de disponibilidad",
+              "Problemas operativos",
+              "Imposibilidad de cumplir con el servicio",
+              "Otro motivo"
+            ],
+            "title": "Motivo",
+            "type": "string"
+          },
+          "proveedor_id": {
+            "examples": [
+              "PV-1"
+            ],
+            "title": "Proveedor Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "proveedor_id",
+          "motivo"
+        ],
+        "title": "IndisponibilidadEntrada",
         "type": "object"
       },
       "InicioSesionEntrada": {
@@ -1061,6 +1237,17 @@
             "title": "Importe",
             "type": "string"
           },
+          "pagoId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pagoid"
+          },
           "registradoEn": {
             "anyOf": [
               {
@@ -1178,9 +1365,9 @@
         "properties": {
           "contacto": {
             "default": "",
-            "description": "Texto libre (teléfono, correo...).",
+            "description": "Texto libre (persona, correo, horario...).",
             "examples": [
-              "55 1234 5678"
+              "Contacto: Laura, banquetes@ejemplo.com"
             ],
             "maxLength": 300,
             "title": "Contacto",
@@ -1209,6 +1396,22 @@
             "maxItems": 30,
             "title": "Servicios",
             "type": "array"
+          },
+          "telefono": {
+            "anyOf": [
+              {
+                "maxLength": 30,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Opcional. Exactamente 10 dígitos, sin espacios ni símbolos. En la edición, omitirlo conserva el actual y «» lo quita.",
+            "examples": [
+              "5512345678"
+            ],
+            "title": "Telefono"
           }
         },
         "required": [
@@ -1247,14 +1450,32 @@
       },
       "RegistrarEventoEntrada": {
         "additionalProperties": false,
-        "description": "Parámetros de GestionPropuestaService.registrar_evento.",
+        "description": "Parámetros de GestionPropuestaService.registrar_evento_de_cliente (forma vigente: `cliente`) o registrar_evento (forma anterior:\n`cliente_id`, que se conserva por compatibilidad). Debe enviarse exactamente una de las dos.",
         "properties": {
+          "cliente": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ClienteEntrada"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "cliente_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Forma anterior, solo por compatibilidad: use `cliente`.",
             "examples": [
               "CL-1"
             ],
-            "title": "Cliente Id",
-            "type": "string"
+            "title": "Cliente Id"
           },
           "datos": {
             "$ref": "#/components/schemas/DatosEventoEntrada"
@@ -1273,7 +1494,6 @@
           }
         },
         "required": [
-          "cliente_id",
           "datos",
           "servicios"
         ],
@@ -1954,6 +2174,124 @@
         "summary": "Sesión actual",
         "tags": [
           "Seguridad"
+        ]
+      }
+    },
+    "/clientes": {
+      "get": {
+        "operationId": "listar_clientes_clientes_get",
+        "parameters": [
+          {
+            "description": "Texto a buscar en identificador, nombre, teléfono o correo",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "default": "",
+              "description": "Texto a buscar en identificador, nombre, teléfono o correo",
+              "maxLength": 200,
+              "title": "Q",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperacionRespuesta"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RechazoRespuesta"
+                }
+              }
+            },
+            "description": "Cliente no encontrado"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RechazoRespuesta"
+                }
+              }
+            },
+            "description": "Rechazo de negocio o entrada no válida"
+          }
+        },
+        "security": [
+          {
+            "SesionCookie": []
+          }
+        ],
+        "summary": "Consultar y buscar clientes del catálogo",
+        "tags": [
+          "Clientes (catálogo)"
+        ]
+      }
+    },
+    "/clientes/{cliente_id}": {
+      "get": {
+        "operationId": "consultar_cliente_clientes__cliente_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cliente_id",
+            "required": true,
+            "schema": {
+              "title": "Cliente Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperacionRespuesta"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RechazoRespuesta"
+                }
+              }
+            },
+            "description": "Cliente no encontrado"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RechazoRespuesta"
+                }
+              }
+            },
+            "description": "Rechazo de negocio o entrada no válida"
+          }
+        },
+        "security": [
+          {
+            "SesionCookie": []
+          }
+        ],
+        "summary": "Datos de un cliente del catálogo",
+        "tags": [
+          "Clientes (catálogo)"
         ]
       }
     },
@@ -2660,6 +2998,7 @@
         ]
       },
       "post": {
+        "description": "Con `cliente` el servidor reutiliza al cliente que ya tiene ese correo o lo registra con un identificador `CL-<uuid>` generado aquí;\nsi el correo existe con otro nombre o teléfono se rechaza (422) sin unir registros. `cliente_id` es la forma anterior, solo por compatibilidad.",
         "operationId": "registrar_evento_eventos_post",
         "requestBody": {
           "content": {
@@ -2698,7 +3037,7 @@
             "SesionCookie": []
           }
         ],
-        "summary": "Registrar un evento",
+        "summary": "Registrar un evento (y reconocer o registrar a su cliente)",
         "tags": [
           "Propuestas (CU-01)"
         ]
@@ -3252,6 +3591,73 @@
           }
         ],
         "summary": "Consultar la disponibilidad de proveedores de un servicio contratado",
+        "tags": [
+          "Ciclo de vida del Evento y proveedores"
+        ]
+      }
+    },
+    "/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad": {
+      "post": {
+        "description": "Abre la sustitución del proveedor con el motivo y la fecha; conserva la aceptación original y no elimina la asignación ni modifica el contrato.",
+        "operationId": "reportar_indisponibilidad_eventos__evento_id__servicios__servicio_contratado_id__indisponibilidad_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evento_id",
+            "required": true,
+            "schema": {
+              "title": "Evento Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "servicio_contratado_id",
+            "required": true,
+            "schema": {
+              "title": "Servicio Contratado Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IndisponibilidadEntrada"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperacionRespuesta"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RechazoRespuesta"
+                }
+              }
+            },
+            "description": "Rechazo de negocio o entrada no válida"
+          }
+        },
+        "security": [
+          {
+            "SesionCookie": []
+          }
+        ],
+        "summary": "El proveedor que ya aceptó un servicio reporta que ya no puede cumplirlo",
         "tags": [
           "Ciclo de vida del Evento y proveedores"
         ]

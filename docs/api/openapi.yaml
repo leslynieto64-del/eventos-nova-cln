@@ -44,8 +44,7 @@ components:
           - type: 'null'
           title: Costo Adicional
         proveedor_id:
-          description: 'D-P3: proveedor alternativo del catálogo (registrado, activo, que ofrece el servicio y distinto del
-            original).'
+          description: 'D-P3: proveedor alternativo del catálogo (registrado, activo, que ofrece el servicio y distinto del original).'
           examples:
           - PV-1a2b3c4d
           maxLength: 100
@@ -111,11 +110,9 @@ components:
       type: object
     CancelacionFaltaRegularizacionEntrada:
       additionalProperties: false
-      description: 'S-3. Con la autenticación activa el servidor ignora `coordinador` y `fecha`: registra la cuenta de la
-        sesión y su propio reloj, para que
+      description: 'S-3. Con la autenticación activa el servidor ignora `coordinador` y `fecha`: registra la cuenta de la sesión y su propio reloj, para que
 
-        nadie pueda atribuir la cancelación a otra persona ni fechar el registro a su conveniencia. Solo con la autenticación
-        desactivada (pruebas
+        nadie pueda atribuir la cancelación a otra persona ni fechar el registro a su conveniencia. Solo con la autenticación desactivada (pruebas
 
         y desarrollo local) se usan los valores enviados.'
       properties:
@@ -153,6 +150,41 @@ components:
       - motivo
       title: CierreNoAceptacionEntrada
       type: object
+    ClienteEntrada:
+      additionalProperties: false
+      description: Datos de contacto del cliente. El identificador lo genera el servidor; el cliente se reconoce por su correo (no por el nombre).
+      properties:
+        apellidos:
+          examples:
+          - López Pérez
+          maxLength: 100
+          title: Apellidos
+          type: string
+        correo:
+          examples:
+          - ana.lopez@ejemplo.com
+          maxLength: 254
+          title: Correo
+          type: string
+        nombres:
+          examples:
+          - Ana María
+          maxLength: 100
+          title: Nombres
+          type: string
+        telefono:
+          examples:
+          - 55 1234 5678
+          maxLength: 30
+          title: Telefono
+          type: string
+      required:
+      - nombres
+      - apellidos
+      - telefono
+      - correo
+      title: ClienteEntrada
+      type: object
     ConceptoPago:
       enum:
       - Anticipo
@@ -177,7 +209,11 @@ components:
       type: object
     CrearPropuestaEntrada:
       additionalProperties: false
-      description: Campos de ContenidoPropuesta. La fecha de la versión la asigna el servidor.
+      description: 'Campos de ContenidoPropuesta. La fecha de la versión la asigna el servidor.
+
+        Forma vigente: `desglose` (servicio, proveedor e importe de cada servicio): el TOTAL lo calcula el servidor como la suma de los importes y los servicios y proveedores
+
+        considerados salen del desglose. Forma anterior (se conserva): `servicios`, `proveedores_considerados` y `costo_total`.'
       properties:
         condiciones:
           examples:
@@ -188,27 +224,37 @@ components:
           anyOf:
           - type: number
           - type: string
+          - type: 'null'
           examples:
           - '10000.00'
           title: Costo Total
+        desglose:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DesgloseServicioEntrada'
+            maxItems: 60
+            type: array
+          - type: 'null'
+          title: Desglose
         proveedores_considerados:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
           examples:
           - - PV-1
-          items:
-            type: string
           title: Proveedores Considerados
-          type: array
         servicios:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
           examples:
           - - Banquete
-          items:
-            type: string
           title: Servicios
-          type: array
       required:
-      - servicios
-      - proveedores_considerados
-      - costo_total
       - condiciones
       title: CrearPropuestaEntrada
       type: object
@@ -281,6 +327,34 @@ components:
       - acepta_esperar
       title: DecisionEsperaEntrada
       type: object
+    DesgloseServicioEntrada:
+      additionalProperties: false
+      description: 'Un renglón de la cotización: el servicio, el proveedor considerado y el importe cotizado por Coordinación (nunca se asigna un precio automáticamente).'
+      properties:
+        importe:
+          anyOf:
+          - type: number
+          - type: string
+          examples:
+          - '5000.00'
+          title: Importe
+        proveedor_id:
+          examples:
+          - PV-1
+          title: Proveedor Id
+          type: string
+        servicio:
+          examples:
+          - Banquete
+          maxLength: 100
+          title: Servicio
+          type: string
+      required:
+      - servicio
+      - proveedor_id
+      - importe
+      title: DesgloseServicioEntrada
+      type: object
     DevolucionEntrada:
       additionalProperties: false
       properties:
@@ -289,8 +363,7 @@ components:
           - minLength: 1
             type: string
           - type: 'null'
-          description: Comprobante de la devolución que Administración efectuó fuera del sistema (CA-098). Si se omite, se
-            usa el ejecutor de devoluciones simulado.
+          description: Comprobante de la devolución que Administración efectuó fuera del sistema (CA-098). Si se omite, se usa el ejecutor de devoluciones simulado.
           examples:
           - TRANSF-0001
           title: Comprobante
@@ -357,11 +430,9 @@ components:
       type: object
     DisponibilidadEntrada:
       additionalProperties: false
-      description: 'D-P3: lo que el proveedor comunicó a Coordinación. Con `disponible` verdadero, `proveedor_id` (del catálogo:
-        registrado, activo y que
+      description: 'D-P3: lo que el proveedor comunicó a Coordinación. Con `disponible` verdadero, `proveedor_id` (del catálogo: registrado, activo y que
 
-        ofrece el servicio), `costo` (mayor que cero) y `condiciones` son obligatorios; con `disponible` falso no se envía
-        nada más.'
+        ofrece el servicio), `costo` (mayor que cero) y `condiciones` son obligatorios; con `disponible` falso no se envía nada más.'
       properties:
         condiciones:
           anyOf:
@@ -461,6 +532,17 @@ components:
     EventoRegistradoRespuesta:
       additionalProperties: false
       properties:
+        cliente:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Cliente
+        cliente_nuevo:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Cliente Nuevo
         evento_id:
           title: Evento Id
           type: string
@@ -499,6 +581,36 @@ components:
       required:
       - importe
       title: ImporteAdicionalSustitucionEntrada
+      type: object
+    IndisponibilidadEntrada:
+      additionalProperties: false
+      description: 'El proveedor que ya aceptó un servicio informa que ya no puede cumplirlo. La fecha y la hora las genera el servidor; el proveedor se compara con el
+
+        vinculado a la cuenta de la sesión (no con un dato libre).'
+      properties:
+        descripcion:
+          default: ''
+          description: Opcional (obligatoria con «Otro motivo»).
+          maxLength: 500
+          title: Descripcion
+          type: string
+        motivo:
+          enum:
+          - Problemas de disponibilidad
+          - Problemas operativos
+          - Imposibilidad de cumplir con el servicio
+          - Otro motivo
+          title: Motivo
+          type: string
+        proveedor_id:
+          examples:
+          - PV-1
+          title: Proveedor Id
+          type: string
+      required:
+      - proveedor_id
+      - motivo
+      title: IndisponibilidadEntrada
       type: object
     InicioSesionEntrada:
       additionalProperties: false
@@ -568,8 +680,7 @@ components:
       type: object
     ObligacionPagoRespuesta:
       additionalProperties: false
-      description: 'Anticipo o saldo del contrato original. Vacío si el Estado de Cuenta no tiene esa obligación; `plazoVencido`
-        solo se
+      description: 'Anticipo o saldo del contrato original. Vacío si el Estado de Cuenta no tiene esa obligación; `plazoVencido` solo se
 
         informa cuando la consulta recibe reloj (CA-023); `resultadoRegularizacion` solo aparece en el saldo ya revisado.'
       properties:
@@ -701,6 +812,11 @@ components:
         importe:
           title: Importe
           type: string
+        pagoId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Pagoid
         registradoEn:
           anyOf:
           - type: string
@@ -779,9 +895,9 @@ components:
       properties:
         contacto:
           default: ''
-          description: Texto libre (teléfono, correo...).
+          description: Texto libre (persona, correo, horario...).
           examples:
-          - 55 1234 5678
+          - 'Contacto: Laura, banquetes@ejemplo.com'
           maxLength: 300
           title: Contacto
           type: string
@@ -802,6 +918,15 @@ components:
           maxItems: 30
           title: Servicios
           type: array
+        telefono:
+          anyOf:
+          - maxLength: 30
+            type: string
+          - type: 'null'
+          description: Opcional. Exactamente 10 dígitos, sin espacios ni símbolos. En la edición, omitirlo conserva el actual y «» lo quita.
+          examples:
+          - '5512345678'
+          title: Telefono
       required:
       - nombre
       title: ProveedorEntrada
@@ -829,13 +954,22 @@ components:
       type: object
     RegistrarEventoEntrada:
       additionalProperties: false
-      description: Parámetros de GestionPropuestaService.registrar_evento.
+      description: 'Parámetros de GestionPropuestaService.registrar_evento_de_cliente (forma vigente: `cliente`) o registrar_evento (forma anterior:
+
+        `cliente_id`, que se conserva por compatibilidad). Debe enviarse exactamente una de las dos.'
       properties:
+        cliente:
+          anyOf:
+          - $ref: '#/components/schemas/ClienteEntrada'
+          - type: 'null'
         cliente_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: 'Forma anterior, solo por compatibilidad: use `cliente`.'
           examples:
           - CL-1
           title: Cliente Id
-          type: string
         datos:
           $ref: '#/components/schemas/DatosEventoEntrada'
         servicios:
@@ -846,7 +980,6 @@ components:
           title: Servicios
           type: array
       required:
-      - cliente_id
       - datos
       - servicios
       title: RegistrarEventoEntrada
@@ -864,8 +997,7 @@ components:
       type: object
     RespuestaProveedorEntrada:
       additionalProperties: false
-      description: 'El proveedor responde desde su cuenta (sin `medio`). Coordinación registra lo que el proveedor le comunicó
-        e INDICA el medio (S-5).
+      description: 'El proveedor responde desde su cuenta (sin `medio`). Coordinación registra lo que el proveedor le comunicó e INDICA el medio (S-5).
 
         El origen de la respuesta y la cuenta que la registra los decide el servidor a partir de la sesión, nunca este cuerpo.'
       properties:
@@ -1127,14 +1259,12 @@ components:
       type: object
   securitySchemes:
     SesionCookie:
-      description: Cookie de sesión HttpOnly emitida por POST /auth/inicio-sesion. Las operaciones que modifican datos exigen
-        además la cabecera X-CSRF-Token que devuelve el inicio de sesión.
+      description: 'Cookie de sesión HttpOnly emitida por POST /auth/inicio-sesion: JavaScript no puede leerla ni escribirla, así que NO hay nada que pegar en Authorize; el navegador la envía solo. Inicia sesión en /app/ (o con POST /auth/inicio-sesion) y recarga esta página. Las operaciones que modifican datos exigen además la cabecera X-CSRF-Token: Swagger UI la añade sola, tomándola de GET /auth/yo en cada escritura, y no se muestra en los ejemplos cURL.'
       in: cookie
       name: eventosnova_sesion
       type: apiKey
 info:
-  description: 'API del sistema de apoyo a la gestión de eventos de Eventos Nova: propuestas, contratación, pagos, cancelaciones,
-    cambios, servicios adicionales y sustituciones de proveedores.'
+  description: 'API del sistema de apoyo a la gestión de eventos de Eventos Nova: propuestas, contratación, pagos, cancelaciones, cambios, servicios adicionales y sustituciones de proveedores.'
   title: Eventos Nova API
   version: 0.1.0
 openapi: 3.1.0
@@ -1296,6 +1426,78 @@ paths:
       summary: Sesión actual
       tags:
       - Seguridad
+  /clientes:
+    get:
+      operationId: listar_clientes_clientes_get
+      parameters:
+      - description: Texto a buscar en identificador, nombre, teléfono o correo
+        in: query
+        name: q
+        required: false
+        schema:
+          default: ''
+          description: Texto a buscar en identificador, nombre, teléfono o correo
+          maxLength: 200
+          title: Q
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperacionRespuesta'
+          description: Successful Response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechazoRespuesta'
+          description: Cliente no encontrado
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechazoRespuesta'
+          description: Rechazo de negocio o entrada no válida
+      security:
+      - SesionCookie: []
+      summary: Consultar y buscar clientes del catálogo
+      tags:
+      - Clientes (catálogo)
+  /clientes/{cliente_id}:
+    get:
+      operationId: consultar_cliente_clientes__cliente_id__get
+      parameters:
+      - in: path
+        name: cliente_id
+        required: true
+        schema:
+          title: Cliente Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperacionRespuesta'
+          description: Successful Response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechazoRespuesta'
+          description: Cliente no encontrado
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechazoRespuesta'
+          description: Rechazo de negocio o entrada no válida
+      security:
+      - SesionCookie: []
+      summary: Datos de un cliente del catálogo
+      tags:
+      - Clientes (catálogo)
   /contratos/{contrato_id}/comunicacion-politica-no-reembolso:
     post:
       operationId: comunicar_politica_contratos__contrato_id__comunicacion_politica_no_reembolso_post
@@ -1715,6 +1917,9 @@ paths:
       tags:
       - Consultas (solo lectura)
     post:
+      description: 'Con `cliente` el servidor reutiliza al cliente que ya tiene ese correo o lo registra con un identificador `CL-<uuid>` generado aquí;
+
+        si el correo existe con otro nombre o teléfono se rechaza (422) sin unir registros. `cliente_id` es la forma anterior, solo por compatibilidad.'
       operationId: registrar_evento_eventos_post
       requestBody:
         content:
@@ -1737,7 +1942,7 @@ paths:
           description: Rechazo de negocio o entrada no válida
       security:
       - SesionCookie: []
-      summary: Registrar un evento
+      summary: Registrar un evento (y reconocer o registrar a su cliente)
       tags:
       - Propuestas (CU-01)
   /eventos/{evento_id}/administracion:
@@ -2069,6 +2274,47 @@ paths:
       security:
       - SesionCookie: []
       summary: Consultar la disponibilidad de proveedores de un servicio contratado
+      tags:
+      - Ciclo de vida del Evento y proveedores
+  /eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad:
+    post:
+      description: Abre la sustitución del proveedor con el motivo y la fecha; conserva la aceptación original y no elimina la asignación ni modifica el contrato.
+      operationId: reportar_indisponibilidad_eventos__evento_id__servicios__servicio_contratado_id__indisponibilidad_post
+      parameters:
+      - in: path
+        name: evento_id
+        required: true
+        schema:
+          title: Evento Id
+          type: string
+      - in: path
+        name: servicio_contratado_id
+        required: true
+        schema:
+          title: Servicio Contratado Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IndisponibilidadEntrada'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperacionRespuesta'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechazoRespuesta'
+          description: Rechazo de negocio o entrada no válida
+      security:
+      - SesionCookie: []
+      summary: El proveedor que ya aceptó un servicio reporta que ya no puede cumplirlo
       tags:
       - Ciclo de vida del Evento y proveedores
   /eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor:

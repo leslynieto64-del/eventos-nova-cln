@@ -53,7 +53,7 @@ class CicloDeMigraciones(unittest.TestCase):
 
     def test_ciclo_completo_subida_bajada_y_subida(self):
         aplicar_migraciones(self.url)
-        self.assertEqual(self.revision(), '0009')
+        self.assertEqual(self.revision(), '0012')
         self.assertEqual(self.tablas() - {'alembic_version'}, set(metadata.tables))
         with self.motor.connect() as con:
             self.assertEqual(compare_metadata(MigrationContext.configure(con, opts={'compare_type': True}), metadata), [])
@@ -107,13 +107,13 @@ class CicloDeMigraciones(unittest.TestCase):
         self.assertIsNone(self.revision())
 
         aplicar_migraciones(self.url)                                                       # vuelve a subir: repetible
-        self.assertEqual(self.revision(), '0009')
+        self.assertEqual(self.revision(), '0012')
         self.assertEqual(self.tablas() - {'alembic_version'}, set(metadata.tables))
 
     def test_subir_dos_veces_es_idempotente(self):
         aplicar_migraciones(self.url)
         aplicar_migraciones(self.url)
-        self.assertEqual(self.revision(), '0009')
+        self.assertEqual(self.revision(), '0012')
 
     def test_bajar_la_0002_falla_sin_modificar_nada_si_hay_sustituciones_sin_proveedor_original(self):
         aplicar_migraciones(self.url)

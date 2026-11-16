@@ -1,5 +1,5 @@
 /* Acceso centralizado a la API de Eventos Nova (mismo origen). Normaliza los errores para que la interfaz los explique. */
-import { humanizar } from './texto.js';
+import { explicar, humanizar } from './texto.js';
 
 let tokenCsrf = null;
 /** El token CSRF lo entrega el servidor al iniciar sesión; se guarda solo en memoria y se envía en las operaciones que modifican datos. */
@@ -61,7 +61,7 @@ export async function api(metodo, ruta, { consulta, cuerpo } = {}) {
   }
   if (estado === 422 && datos && datos.detalle) {
     // El motivo se muestra sin referencias internas a requisitos; el texto original queda en «Detalles técnicos» (crudo).
-    throw new ErrorApi('negocio', humanizar(datos.detalle), { estado, pendientes: (datos.pendientes || []).map(humanizar), crudo: datos });
+    throw new ErrorApi('negocio', explicar(humanizar(datos.detalle)), { estado, pendientes: (datos.pendientes || []).map((x) => explicar(humanizar(x))), crudo: datos });
   }
   if (estado === 404) {
     throw new ErrorApi('no_encontrado', humanizar(datos && datos.detalle) || 'No se encontró el registro solicitado.', { estado, crudo: datos });

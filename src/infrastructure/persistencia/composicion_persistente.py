@@ -55,7 +55,7 @@ def construir_persistente(url: Optional[str] = None, motor: Optional[sa.Engine] 
         propuestas=S.PropuestaRepositorySQL(almacen), contratos=S.ContratoRepositorySQL(almacen), eventos=S.EventoRepositorySQL(almacen),
         cambios=S.SolicitudCambioRepositorySQL(almacen), adicionales=S.SolicitudServicioAdicionalRepositorySQL(almacen),
         sustituciones=S.SustitucionProveedorRepositorySQL(almacen), estados_cuenta=S.EstadoCuentaRepositorySQL(almacen),
-        proveedores=S.ProveedorRepositorySQL(almacen))
+        proveedores=S.ProveedorRepositorySQL(almacen), clientes=S.ClienteRepositorySQL(almacen))
     pub = PublicadorEstable()
     contenedor = ensamblar(repos, uow, pub, DespachadorOutboxSQL(almacen, pub, outbox, max_intentos), disponibilidad, S.AlmacenSeguridadSQL(almacen))
     contenedor.almacen, contenedor.outbox, contenedor.motor, contenedor.modo = almacen, outbox, motor, C.MODO_POSTGRESQL

@@ -206,7 +206,7 @@ class EnterosYLimiteTecnico(unittest.TestCase):
                     self.assertNotRegex(str(c.sqltext), r'<=?\s*\d')
 
 
-TABLAS_POSTERIORES_A_0001 = {'proveedor', 'usuario', 'sesion', 'intento_acceso'}   # revisiones 0005 y 0006; su DDL se comprueba en test_la_revision_000*
+TABLAS_POSTERIORES_A_0001 = {'proveedor', 'usuario', 'sesion', 'intento_acceso', 'cliente'}   # revisiones 0005 y 0006; su DDL se comprueba en test_la_revision_000*
 
 
 class Migracion(unittest.TestCase):
@@ -231,13 +231,14 @@ class Migracion(unittest.TestCase):
                           '0003_devolucion_anticipo_contratacion_cerrada.py', '0004_version_de_agregado.py',
                           '0005_catalogo_de_proveedores.py', '0006_seguridad_cuentas_y_sesiones.py', '0007_proveedor_activo.py',
                           '0008_solicitud_cambio_condiciones_proveedor.py',
-                          '0009_respuesta_proveedor_procedencia.py'])
+                          '0009_respuesta_proveedor_procedencia.py', '0010_catalogo_de_clientes.py',
+                          '0011_telefono_de_proveedores.py', '0012_indisponibilidad_y_desglose.py'])
         from alembic.config import Config
         from alembic.script import ScriptDirectory
         cfg = Config(os.path.join(RAIZ, 'alembic.ini'))
         cfg.set_main_option('script_location', os.path.join(RAIZ, 'migraciones'))
         script = ScriptDirectory.from_config(cfg)
-        self.assertEqual(script.get_heads(), ['0009'])                  # una sola cabeza: historia lineal
+        self.assertEqual(script.get_heads(), ['0012'])                  # una sola cabeza: historia lineal
         self.assertIsNone(script.get_revision('0001').down_revision)    # una única revisión inicial
         self.assertEqual(script.get_revision('0002').down_revision, '0001')
         self.assertEqual(script.get_revision('0003').down_revision, '0002')
@@ -247,6 +248,9 @@ class Migracion(unittest.TestCase):
         self.assertEqual(script.get_revision('0007').down_revision, '0006')
         self.assertEqual(script.get_revision('0008').down_revision, '0007')
         self.assertEqual(script.get_revision('0009').down_revision, '0008')
+        self.assertEqual(script.get_revision('0010').down_revision, '0009')
+        self.assertEqual(script.get_revision('0011').down_revision, '0010')
+        self.assertEqual(script.get_revision('0012').down_revision, '0011')
 
     def test_la_revision_0002_solo_relaja_una_columna(self):
         with open(os.path.join(os.path.dirname(RUTA_MIGRACION), '0002_proveedor_original_opcional.py'), encoding='utf-8') as f:
@@ -311,6 +315,8 @@ class Migracion(unittest.TestCase):
         meta = {(t, l) for t, l in meta if not (t == 'solicitud_cambio' and l.startswith('condiciones_proveedor'))}
         # Revisión 0009 (S-5): la procedencia de la respuesta del proveedor en evento_servicio_contratado (columnas y CHECK).
         meta = {(t, l) for t, l in meta if not (t == 'evento_servicio_contratado' and 'respuesta_' in l)}
+        # Revisión 0012: el reporte de indisponibilidad (sustitucion_proveedor.reporte_*) y el desglose de las versiones de propuesta.
+        meta = {(t, l) for t, l in meta if not ((t == 'sustitucion_proveedor' and l.startswith('reporte_')) or (t == 'version_propuesta' and l.startswith('desglose')))}
         self.assertEqual(meta - mig, set())
         self.assertEqual(mig - meta, set())
         self.assertEqual(sorted(orden), sorted(set(metadata.tables) - TABLAS_POSTERIORES_A_0001))

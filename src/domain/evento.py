@@ -251,6 +251,22 @@ class Evento(AggregateRoot):
         sc.respuesta = respuesta
         return sc
 
+    def reportar_indisponibilidad(self, servicio_contratado_id: str, proveedor_id: str, ahora: Optional[datetime] = None) -> ServicioContratado:
+        """El proveedor que ya aceptó informa que no puede cumplir el servicio. La respuesta original (su aceptación y la fecha) se conserva; el servicio
+        queda «Proveedor no disponible» y su reemplazo se gestiona como sustitución (SE-001, SP-05). Solo el proveedor asignado, con el servicio
+        confirmado, el Evento En organización y antes de que inicie."""
+        self._admite_gestion_de_proveedores()
+        self._no_iniciado(ahora)
+        sc = self._servicio(servicio_contratado_id)
+        if sc.proveedor_id != proveedor_id:
+            raise ErrorDominio("El proveedor no está asignado a este servicio.")
+        if sc.estado == EstadoServicioContratado.PROVEEDOR_NO_DISPONIBLE:
+            raise ErrorDominio("La indisponibilidad de este servicio ya fue reportada.")
+        if sc.estado != EstadoServicioContratado.CONFIRMADO:
+            raise ErrorDominio(f"Solo se reporta la indisponibilidad de un servicio que ya aceptaste; este servicio está «{sc.estado.value}».")
+        sc.estado = EstadoServicioContratado.PROVEEDOR_NO_DISPONIBLE
+        return sc
+
     # -- cancelación y cierre
     def solicitar_cancelacion(self, motivo: str, ahora: datetime, contratacion_confirmada: bool) -> bool:
         """Devuelve True si se canceló. BN-008, CA-084, CA-087, CA-088."""

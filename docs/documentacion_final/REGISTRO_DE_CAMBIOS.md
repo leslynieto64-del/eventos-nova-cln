@@ -287,3 +287,15 @@ El paquete se describe en este registro tal como se preparó (carpetas `01_ANALI
 | `LEEME.md`, `REGISTRO_DE_CAMBIOS.md` | `docs/documentacion_final/` |
 
 **No incluidos en el repositorio:** el `coverage.json` de la medición del 03/11/2026 (archivo generado, 2.7 MB; sus cifras están en `docs/calidad/cobertura/VERIFICACION_COBERTURA.md` y `coverage_reporte.txt`), los ocho `cobertura_grupo*.log` (el `.gitignore` ignora `*.log`) y el reporte HTML de cobertura (85 archivos generados). Los textos que mencionan esos archivos se refieren al paquete original.
+
+## 06/11/2026 — Cierre documental final
+
+- Reporte final y presentación regenerados con los resultados finales (`docs/entrega_final/REPORTE_FINAL_PIA_EVENTOS_NOVA.*` y `PRESENTACION_FINAL_PIA_EVENTOS_NOVA.*`); se retiraron las versiones del 05/11/2026 (`Reporte_Final_PIA_Eventos_Nova.*`, `Presentacion_Defensa_PIA_Eventos_Nova.*`).
+- Manuales de usuario, instalación y técnico actualizados (producción en Render, CI 42268272652, Docker Compose local, variables de entorno completas).
+- Diagramas de clases y de secuencia rehechos en páginas verticales; nuevo documento `Diagramas_BPMN_Eventos_Nova` con SP01 a SP10.
+- Registro de ADR: la sección apaisada pasó a vertical y su tabla de resumen se ajustó al ancho de la página.
+- Documentación de la API, decisiones técnicas, informe general de pruebas, reporte de cobertura, seguridad, manuales de CI y CD, repositorio y guía de pruebas manuales: estado final, URL de producción y repositorio `eventos-nova-cln`.
+- Evidencias reorganizadas en `docs/calidad/evidencias/` (11 carpetas) con índice Markdown y Excel; se retiraron las carpetas vacías con `LEEME_PENDIENTE.md`.
+- `.env.example` completado con `EVENTOSNOVA_LOGIN_VENTANA_MIN`, `EVENTOSNOVA_TAMANO_MAXIMO_CUERPO`, `EVENTOSNOVA_BASES_PROTEGIDAS`, `PORT` y `FORWARDED_ALLOW_IPS`.
+- Se retiró `docs/trazabilidad/matriz-trazabilidad.pdf` (exportación apaisada); la matriz aprobada `matriz-trazabilidad.xlsx` y la matriz vertical `Matriz_Trazabilidad_Eventos_Nova.*` se conservan.
+- No se modificó código funcional, configuración de producción, Render ni PostgreSQL.

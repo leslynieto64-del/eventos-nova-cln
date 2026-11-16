@@ -226,7 +226,7 @@ Los resultados exactos están en el informe final de esta fase. Esas pruebas usa
 - Ser *candidato* a una asignación (registrado, activo y que ofrece el servicio) **no** significa estar libre en la fecha del evento: el sistema no tiene calendarios ni compromisos por fecha; lo confirma el proveedor al responder (D-P2).
 - Los costos y las condiciones de cambios, servicios adicionales y sustituciones se **capturan a mano** según la cotización del proveedor; el sistema no tiene tarifas ni fuentes externas de precios (D-P3).
 - El inicio del evento es automático (trabajador del sistema); el botón de inicio de Coordinación es solo un respaldo excepcional que no adelanta eventos (S-7).
-- No hay catálogo de clientes (se usa un identificador escrito, por ejemplo `CL-MANUAL`) y el Cliente no tiene cuenta (S-1).
+- El catálogo de clientes se alimenta al registrar un evento (nombre, apellidos, teléfono y correo; el sistema asigna `CL-<uuid>`; con el mismo correo se reutiliza). El Cliente no tiene cuenta (S-1).
 - No hay pasarela de pago: solo se anotan pagos ya efectuados.
 - No hay recuperación de contraseña por correo ni segundo factor; un administrador restablece contraseñas.
 - No hay auditoría persistente de acciones (quién hizo qué), salvo la procedencia de las respuestas de proveedores y la cuenta que registra una cancelación.

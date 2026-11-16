@@ -10,7 +10,7 @@ from application import servicios as S, reacciones as R, cqrs as Q
 from .repositorios_memoria import (PropuestaRepositoryMemoria, ContratoRepositoryMemoria, EventoRepositoryMemoria,
                                    SolicitudCambioRepositoryMemoria, SolicitudServicioAdicionalRepositoryMemoria,
                                    SustitucionProveedorRepositoryMemoria, EstadoCuentaRepositoryMemoria,
-                                   ProveedorRepositoryMemoria)
+                                   ProveedorRepositoryMemoria, ClienteRepositoryMemoria)
 from .seguridad_memoria import AlmacenSeguridadMemoria
 from .unidad_trabajo import UnitOfWorkMemoria, PublicadorEnProceso, DespachadorOutbox
 from .adaptadores import (ConsultaDisponibilidadSimulada, ConsultaDisponibilidadDesdeCatalogo, ConsultaDisponibilidadCombinada, NotificadorEnMemoria, VerificadorPagosSimulado,
@@ -24,7 +24,7 @@ def construir(disponibilidad=None):
         eventos=EventoRepositoryMemoria(uow), cambios=SolicitudCambioRepositoryMemoria(uow),
         adicionales=SolicitudServicioAdicionalRepositoryMemoria(uow),
         sustituciones=SustitucionProveedorRepositoryMemoria(uow), estados_cuenta=EstadoCuentaRepositoryMemoria(uow),
-        proveedores=ProveedorRepositoryMemoria())
+        proveedores=ProveedorRepositoryMemoria(), clientes=ClienteRepositoryMemoria())
     pub = PublicadorEnProceso()
     return ensamblar(r, uow, pub, DespachadorOutbox(uow, pub), disponibilidad, AlmacenSeguridadMemoria())
 
@@ -33,8 +33,10 @@ def ensamblar(r, uow, pub, despachador, disponibilidad=None, almacen_seguridad=N
     """Cablea servicios, reacciones, consultas y comandos sobre los repositorios `r`, la unidad de trabajo y el publicador dados."""
     disp = disponibilidad or ConsultaDisponibilidadSimulada()
     notif, verif, ejec = NotificadorEnMemoria(), VerificadorPagosSimulado(), EjecutorDevolucionesSimulado()
+    catalogo_clientes = S.GestionCatalogoClientesService(r.clientes)
     svc = SimpleNamespace(
-        propuestas=S.GestionPropuestaService(r.propuestas, r.eventos, uow),
+        propuestas=S.GestionPropuestaService(r.propuestas, r.eventos, uow, catalogo_clientes, r.proveedores),
+        clientes=catalogo_clientes,
         contratacion=S.FormalizarContratacionService(r.contratos, r.propuestas, r.estados_cuenta, uow, r.eventos),
         pagos=S.GestionPagosService(r.estados_cuenta, r.contratos, r.eventos, r.cambios, r.adicionales, r.sustituciones,
                                     uow, verif, ejec, notif),
@@ -61,11 +63,11 @@ def ensamblar(r, uow, pub, despachador, disponibilidad=None, almacen_seguridad=N
         pendientes=Q.ConsultarSolicitudesPendientesHandler(r.cambios, r.adicionales, r.sustituciones, r.estados_cuenta),
         servicio_asignado=Q.ConsultarServicioAsignadoHandler(r.eventos),
         mis_asignaciones=Q.ConsultarMisAsignacionesHandler(r.eventos),
-        propuestas_evento=Q.ConsultarPropuestasEventoHandler(r.eventos, r.propuestas),
+        propuestas_evento=Q.ConsultarPropuestasEventoHandler(r.eventos, r.propuestas, r.proveedores),
         info_administrativa=Q.ConsultarInformacionAdministrativaEventoHandler(
-            r.eventos, r.contratos, r.estados_cuenta, r.cambios, r.adicionales, r.sustituciones, r.proveedores),
-        eventos_proximos=Q.ConsultarEventosProximosHandler(r.eventos),
-        solicitudes_por_estado=Q.ConsultarSolicitudesPorEstadoHandler(r.cambios, r.adicionales, r.sustituciones),
+            r.eventos, r.contratos, r.estados_cuenta, r.cambios, r.adicionales, r.sustituciones, r.proveedores, r.clientes),
+        eventos_proximos=Q.ConsultarEventosProximosHandler(r.eventos, r.clientes),
+        solicitudes_por_estado=Q.ConsultarSolicitudesPorEstadoHandler(r.cambios, r.adicionales, r.sustituciones, r.contratos, r.estados_cuenta, r.proveedores, r.eventos),
         pagos_pendientes=Q.ConsultarPagosPendientesHandler(r.estados_cuenta),
         devoluciones_pendientes=Q.ConsultarDevolucionesPendientesHandler(r.estados_cuenta),
         servicios_pendientes=Q.ConsultarServiciosPendientesConfirmacionHandler(

@@ -96,12 +96,12 @@ PERMISOS_POR_ROL: Dict[str, FrozenSet[str]] = {
     ADMINISTRADOR: frozenset({
         "eventos.consultar", "eventos.revision_administrativa", "pagos.consultar", "pagos.registrar", "pagos.cobranza",
         "devoluciones.ejecutar", "solicitudes.autorizar", "solicitudes.importe_adicional", "proveedores.consultar", "proveedores.registrar", "proveedores.editar",
-        "usuarios.administrar"}),
+        "clientes.consultar", "usuarios.administrar"}),
     COORDINADOR: frozenset({
         "eventos.consultar", "eventos.registrar", "eventos.ciclo", "eventos.cancelar", "propuestas.gestionar", "contratos.gestionar",
         "pagos.consultar", "solicitudes.registrar", "solicitudes.gestionar", "proveedores.consultar", "proveedores.registrar",
-        "proveedores.asignar", "proveedores.responder"}),     # S-8: el Coordinador registra y consulta el catálogo, pero no lo edita ni lo desactiva. El Coordinador anota la respuesta que el proveedor le comunica por teléfono o mensaje
-    PROVEEDOR: frozenset({"proveedores.propio", "proveedores.responder"}),
+        "proveedores.asignar", "proveedores.responder", "clientes.consultar"}),     # S-8: el Coordinador registra y consulta el catálogo, pero no lo edita ni lo desactiva. El Coordinador anota la respuesta que el proveedor le comunica por teléfono o mensaje
+    PROVEEDOR: frozenset({"proveedores.propio", "proveedores.responder", "proveedores.reportar"}),
 }
 SESION = "sesion"                                 # cualquier persona autenticada (su propia sesión y contraseña)
 
@@ -156,6 +156,7 @@ MATRIZ: Dict[Tuple[str, str], FrozenSet[str]] = dict([
     _m("POST", "/sustituciones/{sustitucion_id}/autorizacion", "solicitudes.autorizar"),
     _m("POST", "/sustituciones/{sustitucion_id}/importe-adicional", "solicitudes.importe_adicional"),
     # proveedores
+    _m("GET", "/clientes", "clientes.consultar"), _m("GET", "/clientes/{cliente_id}", "clientes.consultar"),     # datos personales: solo Administración y Coordinación
     _m("GET", "/proveedores", "proveedores.consultar"), _m("POST", "/proveedores", "proveedores.registrar"),
     _m("POST", "/proveedores/{proveedor_id}/edicion", "proveedores.editar"),
     _m("POST", "/proveedores/{proveedor_id}/desactivacion", "proveedores.editar"),
@@ -165,6 +166,7 @@ MATRIZ: Dict[Tuple[str, str], FrozenSet[str]] = dict([
     _m("GET", "/mis-asignaciones", "proveedores.propio"),                                                         # identidad = cuenta autenticada
     _m("GET", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/disponibilidad", "proveedores.asignar"),
     _m("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/proveedor", "proveedores.asignar"),
+    _m("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad", "proveedores.reportar"),        # solo el proveedor, de lo suyo
     _m("POST", "/eventos/{evento_id}/servicios/{servicio_contratado_id}/respuesta-proveedor", "proveedores.responder"),   # el proveedor, solo la suya
     # cuentas y sesión
     _m("GET", "/auth/yo", SESION), _m("POST", "/auth/cierre-sesion", SESION), _m("POST", "/auth/cambio-contrasena", SESION),

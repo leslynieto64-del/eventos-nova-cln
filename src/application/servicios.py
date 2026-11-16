@@ -16,15 +16,16 @@ from domain.valores import (ErrorDominio, DatosEvento, ContenidoPropuesta, Condi
 from domain.propuesta import Propuesta
 from domain.contrato import Contrato, EvidenciaAnticipo
 from domain.evento import Evento, RevisionAdministrativa
-from domain.solicitudes import SolicitudCambio, SolicitudServicioAdicional, SustitucionProveedor, AlternativaPropuesta
+from domain.solicitudes import SolicitudCambio, SolicitudServicioAdicional, SustitucionProveedor, SustitucionPorIndisponibilidad, AlternativaPropuesta
 from domain.estado_cuenta import EstadoCuenta
 from domain.proveedor import Proveedor
+from domain.cliente import Cliente
 from domain.servicios_dominio import (EvaluarImpactoCambio, EvaluarRegularizacionDeSolicitudes, SituacionSaldo,
                                       ConfiguracionComparable)
 from .puertos import (IPropuestaRepository, IContratoRepository, IEventoRepository, ISolicitudCambioRepository,
                       ISolicitudServicioAdicionalRepository, ISustitucionProveedorRepository, IEstadoCuentaRepository,
                       IUnitOfWork, IConsultaDisponibilidadProveedor, INotificadorParticipantes, IVerificadorPagos,
-                      IEjecutorDevoluciones, IProveedorRepository)
+                      IEjecutorDevoluciones, IProveedorRepository, IClienteRepository)
 from .resultados import Resultado
 
 
@@ -108,11 +109,97 @@ def _saldo(ec_repo: IEstadoCuentaRepository, contrato_id: str, ahora: datetime) 
     return SituacionSaldo(bool(ec and ec.saldo_vencido_en(ahora)))
 
 
+# ======================================================================= Catálogo de clientes
+def _datos_cliente(c: Cliente) -> dict:
+    return {"clienteId": c.cliente_id, "nombres": c.nombres, "apellidos": c.apellidos, "nombreCompleto": c.nombre_completo,
+            "telefono": c.telefono, "correo": c.correo, "registradoEn": c.registrado_en.isoformat()}
+
+
+@con_rechazos_de_negocio
+class GestionCatalogoClientesService:
+    """Catálogo de clientes: reconoce o registra a la persona que solicita un evento y la consulta. El identificador `CL-<uuid>` lo genera
+    este servicio; nadie lo escribe. Un cliente se reconoce por su correo normalizado, nunca por el nombre. No cambia el estado de ningún
+    Evento ni propuesta."""
+
+    def __init__(self, clientes: IClienteRepository):
+        self.clientes = clientes
+
+    def registrar_o_identificar(self, nombres: str, apellidos: str, telefono: str, correo: str, ahora: datetime) -> Resultado:
+        """Devuelve el cliente que ya tiene ese correo (si los demás datos coinciden) o registra uno nuevo. Con el mismo correo y un nombre
+        o teléfono distintos NO une los registros: rechaza para que se revisen los datos. Dos altas simultáneas con el mismo correo
+        producen un solo cliente (la restricción única de la base de datos decide)."""
+        nuevo = Cliente.registrar(nuevo_id("CL"), nombres, apellidos, telefono, correo, ahora)          # valida los datos (ErrorDominio → rechazo)
+        for _ in range(5):
+            existente = self.clientes.obtener_por_correo(nuevo.correo_normalizado)
+            if existente is None:
+                if self.clientes.guardar(nuevo):
+                    return Resultado.ok("Cliente registrado.", cliente=_datos_cliente(nuevo), clienteNuevo=True)
+                nuevo = Cliente.registrar(nuevo_id("CL"), nombres, apellidos, telefono, correo, ahora)   # otro alta ganó (o chocó el id): se vuelve a mirar
+                continue
+            if existente.coincide_con(nuevo):
+                return Resultado.ok("Cliente existente reutilizado.", cliente=_datos_cliente(existente), clienteNuevo=False)
+            return Resultado.rechazo(
+                f"Ya existe un cliente registrado con el correo {existente.correo}, pero el nombre o el teléfono no coinciden con los que "
+                "se capturaron. Revisa los datos antes de continuar: no se unieron los registros.")
+        raise RuntimeError("No se pudo registrar el cliente.")
+
+    def consultar_cliente(self, cliente_id: str) -> Resultado:
+        c = self.clientes.obtener_por_id(cliente_id)
+        if c is None:
+            return Resultado.rechazo("El cliente no existe en el catálogo.")
+        return Resultado.ok("Cliente consultado.", **_datos_cliente(c))
+
+    def listar_clientes(self, busqueda: str = "") -> Resultado:
+        """Búsqueda por texto (identificador, nombre, teléfono o correo). Solo lectura."""
+        return Resultado.ok("Clientes consultados.", clientes=[_datos_cliente(c) for c in self.clientes.listar_todos() if c.contiene(busqueda or "")])
+
+
 # ======================================================================= CU-01
 @con_rechazos_de_negocio
 class GestionPropuestaService:
-    def __init__(self, propuestas: IPropuestaRepository, eventos: IEventoRepository, uow: IUnitOfWork):
-        self.propuestas, self.eventos, self.uow = propuestas, eventos, uow
+    def __init__(self, propuestas: IPropuestaRepository, eventos: IEventoRepository, uow: IUnitOfWork,
+                 clientes: Optional[GestionCatalogoClientesService] = None, proveedores: Optional[IProveedorRepository] = None):
+        self.propuestas, self.eventos, self.uow, self.clientes = propuestas, eventos, uow, clientes
+        self.proveedores = proveedores                    # catálogo: valida el proveedor de cada renglón de la cotización (activo y que ofrezca el servicio)
+
+    def _validar_desglose(self, contenido: ContenidoPropuesta) -> Optional[str]:
+        """Con cotización por servicio: los servicios de la propuesta son exactamente los de la cotización y cada proveedor existe, está activo y ofrece su servicio.
+        Las propuestas sin desglose (anteriores) no se validan aquí. Devuelve el motivo del rechazo o None."""
+        if not contenido.desglose:
+            return None
+        from domain.proveedor import normalizar_servicio
+        claves = [normalizar_servicio(d.servicio) for d in contenido.desglose]
+        if len(set(claves)) != len(claves):
+            return "Un servicio aparece dos veces en la cotización: cada servicio lleva un solo proveedor y un solo importe."
+        if sorted(normalizar_servicio(s) for s in contenido.servicios) != sorted(claves):
+            return "Los servicios de la propuesta deben ser los mismos de la cotización por servicio."
+        if self.proveedores is None:
+            return None
+        for d in contenido.desglose:
+            p = self.proveedores.obtener_por_id(d.proveedor_id)
+            if p is None:
+                return f"El proveedor elegido para «{d.servicio}» no existe en el catálogo."
+            if not p.activo:
+                return f"El proveedor «{p.nombre}» está desactivado: elige un proveedor activo para «{d.servicio}»."
+            if not p.ofrece(d.servicio):
+                return f"El proveedor «{p.nombre}» no ofrece el servicio «{d.servicio}»."
+        return None
+
+    def registrar_evento_de_cliente(self, nombres: str, apellidos: str, telefono: str, correo: str, datos: DatosEvento,
+                                    servicios: List[str], ahora: datetime) -> Resultado:
+        """Registra el evento de un cliente identificado por sus datos de contacto: reutiliza al cliente que ya tiene ese correo o lo
+        registra con un identificador generado aquí. Si los datos del cliente son contradictorios o el evento no es válido, no se registra
+        el evento (y un cliente nuevo solo queda en el catálogo si sus datos eran válidos, lo que no duplica nada al reintentar)."""
+        if self.clientes is None:
+            return Resultado.rechazo("El catálogo de clientes no está disponible.")
+        rc = self.clientes.registrar_o_identificar(nombres, apellidos, telefono, correo, ahora)
+        if not rc.exito:
+            return rc
+        cliente = rc.datos["cliente"]
+        r = self.registrar_evento(cliente["clienteId"], datos, servicios)
+        if not r.exito:
+            return r
+        return Resultado.ok("Evento registrado En gestión.", evento_id=r.datos["evento_id"], cliente=cliente, clienteNuevo=rc.datos["clienteNuevo"])
 
     def registrar_evento(self, cliente_id: str, datos: DatosEvento, servicios: List[str]) -> Resultado:
         try:
@@ -127,6 +214,9 @@ class GestionPropuestaService:
         ev = self.eventos.obtener_por_id(evento_id)               # solo lectura
         if ev is None or ev.estado.value != "En gestión":
             return Resultado.rechazo("El evento no existe o no está En gestión.")
+        motivo = self._validar_desglose(contenido)
+        if motivo:
+            return Resultado.rechazo(motivo)
         p = Propuesta(nuevo_id_libre("PR", self.propuestas), evento_id, ev.cliente_id, contenido, ahora)
         with transaccion(self.uow, p):
             self.propuestas.guardar(p)
@@ -134,6 +224,9 @@ class GestionPropuestaService:
 
     def generar_nueva_version(self, propuesta_id: str, contenido: ContenidoPropuesta, ahora: datetime) -> Resultado:
         p = _existente(self.propuestas.obtener_por_id(propuesta_id), "La propuesta")
+        motivo = self._validar_desglose(contenido)
+        if motivo:
+            return Resultado.rechazo(motivo)
         try:
             with transaccion(self.uow, p):
                 v = p.generar_nueva_version(contenido, ahora)
@@ -186,9 +279,12 @@ class FormalizarContratacionService:
 
     def registrar_comunicacion_politica_no_reembolso(self, contrato_id: str, fecha: datetime) -> Resultado:
         c = _existente(self.contratos.obtener_por_id(contrato_id), "El contrato")
+        if c.politica.comunicada():                                         # idempotente: no se sobrescribe la fecha original ni se vuelve a guardar
+            return Resultado.ok("La política de no reembolso ya estaba comunicada; se conserva el registro original.",
+                                ya_registrada=True, comunicada_en=c.politica.comunicada_en.isoformat())
         with transaccion(self.uow, c):
             c.registrar_comunicacion_politica(fecha); self.contratos.guardar(c)
-        return Resultado.ok("Comunicación de la política registrada.")
+        return Resultado.ok("Comunicación de la política registrada.", ya_registrada=False, comunicada_en=fecha.isoformat())
 
     def registrar_firma_contrato(self, contrato_id: str, fecha: datetime) -> Resultado:
         c = _existente(self.contratos.obtener_por_id(contrato_id), "El contrato")
@@ -896,6 +992,40 @@ class GestionSustitucionProveedorService:
         self.catalogo = catalogo                      # D-P3: valida al proveedor alternativo capturado a mano contra el catálogo real
         self.impacto = EvaluarImpactoCambio()
 
+    MOTIVOS_INDISPONIBILIDAD = ("Problemas de disponibilidad", "Problemas operativos", "Imposibilidad de cumplir con el servicio", "Otro motivo")
+
+    def reportar_indisponibilidad(self, evento_id: str, servicio_contratado_id: str, proveedor_id: str, motivo: str, descripcion: str,
+                                  ahora: datetime) -> Resultado:
+        """El proveedor asignado, que ya había aceptado el servicio, informa que ya no puede cumplirlo. La aceptación original (y su fecha) se conserva; el
+        servicio queda «Proveedor no disponible» y se abre la sustitución con el motivo, la descripción y la fecha (generada por el sistema), que Coordinación
+        gestiona con el flujo existente. No elimina la asignación ni toca el contrato: solo informa. Se avisa a Coordinación."""
+        from domain.solicitudes import ReporteIndisponibilidad
+        motivo, descripcion = (motivo or "").strip(), (descripcion or "").strip()
+        if motivo not in self.MOTIVOS_INDISPONIBILIDAD:
+            return Resultado.rechazo("Elige el motivo de la indisponibilidad de la lista.")
+        if motivo == "Otro motivo" and not descripcion:
+            return Resultado.rechazo("Cuando el motivo es «Otro motivo», describe brevemente qué ocurre.")
+        ev = _existente(self.eventos.obtener_por_id(evento_id), "El evento")
+        if ev.cancelado:
+            return Resultado.rechazo("El evento está cancelado: no hay servicio que reportar.")
+        contrato = next((c for c in self.contratos.listar_por_evento_id(evento_id) if c.estado.value == "Contratación confirmada"), None)
+        if contrato is None:
+            return Resultado.rechazo("El evento no tiene la contratación confirmada: no hay servicios contratados que reportar.")
+        if any(s.servicio_contratado_id == servicio_contratado_id and s.pendiente for s in self.sustituciones.listar_por_evento_id(evento_id)):
+            return Resultado.rechazo("Ya hay una sustitución en trámite para este servicio: Coordinación está buscando una alternativa.")
+        sc = ev.servicios.get(servicio_contratado_id)
+        aceptado_en = sc.respuesta.fecha if sc is not None and sc.respuesta is not None else None
+        ec = _estado_cuenta_del_contrato(self.ec, contrato.id)
+        reporte = ReporteIndisponibilidad(motivo, descripcion, ahora, proveedor_id, aceptado_en)
+        s = SustitucionPorIndisponibilidad(nuevo_id_libre("SP", self.sustituciones), evento_id, servicio_contratado_id, proveedor_id, contrato.id, ec.id, ahora, reporte)
+        with transaccion(self.uow, ev, s):
+            sc = ev.reportar_indisponibilidad(servicio_contratado_id, proveedor_id, ahora)       # valida: proveedor asignado, servicio aceptado, evento no iniciado
+            self.eventos.guardar(ev)
+            self.sustituciones.guardar(s)
+        self.notificador.notificar(["Coordinador"], "Indisponibilidad reportada por un proveedor",
+                                   f"El proveedor {proveedor_id} informa que ya no puede prestar «{sc.servicio}» ({motivo}). Busca una alternativa en la sustitución abierta.")
+        return Resultado.ok("Indisponibilidad reportada.", sustitucion_id=s.id, estado=sc.estado.value)
+
     def registrar_proveedor_no_disponible(self, evento_id: str, servicio_contratado_id: str, contrato_id: str, ahora: datetime) -> Resultado:
         """Con el Evento cancelado no se inicia una nueva sustitución: las que ya estaban en trámite se cierran en la
         reacción a la cancelación y una nueva quedaría pendiente sin cierre posible. H-21 (BPMN SP-05, Bitácora, Informe):
@@ -1090,7 +1220,7 @@ class GestionProveedoresServicioService:
 
 
 def _datos_proveedor(p: Proveedor) -> dict:
-    return {"proveedorId": p.proveedor_id, "nombre": p.nombre, "servicios": list(p.servicios), "contacto": p.contacto,
+    return {"proveedorId": p.proveedor_id, "nombre": p.nombre, "servicios": list(p.servicios), "contacto": p.contacto, "telefono": p.telefono,
             "registradoEn": p.registrado_en.isoformat(), "activo": p.activo}
 
 
@@ -1102,18 +1232,18 @@ class GestionCatalogoProveedoresService:
     def __init__(self, proveedores: IProveedorRepository):
         self.proveedores = proveedores
 
-    def registrar_proveedor(self, nombre: str, servicios: List[str], contacto: str, ahora: datetime) -> Resultado:
-        p = Proveedor.registrar(nuevo_id("PV"), nombre, servicios or [], contacto, ahora)
+    def registrar_proveedor(self, nombre: str, servicios: List[str], contacto: str, ahora: datetime, telefono: str = "") -> Resultado:
+        p = Proveedor.registrar(nuevo_id("PV"), nombre, servicios or [], contacto, ahora, telefono)
         if not self.proveedores.guardar(p):
             return Resultado.rechazo(f"Ya existe un proveedor registrado con el nombre «{p.nombre}».")
         return Resultado.ok("Proveedor registrado.", **_datos_proveedor(p))
 
-    def editar_proveedor(self, proveedor_id: str, nombre: str, servicios: List[str], contacto: str) -> Resultado:
+    def editar_proveedor(self, proveedor_id: str, nombre: str, servicios: List[str], contacto: str, telefono: Optional[str] = None) -> Resultado:
         """Corrige nombre, servicios y contacto. No toca las asignaciones ya hechas: los servicios contratados conservan su proveedor."""
         actual = self.proveedores.obtener_por_id(proveedor_id)
         if actual is None:
             raise ErrorDominio("El proveedor no existe.")
-        nuevo = actual.con_datos(nombre, servicios or [], contacto)
+        nuevo = actual.con_datos(nombre, servicios or [], contacto, telefono)
         if not self.proveedores.actualizar(nuevo):
             return Resultado.rechazo(f"Ya existe otro proveedor registrado con el nombre «{nuevo.nombre}».")
         return Resultado.ok("Proveedor actualizado.", **_datos_proveedor(nuevo))

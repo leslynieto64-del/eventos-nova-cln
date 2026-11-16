@@ -23,6 +23,7 @@ from domain.valores import EstadoEvento
 from domain.contrato import Contrato
 from domain.propuesta import Propuesta
 from domain.proveedor import Proveedor
+from domain.cliente import Cliente
 from application.seguridad import IAlmacenSeguridad, Intento, Sesion, Usuario
 from domain.estado_cuenta import EstadoCuenta
 from ..esquema_postgresql import metadata
@@ -187,12 +188,12 @@ class ProveedorRepositorySQL(P.IProveedorRepository):
 
     @staticmethod
     def _desde(fila) -> Proveedor:
-        return Proveedor(fila["proveedor_id"], fila["nombre"], tuple(fila["servicios"]), fila["contacto"], fila["registrado_en"], fila["activo"])
+        return Proveedor(fila["proveedor_id"], fila["nombre"], tuple(fila["servicios"]), fila["contacto"], fila["registrado_en"], fila["activo"], fila["telefono"])
 
     def guardar(self, proveedor: Proveedor) -> bool:
         valores = {"proveedor_id": proveedor.proveedor_id, "nombre": proveedor.nombre, "nombre_normalizado": proveedor.nombre_normalizado,
                    "servicios": list(proveedor.servicios), "contacto": proveedor.contacto, "registrado_en": proveedor.registrado_en,
-                   "activo": proveedor.activo}
+                   "activo": proveedor.activo, "telefono": proveedor.telefono}
         with self._alm.escritura() as con:
             return len(con.execute(pg_insert(self._t).values(valores).on_conflict_do_nothing().returning(self._t.c.proveedor_id)).all()) == 1
 
@@ -208,12 +209,46 @@ class ProveedorRepositorySQL(P.IProveedorRepository):
 
     def actualizar(self, proveedor: Proveedor) -> bool:
         cambios = {"nombre": proveedor.nombre, "nombre_normalizado": proveedor.nombre_normalizado, "servicios": list(proveedor.servicios),
-                   "contacto": proveedor.contacto, "activo": proveedor.activo}
+                   "contacto": proveedor.contacto, "activo": proveedor.activo, "telefono": proveedor.telefono}
         try:
             with self._alm.escritura() as con:
                 return con.execute(sa.update(self._t).where(self._t.c.proveedor_id == proveedor.proveedor_id).values(cambios)).rowcount == 1
         except ViolacionDeRestriccion:                   # otro proveedor ya usa ese nombre (índice único del nombre normalizado)
             return False
+
+
+class ClienteRepositorySQL(P.IClienteRepository):
+    """Catálogo de clientes en la tabla `cliente`. Registro de referencia: sin versión, unidad de trabajo ni Outbox; cada operación usa su
+    propia transacción. La unicidad (identificador y correo normalizado) la garantiza la base de datos: `INSERT … ON CONFLICT DO NOTHING`
+    deja una sola fila ganadora cuando dos altas simultáneas traen el mismo correo."""
+    def __init__(self, almacen: AlmacenSQL):
+        self._alm = almacen
+        self._t = metadata.tables["cliente"]
+
+    @staticmethod
+    def _desde(fila) -> Cliente:
+        return Cliente(fila["cliente_id"], fila["nombres"], fila["apellidos"], fila["telefono"], fila["correo"], fila["registrado_en"])
+
+    def guardar(self, cliente: Cliente) -> bool:
+        valores = {"cliente_id": cliente.cliente_id, "nombres": cliente.nombres, "apellidos": cliente.apellidos, "telefono": cliente.telefono,
+                   "correo": cliente.correo, "correo_normalizado": cliente.correo_normalizado, "registrado_en": cliente.registrado_en}
+        with self._alm.escritura() as con:
+            return len(con.execute(pg_insert(self._t).values(valores).on_conflict_do_nothing().returning(self._t.c.cliente_id)).all()) == 1
+
+    def obtener_por_id(self, cliente_id: str) -> Optional[Cliente]:
+        with self._alm.lectura() as con:
+            fila = con.execute(sa.select(self._t).where(self._t.c.cliente_id == cliente_id)).mappings().first()
+        return self._desde(fila) if fila else None
+
+    def obtener_por_correo(self, correo_normalizado: str) -> Optional[Cliente]:
+        with self._alm.lectura() as con:
+            fila = con.execute(sa.select(self._t).where(self._t.c.correo_normalizado == correo_normalizado)).mappings().first()
+        return self._desde(fila) if fila else None
+
+    def listar_todos(self) -> List[Cliente]:
+        with self._alm.lectura() as con:
+            filas = con.execute(sa.select(self._t).order_by(sa.func.lower(self._t.c.nombres), sa.func.lower(self._t.c.apellidos), self._t.c.cliente_id)).mappings().all()
+        return [self._desde(f) for f in filas]
 
 
 class AlmacenSeguridadSQL(IAlmacenSeguridad):

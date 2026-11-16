@@ -8,7 +8,7 @@ from application.cqrs import RegistrarCancelacionPorFaltaDeRegularizacionCommand
 from .dependencias import obtener_contenedor, obtener_reloj
 from .esquemas import RechazoRespuesta
 from .esquemas_operaciones import (AsignarProveedorEntrada, CancelacionEntrada, CancelacionFaltaRegularizacionEntrada, FechaEntrada,
-                                   RespuestaProveedorEntrada, RevisionAdministrativaEntrada)
+                                   IndisponibilidadEntrada, RespuestaProveedorEntrada, RevisionAdministrativaEntrada)
 from .rutas_comunes import OperacionRespuesta, responder
 from .seguridad import ContextoSeguridad, contexto_actual
 from application.seguridad import ErrorSeguridad
@@ -93,3 +93,15 @@ def respuesta_proveedor(evento_id: str, servicio_contratado_id: str, entrada: Re
     return responder(contenedor, contenedor.servicios.proveedores.registrar_respuesta_proveedor(
         evento_id, servicio_contratado_id, entrada.proveedor_id, entrada.disponible, origen, medio, registrado_por_id, registrado_por_nombre,
         reloj()))
+
+
+@router.post("/eventos/{evento_id}/servicios/{servicio_contratado_id}/indisponibilidad", response_model=OperacionRespuesta, responses=_RECHAZO,
+             summary="El proveedor que ya aceptó un servicio reporta que ya no puede cumplirlo")
+def reportar_indisponibilidad(evento_id: str, servicio_contratado_id: str, entrada: IndisponibilidadEntrada,
+                              contexto: Optional[ContextoSeguridad] = Depends(contexto_actual),
+                              contenedor=Depends(obtener_contenedor), reloj: Callable[[], datetime] = Depends(obtener_reloj)):
+    """Abre la sustitución del proveedor con el motivo y la fecha; conserva la aceptación original y no elimina la asignación ni modifica el contrato."""
+    if contexto is not None and contexto.es_proveedor and entrada.proveedor_id != contexto.usuario.proveedor_id:
+        raise ErrorSeguridad(403, "sin_permiso", "Solo puede reportar la indisponibilidad de sus propias asignaciones.")
+    return responder(contenedor, contenedor.servicios.sustitucion.reportar_indisponibilidad(
+        evento_id, servicio_contratado_id, entrada.proveedor_id, entrada.motivo, entrada.descripcion, reloj()))

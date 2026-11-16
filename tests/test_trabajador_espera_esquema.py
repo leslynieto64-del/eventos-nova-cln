@@ -279,7 +279,7 @@ class EsperaContraUnaBaseRealMigrandoDespues(unittest.TestCase):
             hilo.join(20.0)
         self.assertFalse(hilo.is_alive())
         contenedor = resultado['contenedor']
-        self.assertEqual(revision_actual(self.motor), '0009')
+        self.assertEqual(revision_actual(self.motor), '0012')
         self.assertIn('está lista tras', '\n'.join(registros.output))
         contenedor.cerrar()
 

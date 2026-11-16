@@ -32,6 +32,7 @@ from .errores import registrar_manejadores, registrar_manejadores_persistencia
 from .mensajes import registrar_mensajes
 from .rutas_seguridad import protegido as rutas_seguridad_protegidas, publico as rutas_seguridad_publicas
 from .seguridad import aplicar_seguridad, registrar_cabeceras, registrar_manejador_de_seguridad
+from .rutas_clientes import router as rutas_clientes
 from .rutas_consultas import router as rutas_consultas
 from .rutas_contratacion import router as rutas_contratacion
 from .rutas_eventos import router as rutas_eventos
@@ -93,7 +94,7 @@ def crear_app(fabrica_contenedor: Optional[Callable[[], object]] = None, segurid
     registrar_manejadores_persistencia(aplicacion, ViolacionDeRestriccion, ErrorDeDatos, ErrorDeConexion, ErrorDePersistencia,
                                       ConflictoDeConcurrencia)
     for enrutador in (rutas_propuestas, rutas_contratacion, rutas_pagos, rutas_eventos, rutas_solicitudes, rutas_consultas,
-                       rutas_proveedores):
+                       rutas_proveedores, rutas_clientes):
         aplicacion.include_router(enrutador, dependencies=[Depends(aplicar_seguridad)])   # autorización por rol en CADA ruta de negocio
     aplicacion.include_router(rutas_seguridad_publicas)
     aplicacion.include_router(rutas_seguridad_protegidas)

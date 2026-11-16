@@ -1,8 +1,6 @@
 # Guía de despliegue de Eventos Nova en Render
 
-**Estado al 06/11/2026: NO desplegado.** Esta guía y `render.yaml` dejan todo preparado para revisar el costo y autorizar el *Apply*. Nada de lo que sigue se ha ejecutado en Render: las
-pruebas de la sección 1 se hicieron en un equipo local con la imagen Docker real. No hay URL pública hasta que alguien aplique el Blueprint y se complete la
-[matriz de pruebas](../calidad/MATRIZ_PRUEBAS_DESPLIEGUE_RENDER.md).
+**Estado al 06/11/2026: desplegado.** El Blueprint ya se aplicó: `eventosnova-api` y `eventosnova-worker` aparecen como *Live* en Render con el commit `1dfcfdd`, y la API responde en <https://eventosnova-api.onrender.com> (`/health`, `/app`, `/docs`, `/openapi.json`). Las pruebas de la sección 1 se hicieron antes, en un equipo local con la imagen Docker real; el resultado de cada verificación en Render está en la [matriz de pruebas](../calidad/MATRIZ_PRUEBAS_DESPLIEGUE_RENDER.md). Esta guía se conserva como procedimiento para repetir o revisar el despliegue.
 
 Convenciones: `<...>` es un dato que debe poner la persona que despliega; **nunca** escriba contraseñas, tokens ni cadenas de conexión en el repositorio, en mensajes o en capturas.
 

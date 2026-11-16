@@ -82,6 +82,30 @@ class EstadoCuentaRepositoryMemoria(_RepoBase, P.IEstadoCuentaRepository):
         return [a for a in self._todos() if a.evento_id == evento_id]
 
 
+class ClienteRepositoryMemoria(P.IClienteRepository):
+    """Catálogo de clientes en memoria. No usa la unidad de trabajo: es un registro de referencia, sin agregado ni eventos."""
+    def __init__(self):
+        self._alm = _Almacen()
+        self._por_id = self._alm.datos
+        self._cerrojo = threading.Lock()
+
+    def guardar(self, cliente):
+        with self._cerrojo:
+            if cliente.cliente_id in self._por_id or any(c.correo_normalizado == cliente.correo_normalizado for c in self._por_id.values()):
+                return False
+            self._por_id[cliente.cliente_id] = cliente
+            return True
+
+    def obtener_por_id(self, cliente_id):
+        return self._por_id.get(cliente_id)
+
+    def obtener_por_correo(self, correo_normalizado):
+        return next((c for c in self._por_id.values() if c.correo_normalizado == correo_normalizado), None)
+
+    def listar_todos(self):
+        return sorted(self._por_id.values(), key=lambda c: (c.nombre_completo.lower(), c.cliente_id))
+
+
 class ProveedorRepositoryMemoria(P.IProveedorRepository):
     """Catálogo de proveedores en memoria. No usa la unidad de trabajo: es un registro de referencia, sin agregado ni eventos."""
     def __init__(self):

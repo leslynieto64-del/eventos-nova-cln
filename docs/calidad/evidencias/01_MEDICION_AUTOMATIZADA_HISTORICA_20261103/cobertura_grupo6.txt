@@ -1,0 +1,213 @@
+Base de pruebas usada: eventosnova_regresion_test | aceptada como desechable: True
+<RAIZ_DEL_PROYECTO>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+..AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.WARNI [eventosnova.api] AUTENTICACIÓN DESACTIVADA: cualquier persona con acceso puede ejecutar todas las operaciones. Solo para pruebas y desarrollo local.
+.....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-5ad5c6bd-2703-4f33-b382-048fd9b21358 (administrador) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+.....WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-04bec25a-c1aa-43a2-90e6-82c64f2f9b55 (administrador) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-04bec25a-c1aa-43a2-90e6-82c64f2f9b55 (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-04bec25a-c1aa-43a2-90e6-82c64f2f9b55 (administrador) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-04bec25a-c1aa-43a2-90e6-82c64f2f9b55 (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c108607b-ddac-4c6f-8ce3-0e43aa26657b (proveedor) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c108607b-ddac-4c6f-8ce3-0e43aa26657b (proveedor) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c108607b-ddac-4c6f-8ce3-0e43aa26657b (proveedor) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-c108607b-ddac-4c6f-8ce3-0e43aa26657b (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d3adb9aa-353e-4f14-b79f-170aa61e9f7e (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8f4c5711-fbb4-497f-9cab-56a0c12c8727 (proveedor) en POST /eventos/{evento_id}/finalizacion
+...WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-94ad1ae2-700b-42f3-a9d2-f2676e2c80c0 (coordinador) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-94ad1ae2-700b-42f3-a9d2-f2676e2c80c0 (coordinador) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-94ad1ae2-700b-42f3-a9d2-f2676e2c80c0 (coordinador) en POST /proveedores/{proveedor_id}/activacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en GET /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores/{proveedor_id}/activacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-cb0d89d0-1f09-48f4-9892-fb86e31dfea9 (proveedor) en POST /proveedores/{proveedor_id}/activacion
+......WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-7ff6265e-7ed8-4ef4-88cf-1f526f8442b2 (administrador) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+......WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d3b6b964-91e6-4580-9199-22fd42345d6a (administrador) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d3b6b964-91e6-4580-9199-22fd42345d6a (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d3b6b964-91e6-4580-9199-22fd42345d6a (administrador) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-d3b6b964-91e6-4580-9199-22fd42345d6a (administrador) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-99acf18c-fb0f-40cb-be63-3db1fecbb0ef (proveedor) en POST /eventos/{evento_id}/inicio
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-99acf18c-fb0f-40cb-be63-3db1fecbb0ef (proveedor) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-99acf18c-fb0f-40cb-be63-3db1fecbb0ef (proveedor) en POST /solicitudes-cambio/{solicitud_id}/cierre-por-falta-de-pago
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-99acf18c-fb0f-40cb-be63-3db1fecbb0ef (proveedor) en POST /solicitudes-servicio-adicional/{solicitud_id}/cierre-por-falta-de-pago
+.WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-0c261b6c-cc01-49d4-b265-8c2ef9a31dce (administrador) en POST /eventos/{evento_id}/finalizacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-8e0d3b54-d13b-4adc-b59a-bcaa93271ab0 (proveedor) en POST /eventos/{evento_id}/finalizacion
+...WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-41d678a6-2d03-4eac-b608-e0c39e856dfe (coordinador) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-41d678a6-2d03-4eac-b608-e0c39e856dfe (coordinador) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-41d678a6-2d03-4eac-b608-e0c39e856dfe (coordinador) en POST /proveedores/{proveedor_id}/activacion
+..WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en GET /proveedores
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores/{proveedor_id}/activacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores/{proveedor_id}/edicion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores/{proveedor_id}/desactivacion
+WARNI [eventosnova.seguridad] Acceso denegado a la cuenta US-3ce64a3f-f358-4d3d-a688-2fcae7341a8b (proveedor) en POST /proveedores/{proveedor_id}/activacion
+..........INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running upgrade 0004 -> 0005, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running upgrade 0005 -> 0006, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running upgrade 0007 -> 0008, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running upgrade 0008 -> 0009, S-5: procedencia de la respuesta del proveedor.
+............INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+.INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running upgrade 0004 -> 0005, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running upgrade 0005 -> 0006, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running upgrade 0007 -> 0008, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running upgrade 0008 -> 0009, S-5: procedencia de la respuesta del proveedor.
+........................................................INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0009 -> 0008, S-5: procedencia de la respuesta del proveedor.
+INFO  [alembic.runtime.migration] Running downgrade 0008 -> 0007, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running downgrade 0007 -> 0006, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running downgrade 0006 -> 0005, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running downgrade 0005 -> 0004, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running downgrade 0004 -> 0003, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running downgrade 0003 -> 0002, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running upgrade 0004 -> 0005, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running upgrade 0005 -> 0006, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running upgrade 0007 -> 0008, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running upgrade 0008 -> 0009, S-5: procedencia de la respuesta del proveedor.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0009 -> 0008, S-5: procedencia de la respuesta del proveedor.
+INFO  [alembic.runtime.migration] Running downgrade 0008 -> 0007, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running downgrade 0007 -> 0006, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running downgrade 0006 -> 0005, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running downgrade 0005 -> 0004, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running downgrade 0004 -> 0003, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running downgrade 0003 -> 0002, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0002 -> 0001, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0002 -> 0001, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running upgrade 0004 -> 0005, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running upgrade 0005 -> 0006, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running upgrade 0007 -> 0008, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running upgrade 0008 -> 0009, S-5: procedencia de la respuesta del proveedor.
+.INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0009 -> 0008, S-5: procedencia de la respuesta del proveedor.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0008 -> 0007, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0007 -> 0006, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0006 -> 0005, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0005 -> 0004, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0004 -> 0003, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0003 -> 0002, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0002 -> 0001, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 0001 -> , Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, Esquema relacional inicial de Eventos Nova (22 tablas).
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, sustitucion_proveedor.proveedor_original_id pasa a admitir NULL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Devolución del anticipo de una contratación cerrada sin confirmar (decisión A del cierre de alcance aprobado).
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Control de concurrencia optimista: columna `version` en cada raíz de agregado.
+INFO  [alembic.runtime.migration] Running upgrade 0004 -> 0005, Catálogo de proveedores: tabla `proveedor`.
+INFO  [alembic.runtime.migration] Running upgrade 0005 -> 0006, Seguridad: tablas `usuario`, `sesion` e `intento_acceso`.
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007, Catálogo de proveedores: columna `activo`.
+INFO  [alembic.runtime.migration] Running upgrade 0007 -> 0008, D-P3: condiciones del proveedor comunicadas para un cambio (opcionales).
+INFO  [alembic.runtime.migration] Running upgrade 0008 -> 0009, S-5: procedencia de la respuesta del proveedor.
+...INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+.......................................................................................
+----------------------------------------------------------------------
+Ran 235 tests in 239.249s
+
+OK

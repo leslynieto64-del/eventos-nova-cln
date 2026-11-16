@@ -21,7 +21,9 @@ class ProveedorEntrada(_Esquema):
     nombre: str = Field(examples=["Banquetes del Valle"], max_length=200)
     servicios: List[Annotated[str, StringConstraints(max_length=100)]] = Field(default_factory=list, max_length=30, examples=[["Banquete", "Música"]],
                                  description="Servicios que ofrece; se usan para proponerlo al asignar un servicio contratado.")
-    contacto: str = Field(default="", max_length=300, examples=["55 1234 5678"], description="Texto libre (teléfono, correo...).")
+    contacto: str = Field(default="", max_length=300, examples=["Contacto: Laura, banquetes@ejemplo.com"], description="Texto libre (persona, correo, horario...).")
+    telefono: Optional[str] = Field(default=None, max_length=30, examples=["5512345678"],
+                                    description="Opcional. Exactamente 10 dígitos, sin espacios ni símbolos. En la edición, omitirlo conserva el actual y «» lo quita.")
 
 
 @router.post("/proveedores", status_code=201, response_model=OperacionRespuesta, responses=_RECHAZO,
@@ -29,7 +31,7 @@ class ProveedorEntrada(_Esquema):
 def registrar_proveedor(entrada: ProveedorEntrada, contenedor=Depends(obtener_contenedor),
                         reloj: Callable[[], datetime] = Depends(obtener_reloj)):
     return responder(contenedor, contenedor.servicios.catalogo.registrar_proveedor(
-        entrada.nombre, entrada.servicios, entrada.contacto, reloj()), despachar=False)
+        entrada.nombre, entrada.servicios, entrada.contacto, reloj(), entrada.telefono or ""), despachar=False)
 
 
 @router.get("/proveedores", response_model=OperacionRespuesta, responses=_RECHAZO,
@@ -62,7 +64,7 @@ def editar_proveedor(proveedor_id: str, entrada: ProveedorEntrada, contenedor=De
     ausente = _existente_o_404(contenedor, proveedor_id)
     if ausente is not None:
         return ausente
-    return responder(contenedor, contenedor.servicios.catalogo.editar_proveedor(proveedor_id, entrada.nombre, entrada.servicios, entrada.contacto),
+    return responder(contenedor, contenedor.servicios.catalogo.editar_proveedor(proveedor_id, entrada.nombre, entrada.servicios, entrada.contacto, entrada.telefono),
                      despachar=False)
 
 
